@@ -1,8 +1,8 @@
-package Module3.Task3;
+package module3.task3;
 
 
 public class Trumpet extends MusicalInstrument {
 
-    final Trumpet trumpet = new Trumpet();
+
 
 }

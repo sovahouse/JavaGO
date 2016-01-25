@@ -1,8 +1,7 @@
-package Module3.Task2;
+package module3.task2;
 
 
 public class Chamomile extends Flower {
 
-    final Chamomile chamomile = new Chamomile();
 
 }

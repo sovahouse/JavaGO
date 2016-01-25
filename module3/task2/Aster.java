@@ -1,8 +1,8 @@
-package Module3.Task2;
+package module3.task2;
 
 
 public class Aster extends Flower {
 
-    final Aster aster = new Aster();
+
 
 }

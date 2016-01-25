@@ -1,4 +1,4 @@
-package Module3.Task3;
+package module3.task3;
 
 
 public abstract class MusicalInstrument {

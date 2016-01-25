@@ -1,8 +1,7 @@
-package Module3.Task3;
+package module3.task3;
 
 
 public class Guitar extends MusicalInstrument {
 
-    final Guitar guitar = new Guitar();
 
 }

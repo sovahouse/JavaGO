@@ -1,8 +1,7 @@
-package Module3.Task1;
+package module3.task1;
 
 
 public class Audio extends File {
 
-    final Audio audio = new Audio();
 
 }
