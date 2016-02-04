@@ -25,17 +25,17 @@ public class CesarCipher {
 
     public String encode(String baseString) {
 
-        return enDecode(baseString, true);
+        return encodeDecode(baseString, true);
 
     }
 
     public String decode(String baseString) {
 
-        return enDecode(baseString, false);
+        return encodeDecode(baseString, false);
 
     }
 
-    private String enDecode(String baseString, boolean b) {
+    private String encodeDecode(String baseString, boolean b) {
 
         int sizeOfAlphabet = alphabet.size();
         char ch;
