@@ -12,12 +12,25 @@ public class UnixPath {
 
         input = input.replace("/home/", "");
         input = input.replace("//", "/");
-        output = buildFoldersPath(input);
+        if (isContainsAlphabetic(input)) {
+            output = buildFoldersPath(input);
+        } else {
+            return input.replace(".", "");
+        }
+
 
         return output;
 
     }
 
+    private boolean isContainsAlphabetic(String input) {
+
+        for (char c:input.toCharArray()) {
+            if (Character.isAlphabetic(c)) return true;
+        }
+
+        return false;
+    }
     private String buildFoldersPath(String pathIn) {
 
         StringBuilder pathOut = new StringBuilder();
