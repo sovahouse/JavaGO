@@ -61,6 +61,15 @@ public class UnixPath {
         return path.toString();
 
     }
+    private boolean isPathHaveLetters(String path) {
+
+        for (char s: path.toCharArray()) {
+            if (Character.isAlphabetic(s)) { return true;}
+        }
+
+        return false;
+
+    }
     private String fileName(String path) {
 
         int StartPosition = path.lastIndexOf("/");
@@ -103,15 +112,7 @@ public class UnixPath {
         return path.toString();
 
     }
-    private boolean isPathHaveLetters(String path) {
 
-        for (char s: path.toCharArray()) {
-            if (Character.isAlphabetic(s)) { return true;}
-        }
-
-        return false;
-
-    }
 
 }
 
