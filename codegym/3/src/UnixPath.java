@@ -7,81 +7,109 @@ public class UnixPath {
 
     public String simplify(String input) {
 
-        String output;
+        StringBuilder output = new StringBuilder();
+        int stringIndexCounter = 0;
 
+        input = findFinalPath(input);
 
-        input = input.replace("/home/", "");
-        input = input.replace("//", "/");
-        if (isContainsAlphabetic(input)) {
-            output = buildFoldersPath(input);
-        } else {
-            return input.replace(".", "");
-        }
+        for (char c: input.toCharArray()) {
 
+            if (Character.isAlphabetic(c) || c == '/') {
 
-        return output;
+                output.append(c);
 
-    }
-
-    private boolean isContainsAlphabetic(String input) {
-
-        for (char c:input.toCharArray()) {
-            if (Character.isAlphabetic(c)) return true;
-        }
-
-        return false;
-    }
-    private String buildFoldersPath(String pathIn) {
-
-        StringBuilder pathOut = new StringBuilder();
-
-        int folderNameStartPosition = 0;
-        int folderNameEndPosition = 0;
-        boolean isStartPosition = true;
-        boolean isFolderFind = false;
-
-        for (int i = 0; i < pathIn.length(); i++) {
-
-            if (isFolderFind) {
-
-                pathOut.append(pathIn.substring(folderNameStartPosition,
-                                                  folderNameEndPosition));
-                isFolderFind = false;
             }
 
+            if (stringIndexCounter == input.lastIndexOf('/')) { break; }
 
-            if (pathIn.charAt(i) == '/' && isStartPosition) {
+            stringIndexCounter++;
 
-                folderNameStartPosition = i;
-                isStartPosition = false;
-                isFolderFind = false;
+        }
 
-            } else if (pathIn.charAt(i) == '/' && !isStartPosition) {
+        output.append(fileName(input));
 
-                folderNameEndPosition = i + 1;
-                isStartPosition = true;
-                isFolderFind = true;
+        return deleteExtraSlashes(output);
+
+    }
+
+    private String findFinalPath(String input) {
+
+        if (!isPathHaveLetters(input)) { return input;}
+
+        StringBuilder path = new StringBuilder(input);
+
+        for (int i = path.length(); i >= 0; i--) {
+
+            if (path.toString().startsWith("../", i)) {
+
+                while (!Character.isAlphabetic(path.charAt(i))) {
+                    i--;
+                }
+
+
+                for (; path.charAt(i) != '/'; i--) {
+
+                    path.deleteCharAt(i);
+
+                }
 
             }
 
         }
 
-        pathOut.append(fileName(pathIn));
 
-        return pathOut.toString().replace("//", "/");
+        return path.toString();
+
     }
+    private String fileName(String path) {
 
-    private String fileName(String pathIn) {
+        int StartPosition = path.lastIndexOf("/");
 
-        int StartPosition = pathIn.lastIndexOf("/");
+        if(StartPosition + 1 < path.length() && Character.isAlphabetic(path.charAt(StartPosition + 1))) {
 
-        if(StartPosition + 1 < pathIn.length() && Character.isAlphabetic(pathIn.charAt(StartPosition + 1))) {
-
-            return pathIn.substring(StartPosition);
+            return path.substring(StartPosition);
 
         }
 
         return "";
+
+    }
+    private String deleteExtraSlashes(StringBuilder path) {
+
+        int startPosition;
+        int endPosition;
+        boolean isExtraSlashesFind = false;
+
+        for (int i = 0; i < path.length(); i++) {
+
+            for (startPosition = endPosition = i; i < path.length() && path.charAt(i) == '/'; i++){
+                endPosition++;
+                isExtraSlashesFind = true;
+            }
+
+            if (isExtraSlashesFind) {
+
+                path.replace(startPosition, endPosition, "/");
+                isExtraSlashesFind = false;
+
+            }
+
+        }
+
+        if (path.toString().endsWith("/") && isPathHaveLetters(path.toString())){
+            path.deleteCharAt(path.length() - 1);
+        }
+
+        return path.toString();
+
+    }
+    private boolean isPathHaveLetters(String path) {
+
+        for (char s: path.toCharArray()) {
+            if (Character.isAlphabetic(s)) { return true;}
+        }
+
+        return false;
 
     }
 
