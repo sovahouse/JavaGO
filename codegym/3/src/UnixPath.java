@@ -2,7 +2,7 @@
 
 public class UnixPath {
 
-//hsuy
+
 
     public String simplify(String input) {
 
