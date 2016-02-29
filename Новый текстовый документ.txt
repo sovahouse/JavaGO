@@ -1,0 +1,20 @@
+void beep(int ton, int time)
+{
+  tone(10, ton, time);
+  delay(time + 20);
+}
+
+void setup()
+{
+
+  pinMode(10, OUTPUT);
+
+}
+
+void loop()
+{
+
+  beep( 400, 300 );
+  delay(1000);
+
+}
