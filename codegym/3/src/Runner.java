@@ -5,8 +5,8 @@ public class Runner {
 
         UnixPath unixPath = new UnixPath();
 
-        System.out.println(unixPath.simplify("/home/../var/./lib//file.txt"));
-        System.out.println();
+       System.out.println(unixPath.simplify("/home/../var/./lib//file.txt"));
+        //System.out.println(unixPath.simplify("/."));
     }
 
 }
