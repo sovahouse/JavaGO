@@ -3,13 +3,12 @@ public class Runner {
 
     public static void main(String[] args) {
 
-        UnixPath unixPath = new UnixPath();
+        LongestStabilityPeriod longestStabilityPeriod = new LongestStabilityPeriod();
+        int x[] = {900};
+        System.out.println(longestStabilityPeriod.count(x));
 
-        System.out.println(unixPath.simplify("/home/../var/./lib//file.txt"));
-        System.out.println(unixPath.simplify("/."));
-        System.out.println(unixPath.simplify("//"));
-        System.out.println(unixPath.simplify("/var/lib/../log/./../tmp/data///."));
-        System.out.println(unixPath.simplify("/../../../../../..."));
+
+
     }
 
 }
