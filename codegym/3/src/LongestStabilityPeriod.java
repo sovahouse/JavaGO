@@ -8,7 +8,7 @@ public class LongestStabilityPeriod {
         int minGdp = gdp[0];
         int maxGdp = gdp[0];
 
-
+        int huy;
 
 
         return maxPeriod;
