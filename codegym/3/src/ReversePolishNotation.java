@@ -8,9 +8,9 @@ public class ReversePolishNotation {
         Deque<Integer> expressionStack = new LinkedList<>();
         StringBuilder num = new StringBuilder();
         boolean isNumberGet = false;
-        int currentNumber = 0;
-        int firstOperand = 0;
-        int secondOperand = 0;
+        int currentNumber;
+        int firstOperand;
+        int secondOperand;
 
         if (expression.length() == 1) {
             return Integer.parseInt(expression);
@@ -20,17 +20,19 @@ public class ReversePolishNotation {
 
             char ch = expression.charAt(i);
 
-            if (Character.isDigit(ch)) {
+            while (Character.isDigit(expression.charAt(i))) {
 
+                ch = expression.charAt(i);
                 num.append(ch);
                 isNumberGet = true;
-                continue;
+                i++;
 
             }
+
             if (isNumberGet) {
 
-                currentNumber = parseToInt(num);
-                expressionStack.add(currentNumber);
+                currentNumber = Integer.parseInt(num.toString());
+                expressionStack.addFirst(currentNumber);
                 num.delete(0, num.length());
                 isNumberGet = false;
 
@@ -42,31 +44,27 @@ public class ReversePolishNotation {
             switch (ch) {
 
                 case '+':
-                    firstOperand= expressionStack.pop();
                     secondOperand = expressionStack.pop();
-                    expressionStack.clear();
-                    expressionStack.add(firstOperand + secondOperand);
+                    firstOperand= expressionStack.pop();
+                    expressionStack.addFirst(firstOperand + secondOperand);
                     break;
 
                 case '-':
-                    firstOperand= expressionStack.pop();
                     secondOperand = expressionStack.pop();
-                    expressionStack.clear();
-                    expressionStack.add(firstOperand - secondOperand);
+                    firstOperand= expressionStack.pop();
+                    expressionStack.addFirst(firstOperand - secondOperand);
                     break;
 
                 case '*':
-                    firstOperand= expressionStack.pop();
                     secondOperand = expressionStack.pop();
-                    expressionStack.clear();
-                    expressionStack.add(firstOperand * secondOperand);
+                    firstOperand= expressionStack.pop();
+                    expressionStack.addFirst(firstOperand * secondOperand);
                     break;
 
                 case '/':
-                    firstOperand= expressionStack.pop();
                     secondOperand = expressionStack.pop();
-                    expressionStack.clear();
-                    expressionStack.add(firstOperand / secondOperand);
+                    firstOperand= expressionStack.pop();
+                    expressionStack.addFirst(firstOperand / secondOperand);
                     break;
 
                 default:
@@ -76,17 +74,5 @@ public class ReversePolishNotation {
         }
 
         return expressionStack.getLast();
-    }
-    private int parseToInt(StringBuilder s) {
-
-        int result = 0;
-
-        for (int i = s.length() - 1, j = 1; i >= 0; i--, j *= 10) {
-
-            result += Character.getNumericValue(s.charAt(i)) * j;
-
-        }
-
-        return result;
     }
 }
