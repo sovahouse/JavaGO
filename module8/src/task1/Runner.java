@@ -9,7 +9,7 @@ import java.util.TreeSet;
 public class Runner {
     public static void main(String[] args) {
 
-        Set<File> files = new TreeSet<File>(new FileNameComparator());
+        Set<File> files = new TreeSet<>(new FileNameComparator());
 
         files.add(new Audio("Music"));
         files.add(new Image("Photo"));
