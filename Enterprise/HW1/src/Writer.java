@@ -1,8 +1,8 @@
 import java.io.*;
 
-public class Printer {
+public class Writer {
 
-    public static void print(long[][][] input) {
+    public static void write(long[][][] input) {
 
         String[] colomsName = {"add", "get", "remove", "contains", "populate", "iterator.add", "iterator.remove"};
         String colomsLabel = "            add    get   remove  contains populate  iterator.add  iterator.remove";

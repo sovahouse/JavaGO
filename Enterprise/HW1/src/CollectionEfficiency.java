@@ -20,7 +20,7 @@ public class CollectionEfficiency {
             result[i][2] = hashSetTest(iterations);
             result[i][3] = treeSetTest(iterations);
         }
-        Printer.print(result);
+        Writer.write(result);
 
     }
 
