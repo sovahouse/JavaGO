@@ -15,17 +15,23 @@ public class CollectionEfficiency {
 
         for (int i = 0; i < 3; i++, iterations *= 10) {
 
-            result[i][0] = arrayListTest(iterations);
-            result[i][1] = linkedListTest(iterations);
-            result[i][2] = hashSetTest(iterations);
-            result[i][3] = treeSetTest(iterations);
+            result[i][0] = listTest(iterations, true);
+            result[i][1] = listTest(iterations, false);
+            result[i][2] = setTest(iterations, true);
+            result[i][3] = setTest(iterations, false);
         }
         Writer.write(result);
 
     }
 
-    private static long[] treeSetTest(int iterations) {
-        Set<Integer> treeSet = new TreeSet<>();
+    private static long[] setTest(int iterations, boolean isHashSet) {
+
+        Set<Integer> set;
+        if (isHashSet) {
+            set = new HashSet<>();
+        } else {
+            set = new TreeSet<>();
+        }
 
         Clock clock = Clock.systemUTC();
         long start;
@@ -36,74 +42,42 @@ public class CollectionEfficiency {
 
             start = clock.millis();
             for (int j = 0; j < iterations; j++) {
-                treeSet.add(j);
+                set.add(j);
             }
             sum[0] += clock.millis() - start;
 
             start = clock.millis();
             for (int j = iterations - 1; j > 0; j--) {
-                treeSet.remove(j);
+                set.remove(j);
             }
             sum[2] += clock.millis() - start;
 
             start = clock.millis();
             for (int j = 0; j < iterations; j++) {
-                treeSet.contains(j);
+                set.contains(j);
             }
             sum[3] += clock.millis() - start;
 
             start = clock.millis();
             for (int j = 0; j < iterations; j++) {
-                treeSet.remove(i);
-                treeSet.add(-i);
+                set.remove(i);
+                set.add(-i);
             }
             sum[5] += clock.millis() - start;
         }
         return average(sum);
     }
 
-    private static long[] hashSetTest(int iterations) {
-        Set<Integer> hashSet = new HashSet<>();
+    private static long[] listTest(int iterations, boolean isArrayList) {
 
-        Clock clock = Clock.systemUTC();
-        long start;
+        List<Integer> list;
 
-        long[] sum = new long[7];
-
-        for (int i = 0; i < 100; i++) {
-
-            start = clock.millis();
-            for (int j = 0; j < iterations; j++) {
-                hashSet.add(j);
-            }
-            sum[0] += clock.millis() - start;
-
-            start = clock.millis();
-            for (int j = iterations - 1; j > 0; j--) {
-                hashSet.remove(j);
-            }
-            sum[2] += clock.millis() - start;
-
-            start = clock.millis();
-            for (int j = 0; j < iterations; j++) {
-                hashSet.contains(j);
-            }
-            sum[3] += clock.millis() - start;
-
-            start = clock.millis();
-            for (int j = 0; j < iterations; j++) {
-                hashSet.remove(i);
-                hashSet.add(-i);
-            }
-            sum[5] += clock.millis() - start;
+        if (isArrayList) {
+            list = new ArrayList<>();
+        } else {
+            list = new LinkedList<>();
         }
 
-        return average(sum);
-    }
-
-    private static long[] linkedListTest(int iterations) {
-        List<Integer> linkedList = new LinkedList<>();
-
         Clock clock = Clock.systemUTC();
         long start;
 
@@ -113,31 +87,31 @@ public class CollectionEfficiency {
 
             start = clock.millis();
             for (int j = 0; j < iterations; j++) {
-                linkedList.add(j);
+                list.add(j);
             }
             sum[0] += clock.millis() - start;
 
             start = clock.millis();
             for (int j = 0; j < iterations && iterations < 1000000; j++) {
-                linkedList.get(j);
+                list.get(j);
             }
             sum[1] += clock.millis() - start;
 
             start = clock.millis();
             for (int j = iterations - 1; j > 0; j--) {
-                linkedList.remove(j);
+                list.remove(j);
             }
             sum[2] += clock.millis() - start;
 
             start = clock.millis();
             for (int j = 0; j < iterations; j++) {
-                linkedList.contains(j);
+                list.contains(j);
             }
             sum[3] += clock.millis() - start;
 
             start = clock.millis();
             for (int j = 0; j < iterations; j++) {
-                ListIterator<Integer> it = linkedList.listIterator();
+                ListIterator<Integer> it = list.listIterator();
                 while (it.hasNext()) {
                     it.next();
                     it.set(i);
@@ -147,66 +121,7 @@ public class CollectionEfficiency {
 
             start = clock.millis();
             for (int j = 0; j < iterations; j++) {
-                ListIterator<Integer> it = linkedList.listIterator();
-                while (it.hasNext()) {
-                    it.next();
-                    it.remove();
-                }
-            }
-            sum[6] += clock.millis() - start;
-        }
-
-        return average(sum);
-    }
-
-    private static long[] arrayListTest(int iterations) {
-
-        List<Integer> arrayList = new ArrayList<>();
-
-        Clock clock = Clock.systemUTC();
-        long start;
-
-        long[] sum = new long[7];
-
-        for (int i = 0; i < 100; i++) {
-
-            start = clock.millis();
-            for (int j = 0; j < iterations; j++) {
-                arrayList.add(j);
-            }
-            sum[0] += clock.millis() - start;
-
-            start = clock.millis();
-            for (int j = 0; j < iterations; j++) {
-                arrayList.get(j);
-            }
-            sum[1] += clock.millis() - start;
-
-            start = clock.millis();
-            for (int j = iterations - 1; j > 0; j--) {
-                arrayList.remove(j);
-            }
-            sum[2] += clock.millis() - start;
-
-            start = clock.millis();
-            for (int j = 0; j < iterations; j++) {
-                arrayList.contains(j);
-            }
-            sum[3] += clock.millis() - start;
-
-            start = clock.millis();
-            for (int j = 0; j < iterations; j++) {
-                ListIterator<Integer> it = arrayList.listIterator();
-                while (it.hasNext()) {
-                    it.next();
-                    it.set(i);
-                }
-            }
-            sum[5] += clock.millis() - start;
-
-            start = clock.millis();
-            for (int j = 0; j < iterations; j++) {
-                ListIterator<Integer> it = arrayList.listIterator();
+                ListIterator<Integer> it = list.listIterator();
                 while (it.hasNext()) {
                     it.next();
                     it.remove();
