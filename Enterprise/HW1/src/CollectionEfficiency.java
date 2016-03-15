@@ -60,8 +60,8 @@ public class CollectionEfficiency {
 
             start = clock.millis();
             for (int j = 0; j < iterations; j++) {
-                set.remove(i);
-                set.add(-i);
+                set.remove(j);
+                set.add(-j);
             }
             sum[5] += clock.millis() - start;
         }
@@ -92,8 +92,8 @@ public class CollectionEfficiency {
             sum[0] += clock.millis() - start;
 
             start = clock.millis();
-            for (int j = 0; j < iterations && iterations < 1000000; j++) {
-                list.get(j);
+            for (int j = 0; j < iterations; j++) {
+                list.get(i); // i!!!
             }
             sum[1] += clock.millis() - start;
 
@@ -114,7 +114,7 @@ public class CollectionEfficiency {
                 ListIterator<Integer> it = list.listIterator();
                 while (it.hasNext()) {
                     it.next();
-                    it.set(i);
+                    it.set(j);
                 }
             }
             sum[5] += clock.millis() - start;
