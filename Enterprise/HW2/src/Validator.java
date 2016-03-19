@@ -1,6 +1,6 @@
-interface Validator {
+interface Validator<T> {
 
     // Валидирует переданое значение
-    boolean isValid(Object result);
+    boolean isValid(T result);
 
 }
