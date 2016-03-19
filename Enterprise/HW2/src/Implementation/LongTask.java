@@ -1,13 +1,15 @@
-import java.util.Objects;
+package Implementation;
+
+import Interface.Task;
 
 import static java.lang.Math.*;
 
-class LongTask implements Task {
+public class LongTask implements Task {
 
     private long input;
     private long result;
 
-    LongTask(Long input) {
+    public LongTask(Long input) {
         this.input = input;
     }
 

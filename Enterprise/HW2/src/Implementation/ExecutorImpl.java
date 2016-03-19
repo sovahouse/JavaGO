@@ -1,7 +1,12 @@
-import java.util.ArrayList;
+package Implementation;
+
+import Interface.Executor;
+import Interface.Task;
+import Interface.Validator;
+
 import java.util.List;
 
-class ExecutorImpl<T> implements Executor<T> {
+public class ExecutorImpl<T> implements Executor<T> {
 
     private List<T> validResults;
     private List<T> invalidResults;

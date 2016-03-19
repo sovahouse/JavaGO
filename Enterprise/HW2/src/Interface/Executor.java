@@ -1,6 +1,8 @@
+package Interface;
+
 import java.util.List;
 
-interface Executor<T> {
+public interface Executor<T> {
 
     // Добавить таск на выполнение. Результат таска будет доступен через метод getValidResults().
     // Бросает Эксепшн если уже был вызван метод execute()

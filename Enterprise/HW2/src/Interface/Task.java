@@ -1,6 +1,8 @@
+package Interface;
+
 import java.util.List;
 
-interface Task<T> {
+public interface Task<T> {
 
     // Метода запускает таск на выполнение
     void execute();
