@@ -1,7 +1,5 @@
 package Interface;
 
-import java.util.List;
-
 public interface Task<T> {
 
     // Метода запускает таск на выполнение
@@ -9,6 +7,8 @@ public interface Task<T> {
 
     // Возвращает результат выполнения
     T getResult();
+
+    T getInput();
 
 
 }

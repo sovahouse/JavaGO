@@ -3,14 +3,14 @@ import Interface.*;
 
 import java.util.List;
 
+@SuppressWarnings("unchecked")
+
 public class Runner {
 
-    @SuppressWarnings("unchecked")
-
-    public void test(List<Task<Integer>> intTasks) {
+    public void test(List<Task<Long>> intTasks) {
         Executor<Number> numberExecutor = new ExecutorImpl<>();
 
-        for (Task<Integer> intTask : intTasks) {
+        for (Task<Long> intTask : intTasks) {
             numberExecutor.addTask(intTask);
         }
         numberExecutor.addTask(new LongTask(10L), new NumberValidator());
@@ -26,5 +26,6 @@ public class Runner {
             System.out.println(number);
         }
     }
+
 
 }

@@ -2,6 +2,8 @@ package Implementation;
 
 import Interface.Task;
 
+import java.util.Objects;
+
 import static java.lang.Math.*;
 
 public class LongTask implements Task {
@@ -21,5 +23,9 @@ public class LongTask implements Task {
     @Override
     public Object getResult() {
         return result;
+    }
+
+    public Object getInput() {
+        return input;
     }
 }

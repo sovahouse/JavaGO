@@ -2,10 +2,10 @@ package Implementation;
 
 import Interface.Validator;
 
-public class NumberValidator implements Validator {
+public class NumberValidator implements Validator<Number> {
 
     @Override
-    public boolean isValid(Object result) {
-        return false;
+    public boolean isValid(Number result) {
+        return (result.longValue() % 2 != 0); //if result odd return true
     }
 }
