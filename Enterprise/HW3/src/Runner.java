@@ -13,7 +13,7 @@ public class Runner {
 
     private void test() {
 
-        for (int i=0; i<10; i++) new Thread(new Worker()).start();
+        for (int i=0; i < 10; i++) new Thread(new Worker()).start();
     }
 
     private class Worker implements Runnable {
