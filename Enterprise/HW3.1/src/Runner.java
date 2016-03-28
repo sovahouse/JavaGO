@@ -1,6 +1,8 @@
 import Implementation.SemaphoreImpl;
 import Interface.Semaphore;
 
+import java.util.stream.IntStream;
+
 public class Runner {
 
     private final Semaphore semaphore = new SemaphoreImpl(2);
@@ -13,7 +15,8 @@ public class Runner {
 
     private void test() {
 
-        for (int i=0; i < 10; i++) new Thread(new Worker()).start();
+        //for (int i=0; i < 10; i++) new Thread(new Worker()).start();
+        IntStream.range(0, 10).forEach((i) -> new Thread(new Worker()).start());
     }
 
     private class Worker implements Runnable {
