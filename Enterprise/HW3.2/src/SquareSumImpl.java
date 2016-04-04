@@ -1,52 +1,61 @@
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Phaser;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.*;
 import java.util.stream.IntStream;
 
 public class SquareSumImpl implements SquareSum {
 
-    private volatile int sum;
-
-    public SquareSumImpl() {
-        this.sum = 0;
-    }
-
     @Override
     public long getSquareSum(int[] values, int numberOfThreads) {
 
-        ExecutorService executor = Executors.newFixedThreadPool(numberOfThreads);
         Phaser phaser = new Phaser(numberOfThreads);
 
-        final int packs;
-        final int elementsValue;
+        final int increment = values.length / numberOfThreads;
 
-        if (values.length % 2 == 0) {
-            packs = values.length / numberOfThreads;
-            elementsValue = values.length / packs;
-        } else {
-            packs = (values.length / numberOfThreads) + 1;
-            elementsValue = values.length / (packs - 1);
+        List<Callable<Long>> tasks = new ArrayList<>();
+
+        IntStream.range(0, numberOfThreads).forEach((i -> tasks.add(() -> {
+            phaser.register();
+            long result = 0;
+            int startIndex = i * increment;
+            int endIndex;
+
+            if ((i + 1) == numberOfThreads) {
+                endIndex = values.length;
+            } else {
+                endIndex = (i + 1) * increment;
+            }
+
+            for (int j = startIndex; j < endIndex; j++) {
+                result += Math.pow(values[j], 2);
+            }
+            phaser.arrive();
+
+            phaser.arriveAndAwaitAdvance();
+
+            return result;
+        })));
+
+        return compute(tasks, numberOfThreads);
+    }
+
+    private long compute(List<Callable<Long>> tasks, int numberOfThreads) {
+
+        ExecutorService executor = Executors.newFixedThreadPool(numberOfThreads);
+        long sum = 0;
+
+        try {
+            List<Future<Long>> resultList = executor.invokeAll(tasks);
+            for (Future<Long> res : resultList) {
+                sum += res.get();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            executor.shutdown();
         }
 
-
-        IntStream.range(0, numberOfThreads).forEach((i ->
-                executor.execute(() -> {
-
-                    int currentPow = 0;
-                    for (int j = 0; j < values.length; j += elementsValue) {
-                        currentPow = (int) Math.pow(values[i + j], 2);
-                    }
-
-                    phaser.arriveAndAwaitAdvance();
-
-                    sum += currentPow;
-                    System.out.println(sum);
-
-                })));
-
-
         executor.shutdown();
-
 
         return sum;
     }
