@@ -1,3 +1,6 @@
+import Implementation.SquareSumImpl;
+import Interface.SquareSum;
+
 public class Runner {
 
 
