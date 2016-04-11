@@ -14,7 +14,7 @@
     </target>
 
     <target name="dist" depends="compile">
-        <jar destfile="${dist}/HW2.jar">
+        <jar destfile="${dist}/HW3.1.jar">
             <fileset dir="${build}"/>
             <manifest>
                 <attribute name="Main-Class" value="Runner"/>
