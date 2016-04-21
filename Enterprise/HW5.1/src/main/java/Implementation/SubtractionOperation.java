@@ -4,10 +4,10 @@ import Interface.Operation;
 
 public class SubtractionOperation implements Operation {
 
-    private Double firstOperand;
-    private Double secondOperand;
+    private double firstOperand;
+    private double secondOperand;
 
-    public SubtractionOperation(Double firstOperand, Double secondOperand) {
+    public SubtractionOperation(double firstOperand, double secondOperand) {
         this.firstOperand = firstOperand;
         this.secondOperand = secondOperand;
     }
@@ -20,11 +20,11 @@ public class SubtractionOperation implements Operation {
         return firstOperand - secondOperand;
     }
 
-    public Double getFirstOperand() {
+    public double getFirstOperand() {
         return firstOperand;
     }
 
-    public Double getSecondOperand() {
+    public double getSecondOperand() {
         return secondOperand;
     }
 

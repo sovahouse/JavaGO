@@ -9,7 +9,7 @@ public class Parser {
         Operation operation = null;
         final int numberOfOperands = 2;
 
-        Double[] operands = new Double[numberOfOperands];
+        double[] operands = new double[numberOfOperands];
 
         for (int i = 0, j = 0; i < input.length(); i++) {
 
