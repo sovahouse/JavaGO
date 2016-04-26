@@ -1,10 +1,14 @@
-class ParseredNumber {
+import parsedInterface.Parsed;
+
+class ParsedNumber implements Parsed {
+
+    //private String input;
 
     private double firstOperand;
     private double secondOperand;
     private String operator;
 
-    ParseredNumber (String input) {
+    public void parse(String input) {
 
         String[] operands = input.trim().split(",");
 

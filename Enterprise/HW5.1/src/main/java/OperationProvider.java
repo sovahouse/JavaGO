@@ -4,19 +4,20 @@ import operationInterface.Operation;
 
 class OperationProvider {
 
-    private ParseredNumber parsered;
+    private ParsedNumber parsed;
 
+    //TODO: add support for different parsers type
 
-    OperationProvider (ParseredNumber parsered) {
-        this.parsered = parsered;
+    OperationProvider (ParsedNumber parsed) {
+        this.parsed = parsed;
     }
 
     Operation provide() {
 
-        if(parsered.getOperator().equals("+")) {
-            return new AddOperation(parsered.getFirstOperand(), parsered.getSecondOperand());
-        } else if(parsered.getOperator().equals("-")) {
-            return new SubtractionOperation(parsered.getFirstOperand(), parsered.getSecondOperand());
+        if(parsed.getOperator().equals("+")) {
+            return new AddOperation(parsed.getFirstOperand(), parsed.getSecondOperand());
+        } else if(parsed.getOperator().equals("-")) {
+            return new SubtractionOperation(parsed.getFirstOperand(), parsed.getSecondOperand());
         } else {
             throw (new IllegalArgumentException("Unsupported operator detected!"));
         }

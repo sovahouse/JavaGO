@@ -1,4 +1,5 @@
 import operationInterface.*;
+import parsedInterface.Parsed;
 
 class Calculator {
 
@@ -8,9 +9,11 @@ class Calculator {
             throw (new IllegalArgumentException("Empty string detected"));
         }
 
-        ParseredNumber parsered = new ParseredNumber(input);
+        ParsedNumber parsed = new ParsedNumber();
 
-        OperationProvider operationProvider = new OperationProvider(parsered);
+        parsed.parse(input);
+
+        OperationProvider operationProvider = new OperationProvider(parsed);
 
         Operation operation = operationProvider.provide();
 
