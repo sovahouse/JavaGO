@@ -1,15 +1,20 @@
-import Interface.Operation;
+import operationInterface.*;
 
-public class Calculator {
+class Calculator {
 
-    public String calculate(String input) {
-        Parser parser = new Parser();
-        String result;
+    String calculate(String input) {
 
-        Operation operation = parser.parse(input);
+        if (input.isEmpty()) {
+            throw (new IllegalArgumentException("Empty string detected"));
+        }
 
-        result = input + " = " + operation.execute();
-        return result;
+        ParseredNumber parsered = new ParseredNumber(input);
+
+        OperationProvider operationProvider = new OperationProvider(parsered);
+
+        Operation operation = operationProvider.provide();
+
+        return input + " = " + operation.execute();
 
     }
 

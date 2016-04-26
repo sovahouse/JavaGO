@@ -1,6 +1,6 @@
-package Implementation;
+package impl;
 
-import Interface.Operation;
+import operationInterface.Operation;
 
 public class SubtractionOperation implements Operation {
 
@@ -13,20 +13,13 @@ public class SubtractionOperation implements Operation {
     }
 
     public String execute() {
-        return subtract().toString();
+        return String.valueOf(subtract());
     }
 
-    private Double subtract() {
+    private double subtract() {
         return firstOperand - secondOperand;
     }
 
-    public double getFirstOperand() {
-        return firstOperand;
-    }
-
-    public double getSecondOperand() {
-        return secondOperand;
-    }
 
 
 }
