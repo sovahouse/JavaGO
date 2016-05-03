@@ -2,13 +2,17 @@ import parsedInterface.Parsed;
 
 class ParsedNumber implements Parsed {
 
-    //private String input;
+    private String input;
 
     private double firstOperand;
     private double secondOperand;
     private String operator;
 
-    public void parse(String input) {
+    ParsedNumber(String input) {
+        this.input = input;
+    }
+
+    public void parse() {
 
         String[] operands = input.trim().split(",");
 

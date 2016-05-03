@@ -1,0 +1,28 @@
+23:22:38,575  INFO main ClassPathXmlApplicationContext:prepareRefresh:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@504bae78: startup date [Tue May 03 23:22:38 EEST 2016]; root of context hierarchy
+23:22:38,630  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:317 - Loading XML bean definitions from class path resource [application-context.xml]
+23:22:38,762  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:317 - Loading XML bean definitions from class path resource [aop-context.xml]
+23:23:55,279  INFO main ClassPathXmlApplicationContext:prepareRefresh:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@504bae78: startup date [Tue May 03 23:23:55 EEST 2016]; root of context hierarchy
+23:23:55,328  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:317 - Loading XML bean definitions from class path resource [application-context.xml]
+23:23:55,457  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:317 - Loading XML bean definitions from class path resource [aop-context.xml]
+23:25:03,408  INFO main ClassPathXmlApplicationContext:prepareRefresh:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@504bae78: startup date [Tue May 03 23:25:03 EEST 2016]; root of context hierarchy
+23:25:03,467  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:317 - Loading XML bean definitions from class path resource [application-context.xml]
+23:25:03,631  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:317 - Loading XML bean definitions from class path resource [aop-context.xml]
+23:25:04,117  INFO main LogAspect:onExecute:8 - LogAspect. Before method execute was called
+23:25:30,236  INFO main ClassPathXmlApplicationContext:prepareRefresh:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@504bae78: startup date [Tue May 03 23:25:30 EEST 2016]; root of context hierarchy
+23:25:30,289  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:317 - Loading XML bean definitions from class path resource [application-context.xml]
+23:25:30,418  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:317 - Loading XML bean definitions from class path resource [aop-context.xml]
+23:26:34,200  INFO main ClassPathXmlApplicationContext:prepareRefresh:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@504bae78: startup date [Tue May 03 23:26:34 EEST 2016]; root of context hierarchy
+23:26:34,261  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:317 - Loading XML bean definitions from class path resource [application-context.xml]
+23:26:34,405  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:317 - Loading XML bean definitions from class path resource [aop-context.xml]
+23:26:34,893  INFO main LogAspect:onExecute:8 - LogAspect. Before method execute was called
+23:26:43,322  INFO main LogAspect:onExecute:10 - LogAspect. After method execute was called
+23:28:19,567  INFO main ClassPathXmlApplicationContext:prepareRefresh:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@504bae78: startup date [Tue May 03 23:28:19 EEST 2016]; root of context hierarchy
+23:28:19,619  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:317 - Loading XML bean definitions from class path resource [application-context.xml]
+23:28:19,752  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:317 - Loading XML bean definitions from class path resource [aop-context.xml]
+23:28:20,211  INFO main LogAspect:onExecute:8 - LogAspect. Before method execute was called
+23:28:30,412  INFO main LogAspect:onExecute:8 - LogAspect. Before method calculate was called
+23:28:30,434  INFO main LogAspect:onExecute:10 - LogAspect. After method calculate was called
+23:28:30,434  INFO main LogAspect:onExecute:10 - LogAspect. After method execute was called
+23:29:32,377  INFO main ClassPathXmlApplicationContext:prepareRefresh:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@504bae78: startup date [Tue May 03 23:29:32 EEST 2016]; root of context hierarchy
+23:29:32,435  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:317 - Loading XML bean definitions from class path resource [application-context.xml]
+23:29:32,564  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:317 - Loading XML bean definitions from class path resource [aop-context.xml]

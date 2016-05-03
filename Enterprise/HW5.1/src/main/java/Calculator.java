@@ -1,17 +1,20 @@
 import operationInterface.*;
-import parsedInterface.Parsed;
+
+
+import static org.apache.commons.lang3.StringUtils.*;
 
 class Calculator {
 
-    String calculate(String input) {
 
-        if (input.isEmpty()) {
+    public String calculate(String input) {
+
+        if (isBlank(input)) {
             throw (new IllegalArgumentException("Empty string detected"));
         }
 
-        ParsedNumber parsed = new ParsedNumber();
+        ParsedNumber parsed = new ParsedNumber(input);
 
-        parsed.parse(input);
+        parsed.parse();
 
         OperationProvider operationProvider = new OperationProvider(parsed);
 
