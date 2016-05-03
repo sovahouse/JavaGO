@@ -1,8 +1,8 @@
 import java.io.*;
 
-public class Writer {
+class Writer {
 
-    public static void write(long[][][] input) {
+    static void write(long[][][] input) {
 
         String[] colomsName = {"add", "get", "remove", "contains", "populate", "iterator.add", "iterator.remove"};
         String colomsLabel = "            add    get   remove  contains populate  iterator.add  iterator.remove";
@@ -10,7 +10,7 @@ public class Writer {
         StringBuilder[] rows = new StringBuilder[4];
         int sets = 10;
 
-        try(FileWriter writer = new FileWriter("output.txt")) {
+        try (FileWriter writer = new FileWriter("output.txt")) {
 
             for (long[][] tables : input) {
 

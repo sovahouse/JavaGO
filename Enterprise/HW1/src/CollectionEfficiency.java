@@ -135,7 +135,9 @@ public class CollectionEfficiency {
 
     private static long[] average(long[] sum) {
 
-        for (int i = 0; i < sum.length; i++) sum[i] /= 100;
+        for (int i = 0; i < sum.length; i++) {
+            sum[i] /= 100;
+        }
         return sum;
     }
 }
