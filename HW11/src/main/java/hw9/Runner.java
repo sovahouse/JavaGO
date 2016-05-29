@@ -7,7 +7,7 @@ import java.util.List;
 public class Runner {
     public static void main(String[] args) {
 
-        List<File> files = new ArrayList<File>();
+        List<File> files = new ArrayList<>();
 
         files.add(new Audio("Music"));
         files.add(new Image("Photo"));

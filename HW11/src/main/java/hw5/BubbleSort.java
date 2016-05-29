@@ -1,9 +1,9 @@
 package hw5;
 
 
-public class BubbleSort {
+class BubbleSort {
 
-    public static int[] sort(int[] arr) {
+    static int[] sort(int[] arr) {
 
         int tmp;
 
