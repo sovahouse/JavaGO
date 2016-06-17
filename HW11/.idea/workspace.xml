@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d83619c6-9fb5-4421-b8c6-f6f08ab6ec9f" name="Default" comment="HW11">
+    <list default="true" id="d83619c6-9fb5-4421-b8c6-f6f08ab6ec9f" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
@@ -782,7 +782,7 @@
       <workItem from="1464807054904" duration="603000" />
       <workItem from="1464973415267" duration="10000" />
       <workItem from="1466201388263" duration="710000" />
-      <workItem from="1466202115080" duration="82000" />
+      <workItem from="1466202115080" duration="109000" />
     </task>
     <task id="LOCAL-00001" summary="HW11">
       <created>1464216122336</created>
@@ -826,7 +826,14 @@
       <option name="project" value="LOCAL" />
       <updated>1466201988117</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="HW11">
+      <created>1466202201700</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1466202201700</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -862,7 +869,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9612000" />
+    <option name="totallyTimeSpent" value="9639000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
