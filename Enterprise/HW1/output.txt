@@ -1,0 +1,21 @@
+
+For 10K elements:
+            add    get   remove  contains populate  iterator.add  iterator.remove
+ArrayList:  0      0     0       0        0         0             0                                 
+LinkedList: 0      0     0       0        0         0             0                                  
+HashSet:    0      0     0       0        0         0             0                               
+TreeSet:    1      0     1       0        0         1             0                               
+
+For 100K elements:
+            add    get   remove  contains populate  iterator.add  iterator.remove
+ArrayList:  0      0     0       0        0         2             0                                 
+LinkedList: 1      4     0       0        0         1             0                                  
+HashSet:    1      0     1       0        0         2             0                               
+TreeSet:    19     0     12      4        0         18            0                                  
+
+For 1000K elements:
+            add    get   remove  contains populate  iterator.add  iterator.remove
+ArrayList:  7      2     3       6        0         18            7                                  
+LinkedList: 13     51    8       5        0         15            8                                     
+HashSet:    20     0     17      7        0         35            0                                  
+TreeSet:    264    0     167     54       0         221           0                                      
