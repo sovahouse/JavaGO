@@ -1,3 +1,5 @@
+package goit.hw6.model;
+
 import java.time.LocalDate;
 
 public class Employee {
@@ -68,7 +70,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
+        return "goit.hw6.model.Employee{" +
                 "id=" + id +
                 ", lastName='" + lastName + '\'' +
                 ", firstName='" + firstName + '\'' +
