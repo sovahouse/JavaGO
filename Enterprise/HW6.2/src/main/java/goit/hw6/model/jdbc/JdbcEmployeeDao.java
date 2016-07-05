@@ -4,6 +4,8 @@ import goit.hw6.model.Employee;
 import goit.hw6.model.EmployeeDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -18,6 +20,7 @@ public class JdbcEmployeeDao implements EmployeeDao {
     private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeDao.class);
 
     @Override
+    @Transactional(propagation = Propagation.MANDATORY)
     public Employee load(int id) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement("SELECT * FROM EMPLOYEE WHERE ID = ?")) {
@@ -36,7 +39,8 @@ public class JdbcEmployeeDao implements EmployeeDao {
     }
 
     @Override
-    public List<Employee> getAll() {
+    @Transactional(propagation = Propagation.MANDATORY)
+    public List<Employee> findAll() {
         List<Employee> result = new ArrayList<>();
 
         try (Connection connection = dataSource.getConnection();
@@ -69,18 +73,6 @@ public class JdbcEmployeeDao implements EmployeeDao {
         employee.setSalary(resultSet.getDouble("SALARY"));
         return employee;
     }
-
-    private void loadDriver() {
-        try {
-            LOGGER.info("Loading JDBC driver: org.postgresql.Driver");
-            Class.forName("org.postgresql.Driver");
-            LOGGER.info("Driver loaded successfully");
-        } catch (ClassNotFoundException e) {
-            LOGGER.error("Cannot find driver: org.postgresql.Driver");
-            throw new RuntimeException(e);
-        }
-    }
-
 
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
