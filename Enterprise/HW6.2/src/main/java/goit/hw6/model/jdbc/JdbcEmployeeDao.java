@@ -56,7 +56,7 @@ public class JdbcEmployeeDao implements EmployeeDao {
             }
         } catch (SQLException e) {
             LOGGER.error("Exception occurred while connecting to DB ", e);
-            throw new RuntimeException(e);
+            throw new RuntimeException("Cannot find Employee with name: " + name);
         }
 
         return result;
