@@ -38,6 +38,30 @@ public class JdbcEmployeeDao implements EmployeeDao {
         }
     }
 
+    public void addEmployee() {
+
+    }
+    public void deleteEmployee() {
+    }
+    public List<Employee> findByName(String name) {
+        List<Employee> result = new ArrayList<>();
+
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM EMPLOYEE WHERE FIRST_NAME = ?")) {
+            statement.setString(1, name);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Employee employee = createEmployee(resultSet);
+                result.add(employee);
+            }
+        } catch (SQLException e) {
+            LOGGER.error("Exception occurred while connecting to DB ", e);
+            throw new RuntimeException(e);
+        }
+
+        return result;
+    }
+
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
     public List<Employee> findAll() {
