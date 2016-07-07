@@ -22,7 +22,8 @@ public class Main {
     }
 
     private void start() {
-        employeeController.getAllEmployees().forEach(System.out::println);
+        //employeeController.getAllEmployees().forEach(System.out::println);
+        employeeController.getEmployeeByName("Robert").forEach(System.out::println);
     }
 
     public void setEmployeeController(EmployeeController employeeController) {

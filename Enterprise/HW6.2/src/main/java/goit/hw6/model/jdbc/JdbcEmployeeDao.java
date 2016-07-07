@@ -19,30 +19,14 @@ public class JdbcEmployeeDao implements EmployeeDao {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeDao.class);
 
-    @Override
-    @Transactional(propagation = Propagation.MANDATORY)
-    public Employee load(int id) {
-        try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement("SELECT * FROM EMPLOYEE WHERE ID = ?")) {
-            statement.setInt(1, id);
-            ResultSet resultSet = statement.executeQuery();
-            if (resultSet.next()) {
-               return createEmployee(resultSet);
-            } else {
-                throw new RuntimeException("Cannot find goit.hw6.model.Employee with id" + id);
-            }
-
-        } catch (SQLException e) {
-            LOGGER.error("Exception occurred while connecting to DB ", e);
-            throw new RuntimeException(e);
-        }
-    }
-
     public void addEmployee() {
 
     }
     public void deleteEmployee() {
     }
+
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
     public List<Employee> findByName(String name) {
         List<Employee> result = new ArrayList<>();
 
