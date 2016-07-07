@@ -1,7 +1,7 @@
 package goit.hw6.model.jdbc;
 
 import goit.hw6.model.Employee;
-import goit.hw6.model.EmployeeDao;
+import goit.hw6.model.DaoInterfaces.EmployeeDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Propagation;

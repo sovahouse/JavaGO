@@ -1,5 +1,7 @@
-package goit.hw6.model;
+package goit.hw6.model.DaoInterfaces;
 
+
+import goit.hw6.model.Employee;
 
 import java.util.List;
 

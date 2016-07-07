@@ -1,8 +1,6 @@
 package goit.hw6;
 
 import goit.hw6.controllers.EmployeeController;
-import goit.hw6.model.EmployeeDao;
-import goit.hw6.model.jdbc.JdbcEmployeeDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;

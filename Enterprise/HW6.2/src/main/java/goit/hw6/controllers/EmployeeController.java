@@ -1,7 +1,7 @@
 package goit.hw6.controllers;
 
 import goit.hw6.model.Employee;
-import goit.hw6.model.EmployeeDao;
+import goit.hw6.model.DaoInterfaces.EmployeeDao;
 import org.springframework.transaction.annotation.*;
 
 import java.util.List;
