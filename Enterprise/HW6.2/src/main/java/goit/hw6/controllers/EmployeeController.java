@@ -20,6 +20,11 @@ public class EmployeeController {
         return employeeDao.findByName(name);
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void deleteEmployee(int id) {
+        employeeDao.deleteEmployeeById(id);
+    }
+
     public void setEmployeeDao(EmployeeDao employeeDao) {
         this.employeeDao = employeeDao;
     }

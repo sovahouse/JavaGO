@@ -22,7 +22,20 @@ public class JdbcEmployeeDao implements EmployeeDao {
     public void addEmployee() {
 
     }
-    public void deleteEmployee() {
+
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
+    public void deleteEmployeeById(int id) {
+
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM EMPLOYEE WHERE ID = ?")) {
+            statement.setInt(1, id);
+            statement.execute();
+        } catch (SQLException e) {
+            LOGGER.error("Exception occurred while connecting to DB ", e);
+            throw new RuntimeException("Cannot find Employee with id: " + id);
+        }
+
     }
 
     @Override
