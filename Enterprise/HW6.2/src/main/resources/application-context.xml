@@ -9,12 +9,18 @@
 
     <bean class="goit.hw6.Main" id="main">
         <property name="employeeController" ref="employeeController"/>
+        <property name="dishController" ref="dishController"/>
     </bean>
 
+    <!--CONTROLLERS-->
+    <bean class="goit.hw6.controllers.DishController" id="dishController">
+        <property name="dishDao" ref="dishDao"/>
+    </bean>
     <bean class="goit.hw6.controllers.EmployeeController" id="employeeController">
         <property name="employeeDao" ref="employeeDao"/>
     </bean>
 
+    <!--DAO-->
     <bean class="goit.hw6.model.jdbc.JdbcDishDao" id="dishDao">
         <property name="dataSource" ref="dataSource"/>
         <property name="ingredientDao" ref="ingredientDao"/>
@@ -23,8 +29,8 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <bean class="goit.hw6.model.jdbc.JdbcIngredientDao" id="ingredientDao"/>
 
+    <bean class="goit.hw6.model.jdbc.JdbcIngredientDao" id="ingredientDao"/>
 
     <bean class="com.mchange.v2.c3p0.ComboPooledDataSource" id="dataSource">
         <property name="driverClass" value="${jdbc.driver.class}"/>

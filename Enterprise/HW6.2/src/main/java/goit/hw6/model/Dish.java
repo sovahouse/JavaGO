@@ -62,12 +62,16 @@ public class Dish {
     @Override
     public String toString() {
 
+        StringBuilder ingredientsList = new StringBuilder();
 
+        for (Ingredient ingredient: ingredients) {
+            ingredientsList.append(ingredient.getName() + ", ");
+        }
 
         return "Dish{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", ingredients=" + ingredients +
+                ", ingredients= " + "\"" + ingredientsList + "\"" +
                 ", category='" + category + '\'' +
                 ", price=" + price +
                 ", weight=" + weight +

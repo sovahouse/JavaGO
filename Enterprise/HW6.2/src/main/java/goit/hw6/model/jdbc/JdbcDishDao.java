@@ -6,6 +6,8 @@ import goit.hw6.model.Dish;
 import goit.hw6.model.Ingredient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.sql.DataSource;
 import java.sql.*;
@@ -19,6 +21,8 @@ public class JdbcDishDao implements DishDao{
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeDao.class);
 
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
     public List<Dish> findByName(String name) {
         List<Dish> result = new ArrayList<>();
 
@@ -32,7 +36,7 @@ public class JdbcDishDao implements DishDao{
             }
         } catch (SQLException e) {
             LOGGER.error("Exception occurred while connecting to DB ", e);
-            throw new RuntimeException("Cannot find Employee with name: " + name);
+            throw new RuntimeException("Cannot find Dish with name: " + name);
         }
 
         return result;
@@ -44,7 +48,7 @@ public class JdbcDishDao implements DishDao{
         dish.setId(resultSet.getInt("ID"));
         dish.setName(resultSet.getString("NAME"));
         dish.setCategory(resultSet.getString("CATEGORY"));
-        dish.setIngredient(getIngredientsList(dish.getName()));
+        dish.setIngredient(getIngredientsList(dish.getId()));
         dish.setPrice(resultSet.getDouble("PRICE"));
         dish.setWeight(resultSet.getDouble("WEIGHT"));
 
@@ -52,12 +56,12 @@ public class JdbcDishDao implements DishDao{
 
     }
 
-    private List<Ingredient> getIngredientsList(String dishName) {
+    private List<Ingredient> getIngredientsList(int dishId) {
         List<Ingredient> ingredients = new ArrayList<>();
 
         try(Connection connection = dataSource.getConnection();
-            PreparedStatement statement = connection.prepareStatement("SELECT ingredient.name FROM DISH WHERE NAME = ?")) {
-            statement.setString(1, dishName);
+            PreparedStatement statement = connection.prepareStatement("SELECT ingredient_name FROM ingredients_for_dish WHERE dish_id = ?")) {
+            statement.setInt(1, dishId);
             ResultSet resultSet = statement.executeQuery();
 
             while(resultSet.next()) {
@@ -66,7 +70,7 @@ public class JdbcDishDao implements DishDao{
             }
         } catch (SQLException e) {
             LOGGER.error("Exception occurred while connecting to DB", e);
-            throw new RuntimeException("Cannot find Ingredients for dish: " + dishName);
+            throw new RuntimeException("Cannot find Ingredients for dish id: " + dishId);
         }
 
         return ingredients;
