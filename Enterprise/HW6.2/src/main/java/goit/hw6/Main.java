@@ -25,7 +25,7 @@ public class Main {
         //employeeController.getAllEmployees().forEach(System.out::println);
         //employeeController.getEmployeeByName("Robert").forEach(System.out::println);
         //employeeController.deleteEmployee(1);
-        dishController.getDishByName("Fried eggs");
+        dishController.getDishByName("Fried eggs").forEach(System.out::println);
     }
 
     public void setEmployeeController(EmployeeController employeeController) {
