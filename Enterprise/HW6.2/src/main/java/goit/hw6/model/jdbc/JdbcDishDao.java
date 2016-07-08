@@ -15,6 +15,7 @@ import java.util.List;
 public class JdbcDishDao implements DishDao{
 
     private DataSource dataSource;
+    private JdbcIngredientDao ingredientDao;
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeDao.class);
 
@@ -43,18 +44,39 @@ public class JdbcDishDao implements DishDao{
         dish.setId(resultSet.getInt("ID"));
         dish.setName(resultSet.getString("NAME"));
         dish.setCategory(resultSet.getString("CATEGORY"));
-        dish.setIngredient(resultSet.getObject("INGREDIENT"));
+        dish.setIngredient(getIngredientsList(dish.getName()));
         dish.setPrice(resultSet.getDouble("PRICE"));
         dish.setWeight(resultSet.getDouble("WEIGHT"));
 
         return dish;
+
     }
 
-    private List<Ingredient> getIngredientsList() {
+    private List<Ingredient> getIngredientsList(String dishName) {
+        List<Ingredient> ingredients = new ArrayList<>();
 
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement("SELECT ingredient.name FROM DISH WHERE NAME = ?")) {
+            statement.setString(1, dishName);
+            ResultSet resultSet = statement.executeQuery();
+
+            while(resultSet.next()) {
+                Ingredient ingredient = ingredientDao.createIngredient(resultSet);
+                ingredients.add(ingredient);
+            }
+        } catch (SQLException e) {
+            LOGGER.error("Exception occurred while connecting to DB", e);
+            throw new RuntimeException("Cannot find Ingredients for dish: " + dishName);
+        }
+
+        return ingredients;
     }
 
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
+    }
+
+    public void setIngredientDao(JdbcIngredientDao ingredientDao) {
+        this.ingredientDao = ingredientDao;
     }
 }
