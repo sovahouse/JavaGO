@@ -6,7 +6,7 @@ public class Dish {
 
     private int id;
     private String name;
-    private Ingredient ingredient;
+    private List<Ingredient> ingredients;
     private String category;
     private double price;
     private double weight;
@@ -27,12 +27,12 @@ public class Dish {
         this.name = name;
     }
 
-    public Ingredient getIngredient() {
-        return ingredient;
+    public List<Ingredient> getIngredient() {
+        return ingredients;
     }
 
-    public void setIngredient(Ingredient ingredient) {
-        this.ingredient = ingredient;
+    public void setIngredient(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 
     public String getCategory() {

@@ -12,7 +12,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JbdcDishDao implements DishDao{
+public class JdbcDishDao implements DishDao{
 
     private DataSource dataSource;
 
@@ -43,10 +43,18 @@ public class JbdcDishDao implements DishDao{
         dish.setId(resultSet.getInt("ID"));
         dish.setName(resultSet.getString("NAME"));
         dish.setCategory(resultSet.getString("CATEGORY"));
-        dish.setIngredient((Ingredient) resultSet.getObject("INGREDIENT"));
+        dish.setIngredient(resultSet.getObject("INGREDIENT"));
         dish.setPrice(resultSet.getDouble("PRICE"));
         dish.setWeight(resultSet.getDouble("WEIGHT"));
 
         return dish;
+    }
+
+    private List<Ingredient> getIngredientsList() {
+
+    }
+
+    public void setDataSource(DataSource dataSource) {
+        this.dataSource = dataSource;
     }
 }
