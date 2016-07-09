@@ -12,4 +12,6 @@ public interface EmployeeDao {
     List<Employee> findByName(String name);
 
     void deleteEmployeeById(int id);
+
+    void addEmployee(Employee employee);
 }

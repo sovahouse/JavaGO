@@ -7,6 +7,12 @@ import java.util.List;
 
 public interface DishDao {
 
-    public List<Dish> findByName(String name);
+    List<Dish> findAll();
+
+    List<Dish> findByName(String name);
+
+    void deleteDishById(int id);
+
+    void addDish(Dish dish);
 
 }

@@ -19,7 +19,9 @@ public class JdbcEmployeeDao implements EmployeeDao {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeDao.class);
 
-    public void addEmployee(Employee employee) { //TODO: add employee collector for putting into this method
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
+    public void addEmployee(Employee employee) { //TODO: add employee collector for putting into this method + testing
 
         String query = "INSERT INTO EMPLOYEE (ID, LAST_NAME, FIRST_NAME, BIRTH_DATE, PHONE, POSITION, SALARY) " +
                        "VALUES (?, ?, ?, ?, ?, ?, ?)";

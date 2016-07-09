@@ -9,10 +9,10 @@ import java.sql.SQLException;
 public class JdbcIngredientDao implements IngredientDao{
 
     @Override
-    public Ingredient createIngredientFrom(ResultSet resultSet, String query) throws SQLException {
+    public Ingredient createIngredientFrom(ResultSet resultSet, String table) throws SQLException {
         Ingredient ingredient = new Ingredient();
 
-        ingredient.setName(resultSet.getString(query));
+        ingredient.setName(resultSet.getString(table));
 
         return ingredient;
     }

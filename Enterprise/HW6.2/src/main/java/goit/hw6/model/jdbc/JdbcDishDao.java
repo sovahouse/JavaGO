@@ -23,6 +23,29 @@ public class JdbcDishDao implements DishDao{
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
+    public List<Dish> findAll() {
+        List<Dish> result = new ArrayList<>();
+
+        try (Connection connection = dataSource.getConnection();
+             Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM DISH");
+
+            while (resultSet.next()) {
+                Dish dish = createDish(resultSet);
+                result.add(dish);
+            }
+
+
+        } catch (SQLException e) {
+            LOGGER.error("Exception occurred while connecting to DB ", e);
+            throw new RuntimeException(e);
+        }
+
+        return result;
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
     public List<Dish> findByName(String name) {
         List<Dish> result = new ArrayList<>();
 
@@ -42,13 +65,59 @@ public class JdbcDishDao implements DishDao{
         return result;
     }
 
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
+    public void deleteDishById(int id) {
+
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM DISH WHERE ID = ?")) {
+            statement.setInt(1, id);
+            statement.execute();
+        } catch (SQLException e) {
+            LOGGER.error("Exception occurred while connecting to DB ", e);
+            throw new RuntimeException("Cannot find Dish with id: " + id);
+        }
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)  //TODO: testing
+    public void addDish(Dish dish) {
+        String mainInfoQuery = "INSERT INTO DISH (ID, NAME, CATEGORY, PRICE, WEIGHT) " +
+                "VALUES (?, ?, ?, ?, ?)";
+        String ingredientsListQuery = "INSERT INTO ingredients_for_dish (dish_id, ingredient_name)" +
+                "VALUES (?, ?)";
+
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement mainInfoStatement = connection.prepareStatement(mainInfoQuery);
+            PreparedStatement ingredientsListStatement = connection.prepareStatement(ingredientsListQuery)) {
+
+            mainInfoStatement.setInt(1, dish.getId());
+            mainInfoStatement.setString(2, dish.getName());
+            mainInfoStatement.setString(3, dish.getCategory());
+            mainInfoStatement.setDouble(4, dish.getPrice());
+            mainInfoStatement.setDouble(5, dish.getWeight());
+
+            for (Ingredient ingredient : dish.getIngredients()) {
+                ingredientsListStatement.setInt(1, dish.getId());
+                ingredientsListStatement.setString(2, ingredient.getName());
+                ingredientsListStatement.execute();
+            }
+
+            mainInfoStatement.execute();
+
+        } catch (SQLException e) {
+            LOGGER.error("Exception occurred while connecting to DB ", e);
+            throw new RuntimeException("Cannot add new dish" + dish.toString());
+        }
+    }
+
     private Dish createDish(ResultSet resultSet) throws SQLException {
         Dish dish = new Dish();
 
         dish.setId(resultSet.getInt("ID"));
         dish.setName(resultSet.getString("NAME"));
         dish.setCategory(resultSet.getString("CATEGORY"));
-        dish.setIngredient(getIngredientsList(dish.getId()));
+        dish.setIngredients(getIngredientsList(dish.getId()));
         dish.setPrice(resultSet.getDouble("PRICE"));
         dish.setWeight(resultSet.getDouble("WEIGHT"));
 

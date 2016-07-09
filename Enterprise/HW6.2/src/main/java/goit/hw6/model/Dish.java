@@ -27,11 +27,11 @@ public class Dish {
         this.name = name;
     }
 
-    public List<Ingredient> getIngredient() {
+    public List<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredient(List<Ingredient> ingredients) {
+    public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
 

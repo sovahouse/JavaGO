@@ -10,6 +10,11 @@ public class EmployeeController {
 
     private EmployeeDao employeeDao;
 
+    @Transactional(propagation = Propagation.REQUIRED) //TODO: testing
+    public void addEmployee(Employee employee) {
+        employeeDao.addEmployee(employee);
+    }
+
     @Transactional(propagation = Propagation.REQUIRED)
     public List<Employee> getAllEmployees() {
        return employeeDao.findAll();
