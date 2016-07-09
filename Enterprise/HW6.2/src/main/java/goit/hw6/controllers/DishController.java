@@ -16,6 +16,22 @@ public class DishController {
         return dishDao.findByName(name);
     }
 
+    //TODO: testing all methods below
+    @Transactional(propagation = Propagation.REQUIRED)
+    public List<Dish> getAll() {
+        return dishDao.findAll();
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void addDish(Dish dish) {
+        dishDao.addDish(dish);
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void deleteDish(int id) {
+        dishDao.deleteDishById(id);
+    }
+
     public void setDishDao(DishDao dishDao) {
         this.dishDao = dishDao;
     }
