@@ -3,6 +3,7 @@ package goit.hw6.model.DaoInterfaces;
 
 import goit.hw6.model.Dish;
 
+import java.sql.ResultSet;
 import java.util.List;
 
 public interface DishDao {
@@ -14,5 +15,7 @@ public interface DishDao {
     void deleteDishById(int id);
 
     void addDish(Dish dish);
+
+    Dish getById(int id);
 
 }

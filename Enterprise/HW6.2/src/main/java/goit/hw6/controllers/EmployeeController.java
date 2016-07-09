@@ -10,14 +10,19 @@ public class EmployeeController {
 
     private EmployeeDao employeeDao;
 
-    @Transactional(propagation = Propagation.REQUIRED) //TODO: testing
+    @Transactional(propagation = Propagation.REQUIRED)
+    public Employee getById(int id) {
+        return employeeDao.getById(id);
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
     public void addEmployee(Employee employee) {
         employeeDao.addEmployee(employee);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
     public List<Employee> getAllEmployees() {
-       return employeeDao.findAll();
+        return employeeDao.findAll();
     }
 
     @Transactional(propagation = Propagation.REQUIRED)

@@ -6,13 +6,17 @@
 
     <tx:annotation-driven transaction-manager="txManager" proxy-target-class="true"/>
 
-
+    <!--MAIN-->
     <bean class="goit.hw6.Main" id="main">
         <property name="employeeController" ref="employeeController"/>
         <property name="dishController" ref="dishController"/>
+        <property name="menuController" ref="menuController"/>
     </bean>
 
     <!--CONTROLLERS-->
+    <bean class="goit.hw6.controllers.MenuController" id="menuController">
+        <property name="menuDao" ref="menuDao"/>
+    </bean>
     <bean class="goit.hw6.controllers.DishController" id="dishController">
         <property name="dishDao" ref="dishDao"/>
     </bean>
@@ -21,6 +25,10 @@
     </bean>
 
     <!--DAO-->
+    <bean class="goit.hw6.model.jdbc.JdbcMenuDao" id="menuDao">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="dishDao" ref="dishDao"/>
+    </bean>
     <bean class="goit.hw6.model.jdbc.JdbcDishDao" id="dishDao">
         <property name="dataSource" ref="dataSource"/>
         <property name="ingredientDao" ref="ingredientDao"/>

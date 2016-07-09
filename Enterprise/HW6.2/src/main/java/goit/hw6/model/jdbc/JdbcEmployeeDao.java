@@ -21,7 +21,7 @@ public class JdbcEmployeeDao implements EmployeeDao {
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
-    public void addEmployee(Employee employee) { //TODO: add employee collector for putting into this method + testing
+    public void addEmployee(Employee employee) { //TODO: add employee collector from web input for putting into this method + testing
 
         String query = "INSERT INTO EMPLOYEE (ID, LAST_NAME, FIRST_NAME, BIRTH_DATE, PHONE, POSITION, SALARY) " +
                        "VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -100,6 +100,28 @@ public class JdbcEmployeeDao implements EmployeeDao {
         }
 
         return result;
+
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
+    public Employee getById(int id) {
+
+        Employee employee = new Employee();
+
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM employee WHERE ID = ?")) {
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                employee = createEmployee(resultSet);
+            }
+
+            return employee;
+        } catch (SQLException e) {
+            LOGGER.error("Exception occurred while connecting to DB ", e);
+            throw new RuntimeException("Cannot find employee with id: " + id);
+        }
 
     }
 

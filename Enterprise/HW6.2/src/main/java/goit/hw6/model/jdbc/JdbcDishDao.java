@@ -14,12 +14,12 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JdbcDishDao implements DishDao{
+public class JdbcDishDao implements DishDao {
 
     private DataSource dataSource;
     private JdbcIngredientDao ingredientDao;
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeDao.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(DishDao.class);
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
@@ -67,10 +67,32 @@ public class JdbcDishDao implements DishDao{
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
+    public Dish getById(int id) {
+
+        Dish dish = new Dish();
+
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM DISH WHERE ID = ?")) {
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                dish = createDish(resultSet);
+            }
+
+            return dish;
+        } catch (SQLException e) {
+            LOGGER.error("Exception occurred while connecting to DB ", e);
+            throw new RuntimeException("Cannot find Dish with id: " + id);
+        }
+
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
     public void deleteDishById(int id) {
 
-        try(Connection connection = dataSource.getConnection();
-            PreparedStatement statement = connection.prepareStatement("DELETE FROM DISH WHERE ID = ?")) {
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement("DELETE FROM DISH WHERE ID = ?")) {
             statement.setInt(1, id);
             statement.execute();
         } catch (SQLException e) {
@@ -80,16 +102,16 @@ public class JdbcDishDao implements DishDao{
     }
 
     @Override
-    @Transactional(propagation = Propagation.MANDATORY)  //TODO: testing
+    @Transactional(propagation = Propagation.MANDATORY)
     public void addDish(Dish dish) {
         String mainInfoQuery = "INSERT INTO DISH (ID, NAME, CATEGORY, PRICE, WEIGHT) " +
                 "VALUES (?, ?, ?, ?, ?)";
         String ingredientsListQuery = "INSERT INTO ingredients_for_dish (dish_id, ingredient_name)" +
                 "VALUES (?, ?)";
 
-        try(Connection connection = dataSource.getConnection();
-            PreparedStatement mainInfoStatement = connection.prepareStatement(mainInfoQuery);
-            PreparedStatement ingredientsListStatement = connection.prepareStatement(ingredientsListQuery)) {
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement mainInfoStatement = connection.prepareStatement(mainInfoQuery);
+             PreparedStatement ingredientsListStatement = connection.prepareStatement(ingredientsListQuery)) {
 
             mainInfoStatement.setInt(1, dish.getId());
             mainInfoStatement.setString(2, dish.getName());
@@ -111,7 +133,7 @@ public class JdbcDishDao implements DishDao{
         }
     }
 
-    private Dish createDish(ResultSet resultSet) throws SQLException {
+    public Dish createDish(ResultSet resultSet) throws SQLException {
         Dish dish = new Dish();
 
         dish.setId(resultSet.getInt("ID"));
@@ -128,12 +150,12 @@ public class JdbcDishDao implements DishDao{
     private List<Ingredient> getIngredientsList(int dishId) {
         List<Ingredient> ingredients = new ArrayList<>();
 
-        try(Connection connection = dataSource.getConnection();
-            PreparedStatement statement = connection.prepareStatement("SELECT ingredient_name FROM ingredients_for_dish WHERE dish_id = ?")) {
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement("SELECT ingredient_name FROM ingredients_for_dish WHERE dish_id = ?")) {
             statement.setInt(1, dishId);
             ResultSet resultSet = statement.executeQuery();
 
-            while(resultSet.next()) {
+            while (resultSet.next()) {
                 Ingredient ingredient = ingredientDao.createIngredientFrom(resultSet, "INGREDIENT_NAME");
                 ingredients.add(ingredient);
             }

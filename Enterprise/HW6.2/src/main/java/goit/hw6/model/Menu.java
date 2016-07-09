@@ -22,4 +22,19 @@ public class Menu {
     public void setDishes(List<Dish> dishes) {
         this.dishes = dishes;
     }
+
+    @Override
+    public String toString() {
+
+        StringBuilder dishesList = new StringBuilder();
+
+        for (Dish dish: dishes) {
+            dishesList.append(dish.getName() + ", ");
+        }
+
+        return "Menu{" +
+                "name='" + name + '\'' +
+                ", dishes=" + "\"" + dishesList + "\"" +
+                '}';
+    }
 }

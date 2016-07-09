@@ -16,7 +16,11 @@ public class DishController {
         return dishDao.findByName(name);
     }
 
-    //TODO: testing all methods below
+    @Transactional(propagation = Propagation.REQUIRED)
+    public Dish getById(int id) {
+       return dishDao.getById(id);
+    }
+
     @Transactional(propagation = Propagation.REQUIRED)
     public List<Dish> getAll() {
         return dishDao.findAll();
