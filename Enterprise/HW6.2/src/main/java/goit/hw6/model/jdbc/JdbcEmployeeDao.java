@@ -19,8 +19,26 @@ public class JdbcEmployeeDao implements EmployeeDao {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeDao.class);
 
-    public void addEmployee() {
+    public void addEmployee(Employee employee) { //TODO: add employee collector for putting into this method
 
+        String query = "INSERT INTO EMPLOYEE (ID, LAST_NAME, FIRST_NAME, BIRTH_DATE, PHONE, POSITION, SALARY) " +
+                       "VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setInt(1, employee.getId());
+            statement.setString(2, employee.getLastName());
+            statement.setString(3, employee.getFirstName());
+            statement.setDate(4, Date.valueOf(employee.getBirthDate()));
+            statement.setString(5, employee.getPhone());
+            statement.setString(6, employee.getPosition());
+            statement.setDouble(7, employee.getSalary());
+
+            statement.execute();
+        } catch (SQLException e) {
+            LOGGER.error("Exception occurred while connecting to DB ", e);
+            throw new RuntimeException("Cannot add new employee" + employee.toString());
+        }
     }
 
     @Override
