@@ -68,7 +68,6 @@ ALTER TABLE ORD ADD CONSTRAINT DISH_ID_FK FOREIGN KEY (DISH_ID) REFERENCES DISH 
 commit;
 
 create table MENU_LIST(
-	ID int primary key not null
 	--MENU
 	--DISH
 );
