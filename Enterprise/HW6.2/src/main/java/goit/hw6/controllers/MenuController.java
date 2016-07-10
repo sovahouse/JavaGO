@@ -16,6 +16,11 @@ public class MenuController {
         return menuDao.findAll();
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void addMenu(Menu menu) {
+        menuDao.addMenu(menu);
+    }
+
     public void setMenuDao(MenuDao menuDao) {
         this.menuDao = menuDao;
     }

@@ -133,7 +133,7 @@ public class JdbcDishDao implements DishDao {
         }
     }
 
-    public Dish createDish(ResultSet resultSet) throws SQLException {
+    private Dish createDish(ResultSet resultSet) throws SQLException {
         Dish dish = new Dish();
 
         dish.setId(resultSet.getInt("ID"));

@@ -11,6 +11,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Main {
 
@@ -42,6 +45,12 @@ public class Main {
         //dishController.deleteDish(1);
 
         menuController.findAll().forEach(System.out::println);
+//        Menu menu = new Menu();
+//        List<Dish> dish = new ArrayList<>();
+//        dish.add(dishController.getById(2));
+//        menu.setName("Salats");
+//        menu.setDishes(dish);
+//        menuController.addMenu(menu);
 
     }
 
