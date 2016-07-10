@@ -50,18 +50,54 @@ public class JdbcMenuDao implements MenuDao {
     }
 
     @Override
-    public void deleteMenuById(int id) {
+    @Transactional(propagation = Propagation.MANDATORY)
+    public void deleteMenuByName(String name) {
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement menuList = connection.prepareStatement("DELETE FROM menu_list WHERE menu = ?");
+             PreparedStatement menu = connection.prepareStatement("DELETE FROM menu WHERE NAME = ?")) {
 
+            menuList.setString(1, name);
+            menuList.execute();
+
+            menu.setString(1,name);
+            menu.execute();
+
+        } catch (SQLException e) {
+            LOGGER.error("Exception occurred while connecting to DB ", e);
+            throw new RuntimeException("Cannot find Dish with name: " + name);
+        }
     }
 
     @Override
-    public void deleteDishesById() {
+    @Transactional(propagation = Propagation.MANDATORY)
+    public void deleteDishesById(int id, Menu targetMenu) { //TODO: testing + add polymorphism for list
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement("DELETE FROM menu_list WHERE dish_id = ? AND menu = ?")) {
 
+            statement.setInt(1, id);
+            statement.setString(2, targetMenu.getName());
+            statement.execute();
+
+        } catch (SQLException e) {
+            LOGGER.error("Exception occurred while connecting to DB ", e);
+            throw new RuntimeException("Cannot find Dish with id: " + id);
+        }
     }
 
     @Override
-    public void addDishesById() {
+    @Transactional(propagation = Propagation.MANDATORY)
+    public void addDishesById(int id, Menu targetMenu) { //TODO: testing + add polymorphism for list
+        try(Connection connection = dataSource.getConnection();
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO menu_list (dish_id, menu) VALUES (?, ?)")) {
 
+            statement.setInt(1, id);
+            statement.setString(2, targetMenu.getName());
+            statement.execute();
+
+        } catch (SQLException e) {
+            LOGGER.error("Exception occurred while connecting to DB ", e);
+            throw new RuntimeException("Cannot find Dish with id: " + id);
+        }
     }
 
     @Override

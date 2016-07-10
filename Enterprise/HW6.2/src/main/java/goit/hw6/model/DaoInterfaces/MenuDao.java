@@ -9,9 +9,9 @@ import java.util.List;
 public interface MenuDao {
 
     void addMenu(Menu menu);
-    void deleteMenuById(int id);
-    void deleteDishesById(/*List<Dish>*/);
-    void addDishesById(/*List<Dish>*/);
+    void deleteMenuByName(String name);
+    void deleteDishesById(int id, Menu targetMenu/*List<Dish>*/);
+    void addDishesById(int id, Menu targetMenu/*List<Dish>*/);
     List<Menu> findAll();
 
 }

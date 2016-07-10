@@ -43,7 +43,7 @@ public class Main {
         //dishController.getAll().forEach(System.out::println);
         //dishController.addDish(dish);
         //dishController.deleteDish(1);
-
+        menuController.deleteMenu("Salats");
         menuController.findAll().forEach(System.out::println);
 //        Menu menu = new Menu();
 //        List<Dish> dish = new ArrayList<>();
