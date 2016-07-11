@@ -6,6 +6,7 @@
 
     <tx:annotation-driven transaction-manager="txManager" proxy-target-class="true"/>
 
+
     <!--MAIN-->
     <bean class="goit.hw6.Main" id="main">
         <property name="employeeController" ref="employeeController"/>
