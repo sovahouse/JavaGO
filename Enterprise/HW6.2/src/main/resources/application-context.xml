@@ -15,6 +15,9 @@
     </bean>
 
     <!--CONTROLLERS-->
+    <bean class="goit.hw6.controllers.KitchenHistoryController" id="kitchenHistoryController">
+        <property name="jdbcPreparedDishDao" ref="preparedDishDao"/>
+    </bean>
     <bean class="goit.hw6.controllers.MenuController" id="menuController">
         <property name="menuDao" ref="menuDao"/>
     </bean>
@@ -26,6 +29,9 @@
     </bean>
 
     <!--DAO-->
+    <bean class="goit.hw6.model.jdbc.JdbcPreparedDishDao" id="preparedDishDao">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
     <bean class="goit.hw6.model.jdbc.JdbcMenuDao" id="menuDao">
         <property name="dataSource" ref="dataSource"/>
         <property name="dishDao" ref="dishDao"/>
