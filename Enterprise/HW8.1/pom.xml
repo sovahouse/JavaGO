@@ -23,7 +23,7 @@
                 <configuration>
                     <webXml>src/main/resources/WEB_INF/web.xml</webXml>
                     <warName>todoapp</warName>
-                    <webResources>src/webapp</webResources>
+                    <webResources>src/webapp/ToDo.jsp</webResources>
                 </configuration>
             </plugin>
         </plugins>
