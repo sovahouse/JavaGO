@@ -2,7 +2,6 @@ package goit.hw8_1.servlets;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,13 +16,23 @@ public class TODOServlet extends HttpServlet{
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Task task = new Task();
-        task.setName(request.getParameter("name"));
-        task.setCategory(request.getParameter("category"));
-        tasks.add(task);
+        if (request.getParameter("submit").equals("Add Task")) {
+            Task task = new Task();
+            task.setName(request.getParameter("name"));
+            task.setCategory(request.getParameter("category"));
+            tasks.add(task);
+        } else if(request.getParameter("submit").equals("Update")) {
+            String s = request.getParameter("complete");
+            System.out.println(s);
+            if(request.getParameter("complete") == null) {
+                tasks.clear();
+            }
+        }
+
         request.setAttribute("tasks", tasks);
         RequestDispatcher rd = getServletContext().getRequestDispatcher("/ToDo.jsp");
         rd.forward(request, response);
+
 
         /*PrintWriter out = response.getWriter();
 
@@ -31,4 +40,6 @@ public class TODOServlet extends HttpServlet{
             out.println(t.toString());
         }*/
     }
+
+
 }
