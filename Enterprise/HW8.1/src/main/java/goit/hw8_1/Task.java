@@ -1,10 +1,19 @@
-package goit.hw8_1.servlets;
+package goit.hw8_1;
 
 public class Task {
 
     private String name;
     private String category;
+    private int id;
     private boolean complete = false;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
