@@ -37,7 +37,7 @@ public class TODOServlet extends HttpServlet{
         }
 
         request.setAttribute("tasks", tasks);
-        RequestDispatcher rd = getServletContext().getRequestDispatcher("/ToDo.jsp");
+        RequestDispatcher rd = getServletContext().getRequestDispatcher("/todo.jsp");
         rd.forward(request, response);
     }
 }
