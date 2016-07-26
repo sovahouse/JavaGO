@@ -1,19 +1,18 @@
 import Implementation.*;
 import Interface.*;
-
 import java.util.List;
 
 @SuppressWarnings("unchecked")
 
-public class Runner {
+class Runner {
 
-    public void test(List<Task<Long>> intTasks) {
+    Executor<Number> run(List<Task<Long>> longTasks) {
         Executor<Number> numberExecutor = new ExecutorImpl<>();
 
-        for (Task<Long> intTask : intTasks) {
-            numberExecutor.addTask(intTask);
+        for (Task<Long> intTask : longTasks) {
+            numberExecutor.addTask(intTask, new NumberValidator());
         }
-        numberExecutor.addTask(new LongTask(10L), new NumberValidator());
+        //numberExecutor.addTask(new LongTask(10L), new NumberValidator());
 
         numberExecutor.execute();
 
@@ -25,7 +24,7 @@ public class Runner {
         for (Number number : numberExecutor.getInvalidResults()) {
             System.out.println(number);
         }
+
+        return numberExecutor;
     }
-
-
 }

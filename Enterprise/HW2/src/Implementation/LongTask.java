@@ -2,11 +2,9 @@ package Implementation;
 
 import Interface.Task;
 
-import java.util.Objects;
-
 import static java.lang.Math.*;
 
-public class LongTask implements Task {
+public class LongTask implements Task<Long> {
 
     private long input;
     private long result;
@@ -21,11 +19,11 @@ public class LongTask implements Task {
     }
 
     @Override
-    public Object getResult() {
+    public Long getResult() {
         return result;
     }
 
-    public Object getInput() {
+    public Long getInput() {
         return input;
     }
 }

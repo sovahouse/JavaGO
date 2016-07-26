@@ -22,18 +22,18 @@ public class ExecutorImpl<T> implements Executor<T> {
 
     private List<T> validResults;
     private List<T> invalidResults;
-    private List<Entry<T>> tasks = new ArrayList<>();
+    private List<Entry<T>> entries = new ArrayList<>();
 
     private boolean wasExecuted = false;
 
     @Override
     public void addTask(Task task) {
-        tasks.add(new Entry<>(task, null));
+        entries.add(new Entry<>(task, null));
     }
 
     @Override
     public void addTask(Task task, Validator validator) {
-        tasks.add(new Entry<>(task, validator));
+        entries.add(new Entry<>(task, validator));
     }
 
     @Override
@@ -45,21 +45,21 @@ public class ExecutorImpl<T> implements Executor<T> {
         validResults = new ArrayList<>();
         invalidResults = new ArrayList<>();
 
-        for (Entry<T> task: tasks) {
+        for (Entry<T> entry: entries) {
 
-            if (task.validator == null) {
+            if (entry.validator == null) {
 
-                task.task.execute();
-                validResults.add(task.task.getResult());
+                entry.task.execute();
+                validResults.add(entry.task.getResult());
 
             } else {
 
-                task.task.execute();
+                entry.task.execute();
 
-                if (task.validator.isValid(task.task.getInput())) {
-                    validResults.add(task.task.getResult());
+                if (entry.validator.isValid(entry.task.getResult())) {
+                    validResults.add(entry.task.getResult());
                 } else {
-                    invalidResults.add(task.task.getResult());
+                    invalidResults.add(entry.task.getResult());
                 }
             }
         }
