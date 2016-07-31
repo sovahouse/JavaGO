@@ -4,10 +4,10 @@ import java.time.LocalDate;
 
 public class PreparedDish {
     private int id;
-    private int employeeId;
-    private int dishId;
-    private int orderId;
-    private int dishesNumber;
+    private Employee employee;
+    private Dish dish;
+    private Order order;
+    private int dishNumber;
     private LocalDate date;
 
     public LocalDate getDate() {
@@ -26,35 +26,37 @@ public class PreparedDish {
         this.id = id;
     }
 
-    public int getEmployeeId() {
-        return employeeId;
+    public Employee getEmployee() {
+        return employee;
     }
 
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
-    public int getDishId() {
-        return dishId;
+    public Dish getDish() {
+        return dish;
     }
 
-    public void setDishId(int dishId) {
-        this.dishId = dishId;
+    public void setDish(Dish dish) {
+        this.dish = dish;
     }
 
-    public int getOrderId() {
-        return orderId;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
-    public int getDishesNumber() {
-        return dishesNumber;
+    public int getDishNumber() {
+        return dishNumber;
     }
 
-    public void setDishesNumber(int dishesNumber) {
-        this.dishesNumber = dishesNumber;
+    public void setDishNumber(int dishNumber) {
+        this.dishNumber = dishNumber;
     }
+
+
 }

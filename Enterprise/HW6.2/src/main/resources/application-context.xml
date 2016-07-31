@@ -15,8 +15,11 @@
     </bean>
 
     <!--CONTROLLERS-->
+    <bean class="goit.hw6.controllers.OrderController" id="orderController">
+        <property name="orderDao" ref="orderDao"/>
+    </bean>
     <bean class="goit.hw6.controllers.KitchenHistoryController" id="kitchenHistoryController">
-        <property name="jdbcPreparedDishDao" ref="preparedDishDao"/>
+        <property name="preparedDishDao" ref="preparedDishDao"/>
     </bean>
     <bean class="goit.hw6.controllers.MenuController" id="menuController">
         <property name="menuDao" ref="menuDao"/>
@@ -29,8 +32,16 @@
     </bean>
 
     <!--DAO-->
+    <bean class="goit.hw6.model.jdbc.JdbcOrderDao" id="orderDao">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="employeeDao" ref="employeeDao"/>
+        <property name="dishDao" ref="dishDao"/>
+    </bean>
     <bean class="goit.hw6.model.jdbc.JdbcPreparedDishDao" id="preparedDishDao">
         <property name="dataSource" ref="dataSource"/>
+        <property name="orderDao" ref="orderDao"/>
+        <property name="dishDao" ref="dishDao"/>
+        <property name="employeeDao" ref="employeeDao"/>
     </bean>
     <bean class="goit.hw6.model.jdbc.JdbcMenuDao" id="menuDao">
         <property name="dataSource" ref="dataSource"/>
