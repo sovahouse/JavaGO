@@ -40,7 +40,7 @@ public class Main {
         //dishController.getDishByName("Fried eggs").forEach(System.out::println);
         //Dish dish = dishController.getById(1);   System.out.println(dish);
         //dish.setId(2);
-        //dishController.getAll().forEach(System.out::println);
+        dishController.getAll().forEach(System.out::println);
         //dishController.addDish(dish);
         //dishController.deleteDish(1);
         menuController.deleteMenu("Salats");
