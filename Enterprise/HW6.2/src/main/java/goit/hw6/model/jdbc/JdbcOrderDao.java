@@ -3,6 +3,7 @@ package goit.hw6.model.jdbc;
 import goit.hw6.model.DaoInterfaces.DishDao;
 import goit.hw6.model.DaoInterfaces.EmployeeDao;
 import goit.hw6.model.DaoInterfaces.OrderDao;
+import goit.hw6.model.Dish;
 import goit.hw6.model.Order;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,10 +12,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class JdbcOrderDao implements OrderDao {
+public class JdbcOrderDao implements OrderDao { //TODO: testing
 
     private DataSource dataSource;
     private static final Logger LOGGER = LoggerFactory.getLogger(OrderDao.class);
@@ -38,7 +41,9 @@ public class JdbcOrderDao implements OrderDao {
             statement.setInt(5, order.getDish().getId());
 
             statement.execute();
-            ordersStatus.put(order.getId(), true);
+            if (!ordersStatus.containsKey(order.getId())) {
+                ordersStatus.put(order.getId(), true);
+            }
 
         } catch (SQLException e) {
             LOGGER.error("Exception occurred while connecting to DB ", e);
@@ -47,6 +52,7 @@ public class JdbcOrderDao implements OrderDao {
     }
 
     @Override
+    @Transactional(propagation = Propagation.MANDATORY)
     public Order getById(int id) { //TODO: testing
         Order order = new Order();
 
@@ -63,6 +69,140 @@ public class JdbcOrderDao implements OrderDao {
             LOGGER.error("Exception occurred while connecting to DB ", e);
             throw new RuntimeException("Cannot find employee with id: " + id);
         }
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
+    public void addDish(Dish dish, int orderId) {
+
+        if(ordersStatus.get(orderId)) {
+
+            try(Connection connection = dataSource.getConnection();
+                PreparedStatement getOrder = connection.prepareStatement("SELECT * FROM ord WHERE ID = ?")) {
+
+                getOrder.setInt(1, orderId);
+                ResultSet resultSet = getOrder.executeQuery();
+                Order order = createOrder(resultSet);
+                order.setDish(dish);
+
+                addOrder(order);
+
+            } catch (SQLException e) {
+                LOGGER.error("Exception occurred while connecting to DB ", e);
+                throw new RuntimeException("Cannot add Dish: " + dish.toString());
+            }
+
+        } else if (ordersStatus.get(orderId) == null) {
+            LOGGER.error("Can't get order status for order with id: " + orderId);
+            throw new RuntimeException("Can't get order status");
+        } else {
+            LOGGER.info("Order with id " + orderId + " is closed");
+        }
+
+
+    }
+
+    @Override
+    public void deleteDish(Dish dish, int orderId) {
+        if(ordersStatus.get(orderId)) {
+
+            try(Connection connection = dataSource.getConnection();
+                PreparedStatement statement = connection.prepareStatement("DELETE FROM ord WHERE ID = ? AND dish_id = ?")) {
+
+                statement.setInt(1, orderId);
+                statement.setInt(2, dish.getId());
+                statement.executeQuery();
+
+            } catch (SQLException e) {
+                LOGGER.error("Exception occurred while connecting to DB ", e);
+                throw new RuntimeException("Cannot delete Dish: " + dish.toString());
+            }
+
+        } else if (ordersStatus.get(orderId) == null) {
+            LOGGER.error("Can't get order status for order with id: " + orderId);
+            throw new RuntimeException("Can't get order status");
+        } else {
+            LOGGER.info("Order with id " + orderId + " is closed");
+        }
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
+    public void deleteOrderById(int id) {
+
+        if (ordersStatus.get(id)) {
+            try(Connection connection = dataSource.getConnection();
+                PreparedStatement statement = connection.prepareStatement("DELETE FROM ord WHERE ID = ?")) {
+                statement.setInt(1, id);
+                statement.execute();
+            } catch (SQLException e) {
+                LOGGER.error("Exception occurred while connecting to DB ", e);
+                throw new RuntimeException("Cannot find order with id: " + id);
+            }
+
+        } else if (ordersStatus.get(id) == null) {
+            LOGGER.error("Can't get order status for order with id: " + id);
+            throw new RuntimeException("Can't get order status");
+        } else {
+            LOGGER.info("Order with id " + id + " is closed");
+        }
+
+    }
+
+    @Override
+    public void closeOrder(int id) {
+        ordersStatus.put(id, false);
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
+    public List<Order> findAllOpenOrders() {
+        List<Order> allOrders = findAll();
+        List<Order> result = new ArrayList<>();
+
+        for (Order order: allOrders) {
+            if (ordersStatus.get(order.getId())) {
+                result.add(order);
+            }
+        }
+
+        return result;
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
+    public List<Order> findAllClosedOrders() {
+        List<Order> allOrders = findAll();
+        List<Order> result = new ArrayList<>();
+
+        for (Order order: allOrders) {
+            if (!ordersStatus.get(order.getId())) {
+                result.add(order);
+            }
+        }
+
+        return result;
+    }
+
+    private List<Order> findAll() {
+        List<Order> result = new ArrayList<>();
+
+        try (Connection connection = dataSource.getConnection();
+             Statement statement = connection.createStatement()) {
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM ord");
+
+            while (resultSet.next()) {
+                Order order = createOrder(resultSet);
+                result.add(order);
+            }
+
+
+        } catch (SQLException e) {
+            LOGGER.error("Exception occurred while connecting to DB ", e);
+            throw new RuntimeException(e);
+        }
+
+        return result;
     }
 
     private Order createOrder(ResultSet resultSet) throws SQLException {

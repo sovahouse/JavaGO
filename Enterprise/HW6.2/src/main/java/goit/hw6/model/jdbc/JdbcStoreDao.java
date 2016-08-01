@@ -71,7 +71,7 @@ public class JdbcStoreDao implements StoreDao { //TODO: testing
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
-    public Store findIngredientByName(String name) { //TODO: testing
+    public Store findIngredientByName(String name) {
 
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement("SELECT * FROM store WHERE NAME = ?")) {
@@ -88,7 +88,7 @@ public class JdbcStoreDao implements StoreDao { //TODO: testing
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
-    public List<Store> findAll() { //TODO: testing
+    public List<Store> findAll() {
         List<Store> result = new ArrayList<>();
 
         try (Connection connection = dataSource.getConnection();
