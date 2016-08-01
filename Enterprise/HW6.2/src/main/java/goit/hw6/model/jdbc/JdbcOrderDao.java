@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.sql.DataSource;
 import java.sql.*;
+import java.util.HashMap;
 import java.util.Map;
 
 public class JdbcOrderDao implements OrderDao {
@@ -19,13 +20,14 @@ public class JdbcOrderDao implements OrderDao {
     private static final Logger LOGGER = LoggerFactory.getLogger(OrderDao.class);
     private EmployeeDao employeeDao;
     private DishDao dishDao;
-    private Map ordersStatus;
+    private Map<Integer, Boolean> ordersStatus;
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
     public void addOrder(Order order) { //TODO: testing
         String query = "INSERT INTO ord (ID, table_number, data, employee_id, dish_id)" +
                 "VALUES (?, ?, ?, ?, ?)";
+        ordersStatus = new HashMap<>();
 
         try(Connection connection = dataSource.getConnection();
             PreparedStatement statement = connection.prepareStatement(query)) {
@@ -36,6 +38,8 @@ public class JdbcOrderDao implements OrderDao {
             statement.setInt(5, order.getDish().getId());
 
             statement.execute();
+            ordersStatus.put(order.getId(), true);
+
         } catch (SQLException e) {
             LOGGER.error("Exception occurred while connecting to DB ", e);
             throw new RuntimeException("Cannot add new prepared dish" + order.toString());

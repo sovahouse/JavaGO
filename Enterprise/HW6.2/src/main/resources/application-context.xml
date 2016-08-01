@@ -15,6 +15,9 @@
     </bean>
 
     <!--CONTROLLERS-->
+    <bean class="goit.hw6.controllers.StoreController" id="storeController">
+        <property name="storeDao" ref="storeDao"/>
+    </bean>
     <bean class="goit.hw6.controllers.OrderController" id="orderController">
         <property name="orderDao" ref="orderDao"/>
     </bean>
@@ -32,6 +35,10 @@
     </bean>
 
     <!--DAO-->
+    <bean class="goit.hw6.model.jdbc.JdbcStoreDao" id="storeDao">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="ingredientDao" ref="ingredientDao"/>
+    </bean>
     <bean class="goit.hw6.model.jdbc.JdbcOrderDao" id="orderDao">
         <property name="dataSource" ref="dataSource"/>
         <property name="employeeDao" ref="employeeDao"/>
@@ -54,9 +61,11 @@
     <bean class="goit.hw6.model.jdbc.JdbcEmployeeDao" id="employeeDao">
         <property name="dataSource" ref="dataSource"/>
     </bean>
+    <bean class="goit.hw6.model.jdbc.JdbcIngredientDao" id="ingredientDao">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
 
 
-    <bean class="goit.hw6.model.jdbc.JdbcIngredientDao" id="ingredientDao"/>
 
     <bean class="com.mchange.v2.c3p0.ComboPooledDataSource" id="dataSource">
         <property name="driverClass" value="${jdbc.driver.class}"/>

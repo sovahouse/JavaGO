@@ -7,5 +7,6 @@ import java.sql.SQLException;
 
 public interface IngredientDao {
 
-    public Ingredient createIngredientFrom(ResultSet resultSet, String query) throws SQLException;
+    Ingredient createIngredientFrom(ResultSet resultSet, String query) throws SQLException;
+    Ingredient getByName(String name);
 }
