@@ -27,7 +27,7 @@ public class JdbcOrderDao implements OrderDao { //TODO: testing
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
-    public void addOrder(Order order) { //TODO: testing
+    public void addOrder(Order order) {
         String query = "INSERT INTO ord (ID, table_number, data, employee_id, dish_id)" +
                 "VALUES (?, ?, ?, ?, ?)";
         ordersStatus = new HashMap<>();
@@ -53,7 +53,7 @@ public class JdbcOrderDao implements OrderDao { //TODO: testing
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
-    public Order getById(int id) { //TODO: testing
+    public Order getById(int id) {
         Order order = new Order();
 
         try (Connection connection = dataSource.getConnection();
@@ -150,11 +150,6 @@ public class JdbcOrderDao implements OrderDao { //TODO: testing
     }
 
     @Override
-    public void closeOrder(int id) {
-        ordersStatus.put(id, false);
-    }
-
-    @Override
     @Transactional(propagation = Propagation.MANDATORY)
     public List<Order> findAllOpenOrders() {
         List<Order> allOrders = findAll();
@@ -182,6 +177,11 @@ public class JdbcOrderDao implements OrderDao { //TODO: testing
         }
 
         return result;
+    }
+
+    @Override
+    public void closeOrder(int id) {
+        ordersStatus.put(id, false);
     }
 
     private List<Order> findAll() {

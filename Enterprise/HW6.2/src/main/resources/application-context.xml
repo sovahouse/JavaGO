@@ -12,6 +12,7 @@
         <property name="employeeController" ref="employeeController"/>
         <property name="dishController" ref="dishController"/>
         <property name="menuController" ref="menuController"/>
+        <property name="ingredientDao" ref="ingredientDao"/>
     </bean>
 
     <!--CONTROLLERS-->

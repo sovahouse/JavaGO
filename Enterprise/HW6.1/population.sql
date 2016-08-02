@@ -16,7 +16,7 @@ INSERT INTO public.ingredient (name) VALUES ('Olives');
 INSERT INTO public.ingredients_for_dish (dish_id, ingredient_name) VALUES (1, 'Bacon');
 INSERT INTO public.ingredients_for_dish (dish_id, ingredient_name) VALUES (1, 'Feta cheese');
 INSERT INTO public.ingredients_for_dish (dish_id, ingredient_name) VALUES (1, 'Tomato');
-INSERT INTO public.ingredients_for_dish (dish_id, ingredient_name) VALUES (1, 'Avocado ');
+INSERT INTO public.ingredients_for_dish (dish_id, ingredient_name) VALUES (1, 'Avocado');
 INSERT INTO public.ingredients_for_dish (dish_id, ingredient_name) VALUES (2, 'Tomato');
 INSERT INTO public.ingredients_for_dish (dish_id, ingredient_name) VALUES (2, 'Dough');
 INSERT INTO public.ingredients_for_dish (dish_id, ingredient_name) VALUES (2, 'Olive oil');
@@ -29,3 +29,5 @@ INSERT INTO public.menu (name) VALUES ('Salad');
 
 INSERT INTO public.menu_list (dish_id, menu) VALUES (1, 'Salad');
 INSERT INTO public.menu_list (dish_id, menu) VALUES (2, 'Pizza');
+
+SELECT * FROM INGREDIENT WHERE NAME = 'Bacon';

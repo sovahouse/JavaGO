@@ -29,14 +29,18 @@ public class JdbcIngredientDao implements IngredientDao{
     }
 
     @Override
-    public Ingredient getByName(String name) { //TODO: testing
+    public Ingredient getByName(String name) {
+
+        Ingredient ingredient = new Ingredient();
 
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement("SELECT NAME FROM Ingredient WHERE NAME = ?")) {
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM INGREDIENT WHERE NAME = ?")) {
             statement.setString(1, name);
             ResultSet resultSet = statement.executeQuery();
-
-            return createIngredientFrom(resultSet, "name");
+            while (resultSet.next()) {
+                ingredient = createIngredientFrom(resultSet, "name");
+            }
+            return ingredient;
 
         } catch (SQLException e) {
             LOGGER.error("Exception occurred while connecting to DB ", e);

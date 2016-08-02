@@ -3,6 +3,8 @@ package goit.hw6;
 import goit.hw6.controllers.DishController;
 import goit.hw6.controllers.EmployeeController;
 import goit.hw6.controllers.MenuController;
+import goit.hw6.controllers.OrderController;
+import goit.hw6.model.DaoInterfaces.IngredientDao;
 import goit.hw6.model.Dish;
 import goit.hw6.model.Employee;
 import goit.hw6.model.Menu;
@@ -22,6 +24,8 @@ public class Main {
     private EmployeeController employeeController;
     private DishController dishController;
     private MenuController menuController;
+    private IngredientDao ingredientDao;
+    private OrderController orderController;
 
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
@@ -31,28 +35,13 @@ public class Main {
 
     private void start() {
         //employeeController.getAllEmployees().forEach(System.out::println);
-        //employeeController.getEmployeeByName("Robert").forEach(System.out::println);
-        //Employee employee = employeeController.getById(1);
-        //employeeController.deleteEmployee(1);
-        //employeeController.addEmployee(employee);
 
 
-        //dishController.getDishByName("Fried eggs").forEach(System.out::println);
-        //Dish dish = dishController.getById(1);   System.out.println(dish);
-        //dish.setId(2);
-        dishController.getAll().forEach(System.out::println);
-        //dishController.addDish(dish);
-        //dishController.deleteDish(1);
-        menuController.deleteMenu("Salats");
-        menuController.findAll().forEach(System.out::println);
-//        Menu menu = new Menu();
-//        List<Dish> dish = new ArrayList<>();
-//        dish.add(dishController.getById(2));
-//        menu.setName("Salats");
-//        menu.setDishes(dish);
-//        menuController.addMenu(menu);
 
+    }
 
+    public void setIngredientDao(IngredientDao ingredientDao) {
+        this.ingredientDao = ingredientDao;
     }
 
     public void setMenuController(MenuController menuController) {
