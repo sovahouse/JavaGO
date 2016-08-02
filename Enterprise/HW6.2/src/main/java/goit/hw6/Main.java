@@ -8,11 +8,13 @@ import goit.hw6.model.DaoInterfaces.IngredientDao;
 import goit.hw6.model.Dish;
 import goit.hw6.model.Employee;
 import goit.hw6.model.Menu;
+import goit.hw6.model.Order;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,8 +38,16 @@ public class Main {
     private void start() {
         //employeeController.getAllEmployees().forEach(System.out::println);
 
+        Order order = new Order();
+        LocalDate localDate = LocalDate.now();
 
 
+
+    }
+
+
+    public void setOrderController(OrderController orderController) {
+        this.orderController = orderController;
     }
 
     public void setIngredientDao(IngredientDao ingredientDao) {

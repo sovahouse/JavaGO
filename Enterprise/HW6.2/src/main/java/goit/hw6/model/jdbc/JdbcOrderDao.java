@@ -17,20 +17,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class JdbcOrderDao implements OrderDao { //TODO: testing
+public class JdbcOrderDao implements OrderDao { //TODO: upgrade working with status
 
     private DataSource dataSource;
     private static final Logger LOGGER = LoggerFactory.getLogger(OrderDao.class);
     private EmployeeDao employeeDao;
     private DishDao dishDao;
-    private Map<Integer, Boolean> ordersStatus;
+    private Map<Integer, Boolean> ordersStatus = new HashMap<>();;
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
     public void addOrder(Order order) {
-        String query = "INSERT INTO ord (ID, table_number, data, employee_id, dish_id)" +
+        String query = "INSERT INTO ORD (ID, table_number, date, employee_id, dish_id)" +
                 "VALUES (?, ?, ?, ?, ?)";
-        ordersStatus = new HashMap<>();
 
         try(Connection connection = dataSource.getConnection();
             PreparedStatement statement = connection.prepareStatement(query)) {
@@ -47,7 +46,7 @@ public class JdbcOrderDao implements OrderDao { //TODO: testing
 
         } catch (SQLException e) {
             LOGGER.error("Exception occurred while connecting to DB ", e);
-            throw new RuntimeException("Cannot add new prepared dish" + order.toString());
+            throw new RuntimeException("Cannot add new prepared dish in " + order.toString());
         }
     }
 
@@ -77,12 +76,16 @@ public class JdbcOrderDao implements OrderDao { //TODO: testing
 
         if(ordersStatus.get(orderId)) {
 
+            Order order = new Order();
+
             try(Connection connection = dataSource.getConnection();
                 PreparedStatement getOrder = connection.prepareStatement("SELECT * FROM ord WHERE ID = ?")) {
 
                 getOrder.setInt(1, orderId);
                 ResultSet resultSet = getOrder.executeQuery();
-                Order order = createOrder(resultSet);
+                while (resultSet.next()) {
+                    order = createOrder(resultSet);
+                }
                 order.setDish(dish);
 
                 addOrder(order);
@@ -111,7 +114,7 @@ public class JdbcOrderDao implements OrderDao { //TODO: testing
 
                 statement.setInt(1, orderId);
                 statement.setInt(2, dish.getId());
-                statement.executeQuery();
+                statement.execute();
 
             } catch (SQLException e) {
                 LOGGER.error("Exception occurred while connecting to DB ", e);
@@ -209,7 +212,7 @@ public class JdbcOrderDao implements OrderDao { //TODO: testing
         Order order = new Order();
         order.setId(resultSet.getInt("ID"));
         order.setTableNumber(resultSet.getInt("table_number"));
-        order.setDate(resultSet.getDate("data").toLocalDate());
+        order.setDate(resultSet.getDate("date").toLocalDate());
         order.setEmployee(employeeDao.getById(resultSet.getInt("employee_id")));
         order.setDish(dishDao.getById(resultSet.getInt("dish_id")));
         return order;
