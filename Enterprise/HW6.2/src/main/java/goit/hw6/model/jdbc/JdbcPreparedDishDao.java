@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class JdbcPreparedDishDao implements PreparedDishDao { //TODO: testing
+public class JdbcPreparedDishDao implements PreparedDishDao {
 
     private DataSource dataSource;
     private EmployeeDao employeeDao;
@@ -50,7 +50,7 @@ public class JdbcPreparedDishDao implements PreparedDishDao { //TODO: testing
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
     public void addPreparedDish(PreparedDish preparedDish) {
-        String query = "INSERT INTO Prepared_dishes (ID, dish_number, DATA, employee_id, dish_id, order_id)" +
+        String query = "INSERT INTO Prepared_dishes (ID, dish_number, DATE, employee_id, dish_id, order_id)" +
                 "VALUES (?, ?, ?, ?, ?, ?)";
 
         try(Connection connection = dataSource.getConnection();

@@ -58,5 +58,15 @@ public class PreparedDish {
         this.dishNumber = dishNumber;
     }
 
-
+    @Override
+    public String toString() {
+        return "PreparedDish{" +
+                "id=" + id +
+                ", employee=" + employee +
+                ", dish=" + dish +
+                ", order=" + order +
+                ", dishNumber=" + dishNumber +
+                ", date=" + date +
+                '}';
+    }
 }

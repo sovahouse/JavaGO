@@ -20,4 +20,12 @@ public class Store {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
+    @Override
+    public String toString() {
+        return "Store{" +
+                "ingredient=" + ingredient +
+                ", quantity=" + quantity +
+                '}';
+    }
 }

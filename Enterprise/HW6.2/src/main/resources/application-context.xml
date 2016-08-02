@@ -9,11 +9,13 @@
 
     <!--MAIN-->
     <bean class="goit.hw6.Main" id="main">
+        <property name="kitchenHistoryController" ref="kitchenHistoryController"/>
         <property name="employeeController" ref="employeeController"/>
         <property name="dishController" ref="dishController"/>
         <property name="menuController" ref="menuController"/>
         <property name="ingredientDao" ref="ingredientDao"/>
         <property name="orderController" ref="orderController"/>
+        <property name="storeController" ref="storeController"/>
     </bean>
 
     <!--CONTROLLERS-->

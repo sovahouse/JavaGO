@@ -1,14 +1,8 @@
 package goit.hw6;
 
-import goit.hw6.controllers.DishController;
-import goit.hw6.controllers.EmployeeController;
-import goit.hw6.controllers.MenuController;
-import goit.hw6.controllers.OrderController;
+import goit.hw6.controllers.*;
+import goit.hw6.model.*;
 import goit.hw6.model.DaoInterfaces.IngredientDao;
-import goit.hw6.model.Dish;
-import goit.hw6.model.Employee;
-import goit.hw6.model.Menu;
-import goit.hw6.model.Order;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
@@ -28,6 +22,8 @@ public class Main {
     private MenuController menuController;
     private IngredientDao ingredientDao;
     private OrderController orderController;
+    private KitchenHistoryController kitchenHistoryController;
+    private StoreController storeController;
 
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
@@ -38,13 +34,50 @@ public class Main {
     private void start() {
         //employeeController.getAllEmployees().forEach(System.out::println);
 
-        Order order = new Order();
+        /*PreparedDish preparedDish = new PreparedDish();
         LocalDate localDate = LocalDate.now();
 
+        Order order = new Order();
+        order.setId(1);
+        order.setEmployee(employeeController.getById(1));
+        order.setDish(dishController.getById(1));
+        order.setDate(localDate);
+        order.setTableNumber(1);
 
+        orderController.createOrder(order);
+        preparedDish.setId(1);
+        preparedDish.setDate(localDate);
+        preparedDish.setDish(dishController.getById(1));
+        preparedDish.setDishNumber(123);
+        preparedDish.setEmployee(employeeController.getById(1));
+        preparedDish.setOrder(order);
+
+        kitchenHistoryController.addPreparedDishes(preparedDish);
+        kitchenHistoryController.findAll().forEach(System.out::println);*/
+
+        //storeController.addIngredient(ingredientDao.getByName("Bacon"), 100);
+        storeController.addIngredient(ingredientDao.getByName("Tomato"), 7);
+        //storeController.addIngredient(ingredientDao.getByName("Dough"), 9);
+        storeController.deleteIngredient("Tomato");
+        storeController.findAll().forEach(System.out::println);
+
+        /*System.out.println("All:");
+        storeController.findAll().forEach(System.out::println);
+        System.out.println("Ends:");
+        storeController.findEndsIngredients().forEach(System.out::println);
+
+        storeController.changeQuantityOfIngredients("Bacon", 5);
+        System.out.println(storeController.findIngredientByName("Bacon"));*/
 
     }
 
+    public void setStoreController(StoreController storeController) {
+        this.storeController = storeController;
+    }
+
+    public void setKitchenHistoryController(KitchenHistoryController kitchenHistoryController) {
+        this.kitchenHistoryController = kitchenHistoryController;
+    }
 
     public void setOrderController(OrderController orderController) {
         this.orderController = orderController;

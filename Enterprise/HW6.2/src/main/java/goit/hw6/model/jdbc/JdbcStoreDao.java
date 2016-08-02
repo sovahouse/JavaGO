@@ -14,7 +14,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JdbcStoreDao implements StoreDao { //TODO: testing
+public class JdbcStoreDao implements StoreDao {
 
     private DataSource dataSource;
     private IngredientDao ingredientDao;
@@ -44,9 +44,9 @@ public class JdbcStoreDao implements StoreDao { //TODO: testing
     public void deleteIngredientByName(String name) {
 
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement("DELETE FROM store WHERE NAME = ?")) {
+             PreparedStatement statement = connection.prepareStatement("DELETE FROM store WHERE Ingredient_NAME = ?")) {
             statement.setString(1, name);
-            ResultSet resultSet = statement.executeQuery();
+            statement.execute();
 
         } catch (SQLException e) {
             LOGGER.error("Exception occurred while connecting to DB ", e);
@@ -59,9 +59,10 @@ public class JdbcStoreDao implements StoreDao { //TODO: testing
     public void changeQuantityOfIngredients(String ingredientName, int quantity) {
 
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement("UPDATE store SET quantity = ?")){
+             PreparedStatement statement = connection.prepareStatement("UPDATE store SET quantity = ? WHERE ingredient_name = ?")){
             statement.setInt(1, quantity);
-            ResultSet resultSet = statement.executeQuery();
+            statement.setString(2, ingredientName);
+            statement.execute();
 
         } catch (SQLException e) {
             LOGGER.error("Exception occurred while connecting to DB ", e);
@@ -73,12 +74,17 @@ public class JdbcStoreDao implements StoreDao { //TODO: testing
     @Transactional(propagation = Propagation.MANDATORY)
     public Store findIngredientByName(String name) {
 
+        Store store = new Store();
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement("SELECT * FROM store WHERE NAME = ?")) {
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM store WHERE ingredient_name = ?")) {
             statement.setString(1, name);
             ResultSet resultSet = statement.executeQuery();
 
-            return createStore(resultSet);
+            while (resultSet.next()) {
+                store = createStore(resultSet);
+            }
+
+            return store;
 
         } catch (SQLException e) {
             LOGGER.error("Exception occurred while connecting to DB ", e);
