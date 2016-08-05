@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <tx:annotation-driven transaction-manager="txManager" proxy-target-class="true"/>
+
+
+    <!--MAIN-->
+    <bean class="goit.hw6.Main" id="main">
+        <property name="kitchenHistoryController" ref="kitchenHistoryController"/>
+        <property name="employeeController" ref="employeeController"/>
+        <property name="dishController" ref="dishController"/>
+        <property name="menuController" ref="menuController"/>
+        <property name="ingredientDao" ref="ingredientDao"/>
+        <property name="orderController" ref="orderController"/>
+        <property name="storeController" ref="storeController"/>
+    </bean>
+
+    <!--CONTROLLERS-->
+    <bean class="goit.hw6.controllers.StoreController" id="storeController">
+        <property name="storeDao" ref="storeDao"/>
+    </bean>
+    <bean class="goit.hw6.controllers.OrderController" id="orderController">
+        <property name="orderDao" ref="orderDao"/>
+    </bean>
+    <bean class="goit.hw6.controllers.KitchenHistoryController" id="kitchenHistoryController">
+        <property name="preparedDishDao" ref="preparedDishDao"/>
+    </bean>
+    <bean class="goit.hw6.controllers.MenuController" id="menuController">
+        <property name="menuDao" ref="menuDao"/>
+    </bean>
+    <bean class="goit.hw6.controllers.DishController" id="dishController">
+        <property name="dishDao" ref="dishDao"/>
+    </bean>
+    <bean class="goit.hw6.controllers.EmployeeController" id="employeeController">
+        <property name="employeeDao" ref="employeeDao"/>
+    </bean>
+
+    <!--DAO-->
+    <bean class="goit.hw6.model.jdbc.JdbcStoreDao" id="storeDao">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="ingredientDao" ref="ingredientDao"/>
+    </bean>
+    <bean class="goit.hw6.model.jdbc.JdbcOrderDao" id="orderDao">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="employeeDao" ref="employeeDao"/>
+        <property name="dishDao" ref="dishDao"/>
+    </bean>
+    <bean class="goit.hw6.model.jdbc.JdbcPreparedDishDao" id="preparedDishDao">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="orderDao" ref="orderDao"/>
+        <property name="dishDao" ref="dishDao"/>
+        <property name="employeeDao" ref="employeeDao"/>
+    </bean>
+    <bean class="goit.hw6.model.jdbc.JdbcMenuDao" id="menuDao">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="dishDao" ref="dishDao"/>
+    </bean>
+    <bean class="goit.hw6.model.jdbc.JdbcDishDao" id="dishDao">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="ingredientDao" ref="ingredientDao"/>
+    </bean>
+    <bean class="goit.hw6.model.jdbc.JdbcEmployeeDao" id="employeeDao">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <bean class="goit.hw6.model.jdbc.JdbcIngredientDao" id="ingredientDao">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+
+
+    <bean class="com.mchange.v2.c3p0.ComboPooledDataSource" id="dataSource">
+        <property name="driverClass" value="${jdbc.driver.class}"/>
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <property name="user" value="${jdbc.user}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="minPoolSize" value="${jdbc.min.connections}"/>
+        <property name="maxPoolSize" value="${jdbc.max.connections}"/>
+        <property name="acquireIncrement" value="${jdbc.acquire.increment}"/>
+    </bean>
+
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:jdbc.properties"/>
+    </bean>
+    
+</beans>
