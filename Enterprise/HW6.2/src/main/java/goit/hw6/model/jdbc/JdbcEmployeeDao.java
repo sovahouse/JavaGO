@@ -23,7 +23,7 @@ public class JdbcEmployeeDao implements EmployeeDao {
     @Transactional(propagation = Propagation.MANDATORY)
     public void addEmployee(Employee employee) { //TODO: add employee collector from web input for putting into this method + testing
 
-        String query = "INSERT INTO EMPLOYEE (ID, LAST_NAME, FIRST_NAME, BIRTH_DATE, PHONE, POSITION, SALARY) " +
+        String query = "INSERT INTO EMPLOYEE (ID, surname, name, BIRTH_DATE, PHONE, POSITION, SALARY) " +
                        "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try(Connection connection = dataSource.getConnection();
@@ -64,7 +64,7 @@ public class JdbcEmployeeDao implements EmployeeDao {
         List<Employee> result = new ArrayList<>();
 
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement("SELECT * FROM EMPLOYEE WHERE FIRST_NAME = ?")) {
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM EMPLOYEE WHERE NAME = ?")) {
             statement.setString(1, name);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
