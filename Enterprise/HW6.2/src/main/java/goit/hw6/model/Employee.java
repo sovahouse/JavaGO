@@ -5,8 +5,8 @@ import java.time.LocalDate;
 public class Employee {
 
     private int id;
-    private String lastName;
-    private String firstName;
+    private String surname;
+    private String name;
     private LocalDate birthDate;
     private String phone;
     private String position;
@@ -20,20 +20,20 @@ public class Employee {
         this.id = id;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public LocalDate getBirthDate() {
@@ -72,8 +72,8 @@ public class Employee {
     public String toString() {
         return "goit.hw6.model.Employee{" +
                 "id=" + id +
-                ", lastName='" + lastName + '\'' +
-                ", firstName='" + firstName + '\'' +
+                ", surname='" + surname + '\'' +
+                ", name='" + name + '\'' +
                 ", birthDate=" + birthDate +
                 ", phone='" + phone + '\'' +
                 ", position='" + position + '\'' +

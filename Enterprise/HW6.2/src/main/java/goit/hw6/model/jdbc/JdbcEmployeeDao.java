@@ -29,8 +29,8 @@ public class JdbcEmployeeDao implements EmployeeDao {
         try(Connection connection = dataSource.getConnection();
             PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setInt(1, employee.getId());
-            statement.setString(2, employee.getLastName());
-            statement.setString(3, employee.getFirstName());
+            statement.setString(2, employee.getSurname());
+            statement.setString(3, employee.getName());
             statement.setDate(4, Date.valueOf(employee.getBirthDate()));
             statement.setString(5, employee.getPhone());
             statement.setString(6, employee.getPosition());
@@ -128,8 +128,8 @@ public class JdbcEmployeeDao implements EmployeeDao {
     private Employee createEmployee(ResultSet resultSet) throws SQLException {
         Employee employee = new Employee();
         employee.setId(resultSet.getInt("ID"));
-        employee.setLastName(resultSet.getString("LAST_NAME"));
-        employee.setFirstName(resultSet.getString("FIRST_NAME"));
+        employee.setSurname(resultSet.getString("surname"));
+        employee.setName(resultSet.getString("NAME"));
         employee.setBirthDate(resultSet.getDate("BIRTH_DATE").toLocalDate());
         employee.setPhone(resultSet.getString("PHONE"));
         employee.setPosition(resultSet.getString("POSITION"));
