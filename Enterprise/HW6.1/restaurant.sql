@@ -32,7 +32,7 @@ create table INGREDIENTS_FOR_DISH(
 
 
 create table ORD(
-	ID int primary key not null,
+	ID int not null,
 	--employee
 	--DISH
 	TABLE_NUMBER int,

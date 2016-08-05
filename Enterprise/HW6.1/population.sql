@@ -30,4 +30,3 @@ INSERT INTO public.menu (name) VALUES ('Salad');
 INSERT INTO public.menu_list (dish_id, menu) VALUES (1, 'Salad');
 INSERT INTO public.menu_list (dish_id, menu) VALUES (2, 'Pizza');
 
-SELECT * FROM INGREDIENT WHERE NAME = 'Bacon';
