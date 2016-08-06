@@ -6,64 +6,18 @@
 
     <!--MAIN-->
     <bean class="goit.hw7.Main" id="main">
-        <property name="kitchenHistoryController" ref="kitchenHistoryController"/>
         <property name="employeeController" ref="employeeController"/>
-        <property name="dishController" ref="dishController"/>
-        <property name="menuController" ref="menuController"/>
-        <property name="ingredientDao" ref="ingredientDao"/>
-        <property name="orderController" ref="orderController"/>
-        <property name="storeController" ref="storeController"/>
     </bean>
 
     <!--CONTROLLERS-->
-    <bean class="goit.hw7.controllers.StoreController" id="storeController">
-        <property name="storeDao" ref="storeDao"/>
-    </bean>
-    <bean class="goit.hw7.controllers.OrderController" id="orderController">
-        <property name="orderDao" ref="orderDao"/>
-    </bean>
-    <bean class="goit.hw7.controllers.KitchenHistoryController" id="kitchenHistoryController">
-        <property name="preparedDishDao" ref="preparedDishDao"/>
-    </bean>
-    <bean class="goit.hw7.controllers.MenuController" id="menuController">
-        <property name="menuDao" ref="menuDao"/>
-    </bean>
-    <bean class="goit.hw7.controllers.DishController" id="dishController">
-        <property name="dishDao" ref="dishDao"/>
-    </bean>
     <bean class="goit.hw7.controllers.EmployeeController" id="employeeController">
         <property name="employeeDao" ref="employeeDao"/>
     </bean>
 
     <!--DAO-->
-    <bean class="goit.hw7.model.jdbc.JdbcStoreDao" id="storeDao">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="ingredientDao" ref="ingredientDao"/>
-    </bean>
-    <bean class="goit.hw7.model.jdbc.JdbcOrderDao" id="orderDao">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="employeeDao" ref="employeeDao"/>
-        <property name="dishDao" ref="dishDao"/>
-    </bean>
-    <bean class="goit.hw7.model.jdbc.JdbcPreparedDishDao" id="preparedDishDao">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="orderDao" ref="orderDao"/>
-        <property name="dishDao" ref="dishDao"/>
-        <property name="employeeDao" ref="employeeDao"/>
-    </bean>
-    <bean class="goit.hw7.model.jdbc.JdbcMenuDao" id="menuDao">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="dishDao" ref="dishDao"/>
-    </bean>
-    <bean class="goit.hw7.model.jdbc.JdbcDishDao" id="dishDao">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="ingredientDao" ref="ingredientDao"/>
-    </bean>
-    <bean class="goit.hw7.model.jdbc.JdbcEmployeeDao" id="employeeDao">
-        <property name="dataSource" ref="dataSource"/>
-    </bean>
-    <bean class="goit.hw7.model.jdbc.JdbcIngredientDao" id="ingredientDao">
-        <property name="dataSource" ref="dataSource"/>
+
+    <bean class="goit.hw7.model.Hibernate.HEmployeeDao" id="employeeDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
     

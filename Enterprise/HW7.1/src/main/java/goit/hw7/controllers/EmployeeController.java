@@ -16,8 +16,8 @@ public class EmployeeController {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public void addEmployee(Employee employee) {
-        employeeDao.addEmployee(employee);
+    public void createEmployee(Employee employee) {
+        employeeDao.save(employee);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -31,8 +31,8 @@ public class EmployeeController {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public void deleteEmployee(int id) {
-        employeeDao.deleteEmployeeById(id);
+    public void deleteEmployee(Employee employee) {
+        employeeDao.remove(employee);
     }
 
     public void setEmployeeDao(EmployeeDao employeeDao) {

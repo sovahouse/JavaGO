@@ -1,6 +1,6 @@
-INSERT INTO public.employee (id, surname, name, birth_date, phone, position, salary) VALUES (1, 'Anderson', 'Alex', '1993-07-02', null, 'waiter', 5000);
-INSERT INTO public.employee (id, surname, name, birth_date, phone, position, salary) VALUES (2, 'Polson', 'Robert', '1992-02-16', null, 'waiter', 6500);
-INSERT INTO public.employee (id, surname, name, birth_date, phone, position, salary) VALUES (3, 'Debian', 'James', '1986-10-23', null, 'cook', 10000);
+INSERT INTO public.employee (id, surname, name, birth_date, phone, position, salary) VALUES (1, 'Anderson', 'Alex', '1993-07-02', null, 'WAITER', 5000);
+INSERT INTO public.employee (id, surname, name, birth_date, phone, position, salary) VALUES (2, 'Polson', 'Robert', '1992-02-16', null, 'WAITER', 6500);
+INSERT INTO public.employee (id, surname, name, birth_date, phone, position, salary) VALUES (3, 'Debian', 'James', '1986-10-23', null, 'COOK', 10000);
 
 INSERT INTO public.dish (id, name, category, price, weight) VALUES (1, 'Classic Chicken Salad', 'Salad', 60, 200);
 INSERT INTO public.dish (id, name, category, price, weight) VALUES (2, 'Feta Pizza', 'Pizza', 70, 300);
