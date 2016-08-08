@@ -18,7 +18,7 @@
 
 <form action="/todo" method="POST">
     <div class="main">
-        <table class="table"> <!--TODO: обернуть в див что бы таблица не расползалась по всей странице-->
+        <table class="table"> <!--TODO: обернуть в див что бы таблица не расползалась по всей страницеy-->
             <tr>
                 <th>Name</th>
                 <th>Category</th>
