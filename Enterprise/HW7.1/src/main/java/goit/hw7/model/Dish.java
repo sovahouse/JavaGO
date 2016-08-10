@@ -21,8 +21,8 @@ public class Dish {
     @ManyToMany
     @JoinTable(
             name = "ingredients_for_dish",
-            joinColumns = @JoinColumn(name = "dish_id"),
-            inverseJoinColumns = @JoinColumn(name = "ingredient_name")
+            joinColumns = @JoinColumn(name = "ingredient_name"),
+            inverseJoinColumns = @JoinColumn(name = "dish_id")
     )
     private List<Ingredient> ingredients;
 
