@@ -1,6 +1,7 @@
 package goit.hw7;
 
 import goit.hw7.controllers.*;
+import goit.hw7.model.Dish;
 import goit.hw7.model.Employee;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +16,7 @@ public class Main {
     private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
 
     private EmployeeController employeeController;
+    private DishController dishController;
 
 
     public static void main(String[] args) {
@@ -24,17 +26,20 @@ public class Main {
     }
 
     private void start() {
-        /*List<Employee> employees = employeeController.getEmployeeByName("Alex");
-        Employee alex = employees.get(0);
-        employeeController.createEmployee(alex);*/
-        Employee employee = new Employee();
-        employee.setId(4);
-        employeeController.deleteEmployee(employee);
+        //Dish salad = dishController.getById(1);
+        //dishController.deleteDish(salad);
+        //System.out.println("After delete"); dishController.getAllDishes().forEach(System.out::println);
+        //dishController.createDish(salad);
+        //System.out.println("After add"); dishController.getAllDishes().forEach(System.out::println);
+        List <Dish> dishes = dishController.getDishByName("Feta Pizza");
+        System.out.println();
     }
 
     public void setEmployeeController(EmployeeController employeeController) {
         this.employeeController = employeeController;
     }
 
-
+    public void setDishController(DishController dishController) {
+        this.dishController = dishController;
+    }
 }

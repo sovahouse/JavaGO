@@ -11,9 +11,9 @@ public interface DishDao {
 
     List<Dish> findByName(String name);
 
-    void deleteDishById(int id);
+    void remove(Dish dish);
 
-    void addDish(Dish dish);
+    void save(Dish dish);
 
     Dish getById(int id);
 

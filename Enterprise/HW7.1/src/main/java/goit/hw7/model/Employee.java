@@ -12,7 +12,7 @@ public class Employee {
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private int id;
 
     @Column(name = "surname")

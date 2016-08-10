@@ -7,15 +7,21 @@
     <!--MAIN-->
     <bean class="goit.hw7.Main" id="main">
         <property name="employeeController" ref="employeeController"/>
+        <property name="dishController" ref="dishController"/>
     </bean>
 
     <!--CONTROLLERS-->
+    <bean class="goit.hw7.controllers.DishController" id="dishController">
+        <property name="dishDao" ref="dishDao"/>
+    </bean>
     <bean class="goit.hw7.controllers.EmployeeController" id="employeeController">
         <property name="employeeDao" ref="employeeDao"/>
     </bean>
 
     <!--DAO-->
-
+    <bean class="goit.hw7.model.Hibernate.HDishDao" id="dishDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
     <bean class="goit.hw7.model.Hibernate.HEmployeeDao" id="employeeDao">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>

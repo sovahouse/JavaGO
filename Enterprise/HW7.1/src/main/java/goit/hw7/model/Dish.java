@@ -1,14 +1,38 @@
 package goit.hw7.model;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "dish")
 public class Dish {
 
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "id")
     private int id;
+
+    @Column(name = "name")
     private String name;
+
+    @ManyToMany
+    @JoinTable(
+            name = "ingredients_for_dish",
+            joinColumns = @JoinColumn(name = "dish_id"),
+            inverseJoinColumns = @JoinColumn(name = "ingredient_name")
+    )
     private List<Ingredient> ingredients;
+
+    @Column(name = "category")
     private String category;
+
+    @Column(name = "price")
     private double price;
+
+    @Column(name = "weight")
     private double weight;
 
     public int getId() {

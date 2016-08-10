@@ -1,7 +1,14 @@
 package goit.hw7.model;
 
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "ingredient")
 public class Ingredient {
 
+    @Id
+    @Column(name = "name", nullable = false)
     private String name;
 
     public String getName() {
