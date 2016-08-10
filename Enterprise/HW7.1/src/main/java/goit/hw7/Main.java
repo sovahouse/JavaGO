@@ -3,6 +3,7 @@ package goit.hw7;
 import goit.hw7.controllers.*;
 import goit.hw7.model.Dish;
 import goit.hw7.model.Employee;
+import goit.hw7.model.Menu;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
@@ -17,6 +18,7 @@ public class Main {
 
     private EmployeeController employeeController;
     private DishController dishController;
+    private MenuController menuController;
 
 
     public static void main(String[] args) {
@@ -26,13 +28,21 @@ public class Main {
     }
 
     private void start() {
-        //Dish salad = dishController.getById(1);
-        //dishController.deleteDish(salad);
-        //System.out.println("After delete"); dishController.getAllDishes().forEach(System.out::println);
-        //dishController.createDish(salad);
-        //System.out.println("After add"); dishController.getAllDishes().forEach(System.out::println);
+        /*Dish salad = dishController.getById(1);
+        dishController.deleteDish(salad);
+        System.out.println("After delete"); dishController.getAllDishes().forEach(System.out::println);
+        dishController.createDish(salad);
+        System.out.println("After add"); dishController.getAllDishes().forEach(System.out::println);
         List <Dish> dishes = dishController.getDishByName("Feta Pizza");
-        System.out.println();
+        dishes.forEach(System.out::println);*/
+
+        Dish salad = dishController.getById(1);
+        Menu menu = menuController.getByName("Salad");
+        menuController.deleteDish(salad, menu);
+    }
+
+    public void setMenuController(MenuController menuController) {
+        this.menuController = menuController;
     }
 
     public void setEmployeeController(EmployeeController employeeController) {

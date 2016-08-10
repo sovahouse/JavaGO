@@ -2,7 +2,6 @@ package goit.hw7.model.Hibernate;
 
 import goit.hw7.model.DaoInterfaces.DishDao;
 import goit.hw7.model.Dish;
-import goit.hw7.model.Employee;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.transaction.annotation.Propagation;

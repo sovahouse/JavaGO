@@ -1,5 +1,7 @@
 package goit.hw7.model;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -18,7 +20,8 @@ public class Dish {
     @Column(name = "name")
     private String name;
 
-    @ManyToMany
+    @OneToMany
+    @Fetch(FetchMode.JOIN)
     @JoinTable(
             name = "ingredients_for_dish",
             joinColumns = @JoinColumn(name = "dish_id"),
@@ -26,8 +29,9 @@ public class Dish {
     )
     private List<Ingredient> ingredients;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "category")
-    private String category;
+    private Category category;
 
     @Column(name = "price")
     private double price;
@@ -59,11 +63,11 @@ public class Dish {
         this.ingredients = ingredients;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 

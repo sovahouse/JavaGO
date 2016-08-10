@@ -1,10 +1,26 @@
 package goit.hw7.model;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "menu")
 public class Menu {
 
+    @Id
+    @Column(name = "name", nullable = false)
     private String name;
+
+    @OneToMany
+    @Fetch(FetchMode.JOIN)
+    @JoinTable(
+            name = "menu_list",
+            joinColumns = @JoinColumn(name = "menu"),
+            inverseJoinColumns = @JoinColumn(name = "dish_id")
+    )
     private List<Dish> dishes;
 
     public String getName() {
