@@ -105,4 +105,35 @@ public class Dish {
                 ", weight=" + weight +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Dish dish = (Dish) o;
+
+        if (id != dish.id) return false;
+        if (Double.compare(dish.price, price) != 0) return false;
+        if (Double.compare(dish.weight, weight) != 0) return false;
+        if (name != null ? !name.equals(dish.name) : dish.name != null) return false;
+        if (ingredients != null ? !ingredients.equals(dish.ingredients) : dish.ingredients != null) return false;
+        return category == dish.category;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (ingredients != null ? ingredients.hashCode() : 0);
+        result = 31 * result + (category != null ? category.hashCode() : 0);
+        temp = Double.doubleToLongBits(price);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(weight);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
 }

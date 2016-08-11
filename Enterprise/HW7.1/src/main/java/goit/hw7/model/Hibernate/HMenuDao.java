@@ -29,9 +29,16 @@ public class HMenuDao implements MenuDao {
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
     public void deleteDish(Dish dish, Menu targetMenu) {
-        Query query = sessionFactory.getCurrentSession().createQuery("delete from Menu.dishes d where Menu.name = :name and d.id = :id"); //TODO: redoing
+        /*Query query = sessionFactory.getCurrentSession().createQuery("delete from Menu.dishes d where Menu.name = :name and d.id = :id"); //TODO: redoing
         query.setParameter("id", dish.getId());
-        query.setParameter("name", targetMenu.getName());
+        query.setParameter("name", targetMenu.getName());*/
+        /*for (Dish d: targetMenu.getDishes()) {
+            if (dish.equals(d)) {
+                targetMenu.getDishes().remove(d);
+            }
+        }*/
+        targetMenu.getDishes().remove(0);
+        sessionFactory.getCurrentSession().saveOrUpdate(targetMenu);
     }
 
     @Override
