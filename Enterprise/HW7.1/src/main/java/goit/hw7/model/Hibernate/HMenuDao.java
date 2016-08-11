@@ -15,11 +15,13 @@ public class HMenuDao implements MenuDao {
     private SessionFactory sessionFactory;
 
     @Override
-    public void addMenu(Menu menu) {
+    @Transactional(propagation = Propagation.MANDATORY)
+    public void add(Menu menu) {
         sessionFactory.getCurrentSession().save(menu);
     }
 
     @Override
+    @Transactional(propagation = Propagation.MANDATORY)
     public void remove(Menu menu) {
         sessionFactory.getCurrentSession().remove(menu);
     }
@@ -27,17 +29,19 @@ public class HMenuDao implements MenuDao {
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
     public void deleteDish(Dish dish, Menu targetMenu) {
-        Query query = sessionFactory.getCurrentSession().createQuery("delete from Menu where Menu.name = :name and Dish.id = :id"); //TODO: redoing
+        Query query = sessionFactory.getCurrentSession().createQuery("delete from menu_list where Menu.name = :name and Dish.id = :id"); //TODO: redoing
         query.setParameter("id", dish.getId());
         query.setParameter("name", targetMenu.getName());
     }
 
     @Override
+    @Transactional(propagation = Propagation.MANDATORY)
     public void addDish(Dish dish, Menu targetMenu) {
-
+        //TODO: add this method
     }
 
     @Override
+    @Transactional(propagation = Propagation.MANDATORY)
     public Menu getByName(String name) {
         Query query = sessionFactory.getCurrentSession().createQuery("select m from Menu m where m.name = :name");
         query.setParameter("name", name);
@@ -45,8 +49,9 @@ public class HMenuDao implements MenuDao {
     }
 
     @Override
+    @Transactional(propagation = Propagation.MANDATORY)
     public List<Menu> findAll() {
-        return null;
+        return sessionFactory.getCurrentSession().createQuery("select m from Menu m").list();
     }
 
     public void setSessionFactory(SessionFactory sessionFactory) {

@@ -14,7 +14,7 @@ public class Menu {
     @Column(name = "name", nullable = false)
     private String name;
 
-    @OneToMany
+    @OneToMany()
     @Fetch(FetchMode.JOIN)
     @JoinTable(
             name = "menu_list",
