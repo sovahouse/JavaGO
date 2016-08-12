@@ -1,14 +1,33 @@
 package goit.hw7.model;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
+@Entity
+@Table(name = "ord")
 public class Order {
 
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "id")
     private int id;
+
+    @Column(name = "table_number")
     private int tableNumber;
+
+    @Column(name = "date")
     private LocalDate date;
+
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
     private Employee employee;
+
+    @OneToMany
+    @JoinColumn(name = "dish_id")
     private List<Dish> dishes;
 
     public int getId() {

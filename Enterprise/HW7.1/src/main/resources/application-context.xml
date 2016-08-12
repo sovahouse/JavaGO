@@ -23,6 +23,9 @@
     </bean>
 
     <!--DAO-->
+    <bean class="goit.hw7.model.Hibernate.HOrderDao" id="orderDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
     <bean class="goit.hw7.model.Hibernate.HMenuDao" id="menuDao">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
