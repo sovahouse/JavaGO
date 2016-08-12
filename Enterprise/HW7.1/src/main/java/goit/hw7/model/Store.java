@@ -1,8 +1,17 @@
 package goit.hw7.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "store")
 public class Store {
 
+    @Id
+    @OneToOne
+    @Column(name = "ingredient_name")
     private Ingredient ingredient;
+
+    @Column(name = "quantity")
     private int quantity;
 
     public Ingredient getIngredient() {

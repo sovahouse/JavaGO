@@ -11,7 +11,7 @@ public interface OrderDao {
     Order getById(int id);
     void addDish(Dish dish, int orderId);
     void deleteDish(Dish dish, int orderId);
-    void deleteOrderById(int id);
+    void delete(Order order);
     void closeOrder(int id);
     List<Order> findAllOpenOrders();
     List<Order> findAllClosedOrders();

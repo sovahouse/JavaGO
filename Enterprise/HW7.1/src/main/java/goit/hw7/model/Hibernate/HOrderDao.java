@@ -4,6 +4,7 @@ import goit.hw7.model.DaoInterfaces.OrderDao;
 import goit.hw7.model.Dish;
 import goit.hw7.model.Order;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
@@ -13,13 +14,16 @@ public class HOrderDao implements OrderDao {
 
     @Override
     public void addOrder(Order order) {
-
+        sessionFactory.getCurrentSession().save(order);
     }
 
     @Override
     public Order getById(int id) {
-        return null;
+        Query query =sessionFactory.getCurrentSession().createQuery("select o from Order o where o.id = :id");
+        query.setParameter("id", id);
+        return (Order) query.uniqueResult();
     }
+
 
     @Override
     public void addDish(Dish dish, int orderId) {
@@ -32,8 +36,8 @@ public class HOrderDao implements OrderDao {
     }
 
     @Override
-    public void deleteOrderById(int id) {
-
+    public void delete(Order order) {
+        sessionFactory.getCurrentSession().remove(order);
     }
 
     @Override

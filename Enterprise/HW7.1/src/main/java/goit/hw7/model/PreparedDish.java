@@ -1,13 +1,45 @@
 package goit.hw7.model;
 
-import java.time.LocalDate;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.List;
+
+
+@Entity
+@Table(name = "prepared_dishes")
 public class PreparedDish {
+
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "id")
     private int id;
+
+    @OneToOne
+    @Column(name = "employee_id")
     private Employee employee;
-    private Dish dish;
+
+    @OneToMany
+    @Fetch(FetchMode.JOIN)
+    @JoinTable(
+            name = "prepared_dish_to_order",
+            joinColumns = @JoinColumn(name = "prepared_dish_id"),
+            inverseJoinColumns = @JoinColumn(name = "order_id")
+    )
+    private List<Dish> dishes;
+
+    @OneToOne
+    @Column(name = "order_id")
     private Order order;
+
+    @Column(name = "dish_number")
     private int dishNumber;
+
+    @Column(name = "date")
     private LocalDate date;
 
     public LocalDate getDate() {
@@ -34,12 +66,12 @@ public class PreparedDish {
         this.employee = employee;
     }
 
-    public Dish getDish() {
-        return dish;
+    public List<Dish> getDishes() {
+        return dishes;
     }
 
-    public void setDish(Dish dish) {
-        this.dish = dish;
+    public void setDishes(List<Dish> dishes) {
+        this.dishes = dishes;
     }
 
     public Order getOrder() {
@@ -63,7 +95,7 @@ public class PreparedDish {
         return "PreparedDish{" +
                 "id=" + id +
                 ", employee=" + employee +
-                ", dish=" + dish +
+                ", dish=" + dishes +
                 ", order=" + order +
                 ", dishNumber=" + dishNumber +
                 ", date=" + date +
