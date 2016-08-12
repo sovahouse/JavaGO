@@ -1,6 +1,7 @@
 package goit.hw7.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Order {
 
@@ -8,7 +9,7 @@ public class Order {
     private int tableNumber;
     private LocalDate date;
     private Employee employee;
-    private Dish dish;
+    private List<Dish> dishes;
 
     public int getId() {
         return id;
@@ -42,12 +43,12 @@ public class Order {
         this.employee = employee;
     }
 
-    public Dish getDish() {
-        return dish;
+    public List<Dish> getDishes() {
+        return dishes;
     }
 
-    public void setDish(Dish dish) {
-        this.dish = dish;
+    public void setDishes(List<Dish> dishes) {
+        this.dishes = dishes;
     }
 
     @Override
@@ -57,7 +58,7 @@ public class Order {
                 ", tableNumber=" + tableNumber +
                 ", date=" + date +
                 ", employee=" + employee +
-                ", dish=" + dish +
+                ", dishes=" + dishes +
                 '}';
     }
 }

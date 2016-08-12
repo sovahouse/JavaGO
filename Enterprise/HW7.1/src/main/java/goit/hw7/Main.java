@@ -39,6 +39,7 @@ public class Main {
         Dish salad = dishController.getById(1);
         Menu menu = menuController.getByName("Salad");
         menuController.deleteDish(salad, menu);
+        menuController.addDish(salad, menu);
 
     }
 

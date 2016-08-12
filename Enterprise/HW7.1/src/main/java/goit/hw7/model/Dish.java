@@ -112,12 +112,20 @@ public class Dish {
         if (o == null || getClass() != o.getClass()) return false;
 
         Dish dish = (Dish) o;
+        Boolean isIngredientsEquals = false;
 
         if (id != dish.id) return false;
         if (Double.compare(dish.price, price) != 0) return false;
         if (Double.compare(dish.weight, weight) != 0) return false;
         if (name != null ? !name.equals(dish.name) : dish.name != null) return false;
-        if (ingredients != null ? !ingredients.equals(dish.ingredients) : dish.ingredients != null) return false;
+        if (!(ingredients.size() == dish.ingredients.size())) return false;
+
+        for (int i = 0; i < ingredients.size(); i++) {
+            isIngredientsEquals = ingredients.get(i).equals(dish.ingredients.get(i));
+            if (!isIngredientsEquals) break;
+        }
+
+        if (ingredients != null ? !isIngredientsEquals : dish.ingredients != null) return false;
         return category == dish.category;
 
     }
