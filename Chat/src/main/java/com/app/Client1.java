@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
 
-public class Client{
+public class Client1{
 
     public static void main(String[] args) throws IOException {
         String input;
@@ -23,7 +23,7 @@ public class Client{
             responseToTheServer.writeBytes(input + "\n");
             if(input.equals("Exit")) break;
 
-            System.out.println("Client: " + responseFromTheServer.readLine());
+            System.out.println("Client 1: " + responseFromTheServer.readLine());
         }
         responseToTheServer.close();
         responseFromTheServer.close();
