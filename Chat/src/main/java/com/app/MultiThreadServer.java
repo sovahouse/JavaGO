@@ -35,7 +35,7 @@ public class MultiThreadServer implements Runnable {
                 userInput = inputFromTheClient.readLine();
                 if (userInput.equals("Exit")) break;
 
-               /* messages.put(socket.getPort(), userInput);
+                messages.put(socket.getPort(), userInput);
                 if(!activeConnections.contains(socket.getPort())) {
                     activeConnections.add(socket.getPort());
                 }
@@ -48,7 +48,7 @@ public class MultiThreadServer implements Runnable {
                     stringBuilder.append(i + ": " +messages.get(i) + "\n");
                 }
 
-                responseToTheClient.writeBytes(stringBuilder.toString() + "\n");*/
+                responseToTheClient.writeBytes(stringBuilder.toString() + "\n");
 
             }
             activeConnections.remove(socket.getPort());
