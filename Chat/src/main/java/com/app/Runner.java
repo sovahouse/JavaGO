@@ -19,7 +19,7 @@ public class Runner {
         while (true) {
             Socket socket = serverSocket.accept();
             System.out.println("Connected");
-            new Thread(new MultiThreadServer(socket, messages, activeConnections)).start();
+           // new Thread(new MultiThreadServer(socket, messages, activeConnections)).start();
         }
     }
 }
