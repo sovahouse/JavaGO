@@ -13,6 +13,9 @@
     </bean>
 
     <!--CONTROLLERS-->
+    <bean class="goit.hw7.controllers.KitchenHistoryController" id="kitchenHistoryController">
+        <property name="preparedDishDao" ref="preparedDishDao"/>
+    </bean>
     <bean class="goit.hw7.controllers.StoreController" id="storeController">
         <property name="storeDao" ref="storeDao"/>
     </bean>
@@ -27,6 +30,12 @@
     </bean>
 
     <!--DAO-->
+    <bean class="goit.hw7.model.Hibernate.HPreparedDishDao" id="preparedDishDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean class="goit.hw7.model.Hibernate.HOrderDao" id="orderDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
     <bean class="goit.hw7.model.Hibernate.HStoreDao" id="storeDao">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>

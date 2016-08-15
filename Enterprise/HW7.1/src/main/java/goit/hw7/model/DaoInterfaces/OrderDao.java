@@ -9,10 +9,10 @@ public interface OrderDao {
 
     void addOrder(Order order);
     Order getById(int id);
-    void addDish(Dish dish, int orderId);
-    void deleteDish(Dish dish, int orderId);
+    void addDish(Dish dish, Order targetOrder);
+    void deleteDish(Dish dish, Order targetOrder);
     void delete(Order order);
-    void closeOrder(int id);
+    void closeOrder(Order order);
     List<Order> findAllOpenOrders();
     List<Order> findAllClosedOrders();
 }

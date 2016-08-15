@@ -24,6 +24,9 @@ public class Order {
     @Column(name = "date")
     private LocalDate date;
 
+    @Column(name = "open_status")
+    private boolean status;
+
     @ManyToOne
     @JoinColumn(name = "employee_id")
     private Employee employee;
@@ -36,6 +39,15 @@ public class Order {
             inverseJoinColumns = @JoinColumn(name = "dish_id")
     )
     private List<Dish> dishes;
+
+    @OneToMany
+    @Fetch(FetchMode.JOIN)
+    @JoinTable(
+            name = "prepared_dish_to_order",
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "prepared_dish_id")
+    )
+    private List<PreparedDish> preparedDishes;
 
     public int getId() {
         return id;
@@ -77,12 +89,29 @@ public class Order {
         this.dishes = dishes;
     }
 
+    public List<PreparedDish> getPreparedDishes() {
+        return preparedDishes;
+    }
+
+    public void setPreparedDishes(List<PreparedDish> preparedDishes) {
+        this.preparedDishes = preparedDishes;
+    }
+
+    public boolean isOpen() {
+        return status;
+    }
+
+    public void setOpenStatus(boolean isOpen) {
+        this.status = isOpen;
+    }
+
     @Override
     public String toString() {
         return "Order{" +
                 "id=" + id +
                 ", tableNumber=" + tableNumber +
                 ", date=" + date +
+                ", status=" + status +
                 ", employee=" + employee +
                 ", dishes=" + dishes +
                 '}';

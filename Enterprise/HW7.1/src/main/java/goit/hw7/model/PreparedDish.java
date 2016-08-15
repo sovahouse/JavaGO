@@ -23,21 +23,9 @@ public class PreparedDish {
     @JoinColumn(name = "employee_id")
     private Employee employee;
 
-    @ManyToMany
-    @Fetch(FetchMode.JOIN)
-    @JoinTable(
-            name = "prepared_dish_to_order",
-            joinColumns = @JoinColumn(name = "prepared_dish_id"),
-            inverseJoinColumns = @JoinColumn(name = "order_id")
-    )
-    private List<Dish> dishes;
-
     @OneToOne
     @JoinColumn(name = "dish_id")
     private Dish dish;
-
-    @Column(name = "dish_number")
-    private int dishNumber;
 
     @Column(name = "date")
     private LocalDate date;
@@ -66,30 +54,11 @@ public class PreparedDish {
         this.employee = employee;
     }
 
-    public List<Dish> getDishes() {
-        return dishes;
+    public Dish getDish() {
+        return dish;
     }
 
-    public void setDishes(List<Dish> dishes) {
-        this.dishes = dishes;
-    }
-
-    public int getDishNumber() {
-        return dishNumber;
-    }
-
-    public void setDishNumber(int dishNumber) {
-        this.dishNumber = dishNumber;
-    }
-
-    @Override
-    public String toString() {
-        return "PreparedDish{" +
-                "id=" + id +
-                ", employee=" + employee +
-                ", dishes=" + dishes +
-                ", dishNumber=" + dishNumber +
-                ", date=" + date +
-                '}';
+    public void setDish(Dish dish) {
+        this.dish = dish;
     }
 }

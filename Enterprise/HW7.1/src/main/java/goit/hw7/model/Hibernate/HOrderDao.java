@@ -3,12 +3,14 @@ package goit.hw7.model.Hibernate;
 import goit.hw7.model.DaoInterfaces.OrderDao;
 import goit.hw7.model.Dish;
 import goit.hw7.model.Order;
+import goit.hw7.model.PreparedDish;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
+import java.util.LinkedList;
 import java.util.List;
 
-public class HOrderDao implements OrderDao {
+public class HOrderDao implements OrderDao { //TODO: testing
 
     private SessionFactory sessionFactory;
 
@@ -26,33 +28,52 @@ public class HOrderDao implements OrderDao {
 
 
     @Override
-    public void addDish(Dish dish, int orderId) {
-
+    public void addDish(Dish dish, Order targetOrder) {
+        if (!targetOrder.getDishes().contains(dish) && targetOrder.isOpen()) {
+            targetOrder.getDishes().add(dish);
+            sessionFactory.getCurrentSession().saveOrUpdate(targetOrder);
+        }
     }
 
     @Override
-    public void deleteDish(Dish dish, int orderId) {
-
+    public void deleteDish(Dish dish, Order targetOrder) {
+        if (targetOrder.isOpen()) {
+            targetOrder.getDishes().remove(dish);
+            sessionFactory.getCurrentSession().saveOrUpdate(targetOrder);
+        }
     }
 
     @Override
     public void delete(Order order) {
-        sessionFactory.getCurrentSession().remove(order);
+        if (order.isOpen()) {
+            sessionFactory.getCurrentSession().remove(order);
+        }
     }
 
     @Override
-    public void closeOrder(int id) {
+    public void closeOrder(Order order) { //TODO: testing!!!
+        order.setOpenStatus(false);
+        List<PreparedDish> preparedDishList = new LinkedList<>();
+        for (Dish dish:order.getDishes()) {
+            PreparedDish preparedDish = new PreparedDish();
+            preparedDish.setDish(dish);
+            preparedDish.setDate(order.getDate());
+            preparedDish.setEmployee(order.getEmployee());
 
+            preparedDishList.add(preparedDish);
+        }
+        order.setPreparedDishes(preparedDishList);
+        sessionFactory.getCurrentSession().saveOrUpdate(order);
     }
 
     @Override
     public List<Order> findAllOpenOrders() {
-        return null;
+        return sessionFactory.getCurrentSession().createQuery("select o from Order o where o.status = true").list();
     }
 
     @Override
     public List<Order> findAllClosedOrders() {
-        return null;
+        return sessionFactory.getCurrentSession().createQuery("select o from Order o where o.status = false").list();
     }
 
     public void setSessionFactory(SessionFactory sessionFactory) {

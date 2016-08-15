@@ -35,12 +35,12 @@ create table ORD(
 	ID int primary key not null,
 	--employee
 	TABLE_NUMBER int,
-	DATE date
+	DATE date,
+	OPEN_STATUS BOOL
 );
 
 create table PREPARED_DISHES(  /*FOR CLOSED ORDERS*/
 	ID int primary key not null,
-	DISH_NUMBER real not null,
 	--DISH,
 	--Employee
 	DATE date

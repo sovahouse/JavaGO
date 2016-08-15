@@ -7,6 +7,6 @@ import java.util.List;
 public interface PreparedDishDao {
 
     List<PreparedDish> findAll();
-    void addPreparedDish(PreparedDish preparedDish);
+    void create(PreparedDish preparedDish);
 
 }
