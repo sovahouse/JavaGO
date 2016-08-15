@@ -1,5 +1,7 @@
 package goit.hw7.model;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,8 +9,13 @@ import javax.persistence.*;
 public class Store {
 
     @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "id", nullable = false)
+    private int id;
+
     @OneToOne
-    @Column(name = "ingredient_name")
+    @JoinColumn(name = "ingredient_name")
     private Ingredient ingredient;
 
     @Column(name = "quantity")
@@ -30,10 +37,19 @@ public class Store {
         this.quantity = quantity;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Store{" +
-                "ingredient=" + ingredient +
+                "id=" + id +
+                ", ingredient=" + ingredient +
                 ", quantity=" + quantity +
                 '}';
     }

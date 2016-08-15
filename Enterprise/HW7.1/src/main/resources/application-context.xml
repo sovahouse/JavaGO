@@ -9,9 +9,13 @@
         <property name="employeeController" ref="employeeController"/>
         <property name="dishController" ref="dishController"/>
         <property name="menuController" ref="menuController"/>
+        <property name="storeController" ref="storeController"/>
     </bean>
 
     <!--CONTROLLERS-->
+    <bean class="goit.hw7.controllers.StoreController" id="storeController">
+        <property name="storeDao" ref="storeDao"/>
+    </bean>
     <bean class="goit.hw7.controllers.MenuController" id="menuController">
         <property name="menuDao" ref="menuDao"/>
     </bean>
@@ -23,7 +27,7 @@
     </bean>
 
     <!--DAO-->
-    <bean class="goit.hw7.model.Hibernate.HOrderDao" id="orderDao">
+    <bean class="goit.hw7.model.Hibernate.HStoreDao" id="storeDao">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
     <bean class="goit.hw7.model.Hibernate.HMenuDao" id="menuDao">

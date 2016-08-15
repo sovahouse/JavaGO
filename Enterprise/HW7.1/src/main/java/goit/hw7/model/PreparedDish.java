@@ -20,10 +20,10 @@ public class PreparedDish {
     private int id;
 
     @OneToOne
-    @Column(name = "employee_id")
+    @JoinColumn(name = "employee_id")
     private Employee employee;
 
-    @OneToMany
+    @ManyToMany
     @Fetch(FetchMode.JOIN)
     @JoinTable(
             name = "prepared_dish_to_order",
@@ -33,8 +33,8 @@ public class PreparedDish {
     private List<Dish> dishes;
 
     @OneToOne
-    @Column(name = "order_id")
-    private Order order;
+    @JoinColumn(name = "dish_id")
+    private Dish dish;
 
     @Column(name = "dish_number")
     private int dishNumber;
@@ -74,14 +74,6 @@ public class PreparedDish {
         this.dishes = dishes;
     }
 
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
     public int getDishNumber() {
         return dishNumber;
     }
@@ -95,8 +87,7 @@ public class PreparedDish {
         return "PreparedDish{" +
                 "id=" + id +
                 ", employee=" + employee +
-                ", dish=" + dishes +
-                ", order=" + order +
+                ", dishes=" + dishes +
                 ", dishNumber=" + dishNumber +
                 ", date=" + date +
                 '}';
