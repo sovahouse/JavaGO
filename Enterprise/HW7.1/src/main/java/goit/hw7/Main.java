@@ -18,6 +18,7 @@ public class Main {
     private DishController dishController;
     private MenuController menuController;
     private StoreController storeController;
+    private OrderController orderController;
 
 
     public static void main(String[] args) {
@@ -63,8 +64,17 @@ public class Main {
         System.out.println("ending:"); storeController.findEndsIngredients().forEach(System.out::println);
         storeController.changeQuantityOfIngredients("Tomato", 100);*/
 
+        Order order = new Order();
+        order.setDishes();
+        order.getDate();
+        order.setTableNumber(1);
+        order.setEmployee();
 
 
+    }
+
+    public void setOrderController(OrderController orderController) {
+        this.orderController = orderController;
     }
 
     public void setStoreController(StoreController storeController) {

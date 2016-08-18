@@ -67,7 +67,7 @@ public class HOrderDao implements OrderDao { //TODO: testing
     }
 
     @Override
-    public List<Order> findAllOpenOrders() {
+    public List<Order> findAllOpenedOrders() {
         return sessionFactory.getCurrentSession().createQuery("select o from Order o where o.status = true").list();
     }
 

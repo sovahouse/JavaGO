@@ -13,6 +13,6 @@ public interface OrderDao {
     void deleteDish(Dish dish, Order targetOrder);
     void delete(Order order);
     void closeOrder(Order order);
-    List<Order> findAllOpenOrders();
+    List<Order> findAllOpenedOrders();
     List<Order> findAllClosedOrders();
 }

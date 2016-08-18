@@ -10,9 +10,13 @@
         <property name="dishController" ref="dishController"/>
         <property name="menuController" ref="menuController"/>
         <property name="storeController" ref="storeController"/>
+        <property name="orderController" ref="orderController"/>
     </bean>
 
     <!--CONTROLLERS-->
+    <bean class="goit.hw7.controllers.OrderController" id="orderController">
+        <property name="orderDao" ref="orderDao"/>
+    </bean>
     <bean class="goit.hw7.controllers.KitchenHistoryController" id="kitchenHistoryController">
         <property name="preparedDishDao" ref="preparedDishDao"/>
     </bean>
