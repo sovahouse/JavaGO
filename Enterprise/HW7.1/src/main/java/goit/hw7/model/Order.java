@@ -1,5 +1,6 @@
 package goit.hw7.model;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.GenericGenerator;
@@ -40,8 +41,7 @@ public class Order {
     )
     private List<Dish> dishes;
 
-    @OneToMany
-    @Fetch(FetchMode.JOIN)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "prepared_dish_to_order",
             joinColumns = @JoinColumn(name = "order_id"),

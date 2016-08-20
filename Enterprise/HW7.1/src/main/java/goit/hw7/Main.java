@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -64,11 +65,26 @@ public class Main {
         System.out.println("ending:"); storeController.findEndsIngredients().forEach(System.out::println);
         storeController.changeQuantityOfIngredients("Tomato", 100);*/
 
-        Order order = new Order();
-        order.setDishes();
-        order.getDate();
-        order.setTableNumber(1);
-        order.setEmployee();
+        Order first = new Order();
+        Employee employee = employeeController.getById(1);
+        first.setDishes(dishController.getDishByName("Feta Pizza"));
+        first.setDate(LocalDate.now());
+        first.setTableNumber(1);
+        first.setEmployee(employee);
+
+        orderController.create(first);
+        orderController.addDish(dishController.getDishByName("Classic Chicken Salad").get(0), first);
+        orderController.deleteDish(dishController.getDishByName("Feta Pizza").get(0), first);
+        Order getOrder = orderController.getById(1);
+        orderController.closeOrder(getOrder);
+        orderController.addDish(dishController.getDishByName("Classic Chicken Salad").get(0), getOrder);
+        orderController.deleteDish(dishController.getDishByName("Feta Pizza").get(0), getOrder);
+        orderController.delete(getOrder);
+
+        orderController.create(first);
+        orderController.findAllClosedOrders().forEach(System.out::println);
+        orderController.findAllOpenedOrders().forEach(System.out::println);
+
 
 
     }
