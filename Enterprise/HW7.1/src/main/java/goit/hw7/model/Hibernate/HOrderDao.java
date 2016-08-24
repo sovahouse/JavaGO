@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.LinkedList;
 import java.util.List;
 
-public class HOrderDao implements OrderDao { //TODO: testing
+public class HOrderDao implements OrderDao {
 
     private SessionFactory sessionFactory;
 
@@ -60,7 +60,7 @@ public class HOrderDao implements OrderDao { //TODO: testing
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
-    public void closeOrder(Order order) { //TODO: testing!!!
+    public void closeOrder(Order order) {
         order.setOpenStatus(false);
         List<PreparedDish> preparedDishList = new LinkedList<>();
         for (Dish dish:order.getDishes()) {
