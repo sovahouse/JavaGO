@@ -38,7 +38,7 @@ public class HStoreDao implements StoreDao {
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
-    public Store findByName(String name) {
+    public Store findByIngredientsName(String name) {
         Query query = sessionFactory.getCurrentSession().createQuery("select s from Store s where s.ingredient.name = :name");
         query.setParameter("name", name);
         return (Store) query.uniqueResult();
@@ -50,11 +50,6 @@ public class HStoreDao implements StoreDao {
         return sessionFactory.getCurrentSession().createQuery("select s from Store s").list();
     }
 
-    @Override
-    @Transactional(propagation = Propagation.MANDATORY)
-    public Ingredient findIngredientByEnds() {
-        return sessionFactory.getCurrentSession().createQuery("select Ingredient from Store.ingredient where ")
-    }
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
@@ -65,4 +60,5 @@ public class HStoreDao implements StoreDao {
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
+
 }

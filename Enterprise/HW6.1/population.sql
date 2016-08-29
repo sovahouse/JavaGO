@@ -23,6 +23,14 @@ INSERT INTO public.ingredients_for_dish (dish_id, ingredient_name) VALUES (2, 'O
 INSERT INTO public.ingredients_for_dish (dish_id, ingredient_name) VALUES (2, 'Feta cheese');
 INSERT INTO public.ingredients_for_dish (dish_id, ingredient_name) VALUES (2, 'Olives');
 
+INSERT INTO public.store (id, quantity, ingredient_name) VALUES (1, 100, 'Bacon');
+INSERT INTO public.store (id, quantity, ingredient_name) VALUES (2, 100, 'Feta cheese');
+INSERT INTO public.store (id, quantity, ingredient_name) VALUES (3, 100, 'Tomato');
+INSERT INTO public.store (id, quantity, ingredient_name) VALUES (4, 100, 'Avocado');
+INSERT INTO public.store (id, quantity, ingredient_name) VALUES (5, 100, 'Dough');
+INSERT INTO public.store (id, quantity, ingredient_name) VALUES (6, 100, 'Olive oil');
+INSERT INTO public.store (id, quantity, ingredient_name) VALUES (7, 100, 'Olives');
+
 
 INSERT INTO public.menu (name) VALUES ('Pizza');
 INSERT INTO public.menu (name) VALUES ('Salad');

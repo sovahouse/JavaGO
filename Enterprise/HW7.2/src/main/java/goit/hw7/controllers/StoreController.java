@@ -27,8 +27,8 @@ public class StoreController {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public Store findByName(String name) {
-        return storeDao.findByName(name);
+    public Store findByIngredientsName(String name) {
+        return storeDao.findByIngredientsName(name);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)

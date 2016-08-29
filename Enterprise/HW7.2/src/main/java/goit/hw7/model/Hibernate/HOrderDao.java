@@ -72,14 +72,16 @@ public class HOrderDao implements OrderDao {
             preparedDishList.add(preparedDish);
         }
         order.setPreparedDishes(preparedDishList);
-        sessionFactory.getCurrentSession().saveOrUpdate(order);
 
         for (Dish dish:order.getDishes()) {
             for (Ingredient ingredient: dish.getIngredients()) {
-                int quantity = storeDao.
-                storeDao.changeQuantityOfIngredients(ingredient, );
+                int quantity = storeDao.findByIngredientsName(ingredient.getName()).getQuantity();
+                storeDao.changeQuantityOfIngredients(ingredient.getName(), quantity - 1);
             }
         }
+
+        sessionFactory.getCurrentSession().saveOrUpdate(order);
+
     }
 
     @Override
@@ -96,5 +98,9 @@ public class HOrderDao implements OrderDao {
 
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
+    }
+
+    public void setStoreDao(StoreDao storeDao) {
+        this.storeDao = storeDao;
     }
 }
