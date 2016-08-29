@@ -1,6 +1,7 @@
 package goit.hw7.model.Hibernate;
 
 import goit.hw7.model.DaoInterfaces.StoreDao;
+import goit.hw7.model.Ingredient;
 import goit.hw7.model.Store;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
@@ -47,6 +48,12 @@ public class HStoreDao implements StoreDao {
     @Transactional(propagation = Propagation.MANDATORY)
     public List<Store> findAll() {
         return sessionFactory.getCurrentSession().createQuery("select s from Store s").list();
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
+    public Ingredient findIngredientByEnds() {
+        return sessionFactory.getCurrentSession().createQuery("select Ingredient from Store.ingredient where ")
     }
 
     @Override

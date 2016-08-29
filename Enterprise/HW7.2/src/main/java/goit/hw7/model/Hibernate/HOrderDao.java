@@ -1,9 +1,8 @@
 package goit.hw7.model.Hibernate;
 
+import goit.hw7.model.*;
 import goit.hw7.model.DaoInterfaces.OrderDao;
-import goit.hw7.model.Dish;
-import goit.hw7.model.Order;
-import goit.hw7.model.PreparedDish;
+import goit.hw7.model.DaoInterfaces.StoreDao;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.transaction.annotation.Propagation;
@@ -15,6 +14,7 @@ import java.util.List;
 public class HOrderDao implements OrderDao {
 
     private SessionFactory sessionFactory;
+    private StoreDao storeDao;
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
@@ -73,6 +73,13 @@ public class HOrderDao implements OrderDao {
         }
         order.setPreparedDishes(preparedDishList);
         sessionFactory.getCurrentSession().saveOrUpdate(order);
+
+        for (Dish dish:order.getDishes()) {
+            for (Ingredient ingredient: dish.getIngredients()) {
+                int quantity = storeDao.
+                storeDao.changeQuantityOfIngredients(ingredient, );
+            }
+        }
     }
 
     @Override
