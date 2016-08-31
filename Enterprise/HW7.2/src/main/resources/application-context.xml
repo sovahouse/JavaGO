@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--MAIN-->
+    <bean class="goit.hw7.Main" id="main">
+        <property name="employeeController" ref="employeeController"/>
+        <property name="dishController" ref="dishController"/>
+        <property name="menuController" ref="menuController"/>
+        <property name="storeController" ref="storeController"/>
+        <property name="orderController" ref="orderController"/>
+        <property name="cookController" ref="cookController"/>
+    </bean>
+
+    <!--CONTROLLERS-->
+    <bean class="goit.hw7.controllers.CookController" id="cookController">
+        <property name="hCookDao" ref="cookDao"/>
+    </bean>
+    <bean class="goit.hw7.controllers.OrderController" id="orderController">
+        <property name="orderDao" ref="orderDao"/>
+    </bean>
+    <bean class="goit.hw7.controllers.KitchenHistoryController" id="kitchenHistoryController">
+        <property name="preparedDishDao" ref="preparedDishDao"/>
+    </bean>
+    <bean class="goit.hw7.controllers.StoreController" id="storeController">
+        <property name="storeDao" ref="storeDao"/>
+    </bean>
+    <bean class="goit.hw7.controllers.MenuController" id="menuController">
+        <property name="menuDao" ref="menuDao"/>
+    </bean>
+    <bean class="goit.hw7.controllers.DishController" id="dishController">
+        <property name="dishDao" ref="dishDao"/>
+    </bean>
+    <bean class="goit.hw7.controllers.EmployeeController" id="employeeController">
+        <property name="employeeDao" ref="employeeDao"/>
+    </bean>
+
+    <!--DAO-->
+    <bean class="goit.hw7.model.Hibernate.HCookDao" id="cookDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean class="goit.hw7.model.Hibernate.HPreparedDishDao" id="preparedDishDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean class="goit.hw7.model.Hibernate.HOrderDao" id="orderDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="storeDao" ref="storeDao"/>
+    </bean>
+    <bean class="goit.hw7.model.Hibernate.HStoreDao" id="storeDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean class="goit.hw7.model.Hibernate.HMenuDao" id="menuDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean class="goit.hw7.model.Hibernate.HDishDao" id="dishDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean class="goit.hw7.model.Hibernate.HEmployeeDao" id="employeeDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    
+</beans>
