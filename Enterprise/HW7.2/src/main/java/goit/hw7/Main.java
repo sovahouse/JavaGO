@@ -60,7 +60,7 @@ public class Main {
         orderController.closeOrder(order);
         System.out.println();
 
-        waiterController.getById(1).getOrders().forEach(System.out::println);
+        cookController.getById(3).getPreparedDishes().forEach(System.out::println);
         System.out.println();
 
 

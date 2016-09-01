@@ -84,9 +84,7 @@ public class HOrderDao implements OrderDao {
         PreparedDish preparedDish = new PreparedDish();
         preparedDish.setDish(dish);
         preparedDish.setDate(targetOrder.getDate());
-        preparedDish.setEmployee(targetOrder.getCook());
-
-        cookDao.addPreparedDish(preparedDish, targetOrder.getCook());
+        preparedDish.setCook(targetOrder.getCook());
 
         targetOrder.getDishes().remove(dish);
 

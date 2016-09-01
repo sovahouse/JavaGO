@@ -24,18 +24,6 @@ public class HCookDao extends HEmployeeDao implements CookDao {
     }
 
     @Override
-    public void addPreparedDish(PreparedDish preparedDish, Cook cook) {
-        List<PreparedDish> preparedDishesList = cook.getPreparedDishes();
-        if (preparedDishesList == null) { preparedDishesList = new ArrayList<>();}
-
-        preparedDishesList.add(preparedDish);
-
-        cook.setPreparedDishes(preparedDishesList);
-
-        sessionFactory.getCurrentSession().saveOrUpdate(cook);
-    }
-
-    @Override
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }

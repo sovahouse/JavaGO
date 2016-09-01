@@ -26,3 +26,15 @@
 23:29:32,377  INFO main ClassPathXmlApplicationContext:prepareRefresh:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@504bae78: startup date [Tue May 03 23:29:32 EEST 2016]; root of context hierarchy
 23:29:32,435  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:317 - Loading XML bean definitions from class path resource [application-context.xml]
 23:29:32,564  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:317 - Loading XML bean definitions from class path resource [aop-context.xml]
+03:10:21,701  INFO main ClassPathXmlApplicationContext:prepareRefresh:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1b9e1916: startup date [Thu Sep 01 03:10:21 EEST 2016]; root of context hierarchy
+03:10:21,765  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:317 - Loading XML bean definitions from class path resource [application-context.xml]
+03:10:21,897  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:317 - Loading XML bean definitions from class path resource [aop-context.xml]
+03:10:22,425  INFO main LogAspect:onExecute:8 - LogAspect. Before method execute was called
+03:10:37,523  INFO main LogAspect:onExecute:8 - LogAspect. Before method calculate was called
+03:11:55,254  INFO main ClassPathXmlApplicationContext:prepareRefresh:578 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1b9e1916: startup date [Thu Sep 01 03:11:55 EEST 2016]; root of context hierarchy
+03:11:55,301  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:317 - Loading XML bean definitions from class path resource [application-context.xml]
+03:11:55,423  INFO main XmlBeanDefinitionReader:loadBeanDefinitions:317 - Loading XML bean definitions from class path resource [aop-context.xml]
+03:11:55,893  INFO main LogAspect:onExecute:8 - LogAspect. Before method execute was called
+03:12:02,517  INFO main LogAspect:onExecute:8 - LogAspect. Before method calculate was called
+03:12:02,540  INFO main LogAspect:onExecute:10 - LogAspect. After method calculate was called
+03:12:02,540  INFO main LogAspect:onExecute:10 - LogAspect. After method execute was called

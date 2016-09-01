@@ -20,8 +20,8 @@ public class PreparedDish {
     private int id;
 
     @OneToOne
-    @JoinColumn(name = "employee_id")
-    private Employee employee;
+    @JoinColumn(name = "cook_id")
+    private Cook cook;
 
     @OneToOne
     @JoinColumn(name = "dish_id")
@@ -46,14 +46,6 @@ public class PreparedDish {
         this.id = id;
     }
 
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
     public Dish getDish() {
         return dish;
     }
@@ -62,11 +54,19 @@ public class PreparedDish {
         this.dish = dish;
     }
 
+    public Cook getCook() {
+        return cook;
+    }
+
+    public void setCook(Cook cook) {
+        this.cook = cook;
+    }
+
     @Override
     public String toString() {
         return "PreparedDish{" +
                 "id=" + id +
-                ", employee=" + employee +
+                ", cook=" + cook +
                 ", dish=" + dish +
                 ", date=" + date +
                 '}';

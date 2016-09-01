@@ -14,11 +14,7 @@ public class Cook extends Employee {
     @OneToMany(fetch=FetchType.EAGER)
     //@LazyCollection(LazyCollectionOption.FALSE)
     @Fetch(value = FetchMode.SUBSELECT)
-    @JoinTable(
-            name = "prepared_dish_to_cook",
-            joinColumns = @JoinColumn(name = "employee_id"),
-            inverseJoinColumns = @JoinColumn(name = "prepared_dish_id")
-    )
+    @JoinColumn(name = "cook_id")
     private List<PreparedDish> preparedDishes;
 
     public List<PreparedDish> getPreparedDishes() {
