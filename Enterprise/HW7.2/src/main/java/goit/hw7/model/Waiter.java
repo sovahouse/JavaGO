@@ -12,8 +12,9 @@ import java.util.List;
 @Entity
 public class Waiter extends Employee {
 
-    @OneToMany
-    @JoinColumn(name = "employee_id")
+    @OneToMany(fetch=FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
+    @JoinColumn(name = "waiter_id")
     private List<Order> orders;
 
     public List<Order> getOrders() {

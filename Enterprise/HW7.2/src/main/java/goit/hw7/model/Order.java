@@ -29,8 +29,12 @@ public class Order {
     private boolean status;
 
     @ManyToOne
-    @JoinColumn(name = "employee_id")
-    private Employee employee;
+    @JoinColumn(name = "waiter_id")
+    private Waiter waiter;
+
+    @ManyToOne
+    @JoinColumn(name = "cook_id")
+    private Cook cook;
 
     @OneToMany
     @Fetch(FetchMode.JOIN)
@@ -73,14 +77,6 @@ public class Order {
         this.date = date;
     }
 
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
     public List<Dish> getDishes() {
         return dishes;
     }
@@ -105,15 +101,19 @@ public class Order {
         this.status = isOpen;
     }
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", tableNumber=" + tableNumber +
-                ", date=" + date +
-                ", status=" + status +
-                ", employee=" + employee +
-                ", dishes=" + dishes +
-                '}';
+    public Waiter getWaiter() {
+        return waiter;
+    }
+
+    public void setWaiter(Waiter waiter) {
+        this.waiter = waiter;
+    }
+
+    public Cook getCook() {
+        return cook;
+    }
+
+    public void setCook(Cook cook) {
+        this.cook = cook;
     }
 }

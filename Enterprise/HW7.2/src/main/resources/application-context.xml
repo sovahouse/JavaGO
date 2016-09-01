@@ -12,11 +12,15 @@
         <property name="storeController" ref="storeController"/>
         <property name="orderController" ref="orderController"/>
         <property name="cookController" ref="cookController"/>
+        <property name="waiterController" ref="waiterController"/>
     </bean>
 
     <!--CONTROLLERS-->
+    <bean class="goit.hw7.controllers.WaiterController" id="waiterController">
+        <property name="waiterDao" ref="waiterDao"/>
+    </bean>
     <bean class="goit.hw7.controllers.CookController" id="cookController">
-        <property name="hCookDao" ref="cookDao"/>
+        <property name="cookDao" ref="cookDao"/>
     </bean>
     <bean class="goit.hw7.controllers.OrderController" id="orderController">
         <property name="orderDao" ref="orderDao"/>
@@ -38,6 +42,9 @@
     </bean>
 
     <!--DAO-->
+    <bean class="goit.hw7.model.Hibernate.HWaiterDao" id="waiterDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
     <bean class="goit.hw7.model.Hibernate.HCookDao" id="cookDao">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
@@ -47,6 +54,7 @@
     <bean class="goit.hw7.model.Hibernate.HOrderDao" id="orderDao">
         <property name="sessionFactory" ref="sessionFactory"/>
         <property name="storeDao" ref="storeDao"/>
+        <property name="cookDao" ref="cookDao"/>
     </bean>
     <bean class="goit.hw7.model.Hibernate.HStoreDao" id="storeDao">
         <property name="sessionFactory" ref="sessionFactory"/>

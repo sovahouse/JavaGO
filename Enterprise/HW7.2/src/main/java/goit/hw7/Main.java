@@ -21,6 +21,7 @@ public class Main {
     private StoreController storeController;
     private OrderController orderController;
     private CookController cookController;
+    private WaiterController waiterController;
 
 
     public static void main(String[] args) {
@@ -43,20 +44,30 @@ public class Main {
         menuController.deleteDish(salad, menu);
         menuController.addDish(salad, menu);*/
 
-        /*Order first = new Order();
-        Waiter employee = (Waiter) employeeController.getById(1);
-        first.setDishes(dishController.getDishByName("Feta Pizza"));
-        first.setDate(LocalDate.now());
-        first.setTableNumber(1);
-        first.setEmployee(employee);
+        Order order = new Order();
+        Waiter waiter = waiterController.getById(1);
+        order.setDishes(dishController.getDishByName("Feta Pizza"));
+        order.setDate(LocalDate.now());
+        order.setTableNumber(1);
+        order.setCook(cookController.getById(3));
+        order.setWaiter(waiter);
 
-        orderController.create(first);
-        orderController.closeOrder(first);*/
+        orderController.create(order);
+        orderController.addDish(dishController.getDishByName("Classic Chicken Salad").get(0), order);
+        orderController.deleteDish(dishController.getDishByName("Classic Chicken Salad").get(0), order);
 
-        System.out.println(cookController.getById(3));
+        orderController.prepareDish(dishController.getDishByName("Feta Pizza").get(0), order);
+        orderController.closeOrder(order);
+        System.out.println();
+
+        waiterController.getById(1).getOrders().forEach(System.out::println);
+        System.out.println();
 
 
+    }
 
+    public void setWaiterController(WaiterController waiterController) {
+        this.waiterController = waiterController;
     }
 
     public void setOrderController(OrderController orderController) {
