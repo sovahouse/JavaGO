@@ -1,4 +1,4 @@
-package goit.hw7.controllers;
+package goit.hw7.service;
 
 import goit.hw7.model.DaoInterfaces.DishDao;
 import goit.hw7.model.Dish;
@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 
-public class DishController {
+public class DishService {
 
     private DishDao dishDao;
 

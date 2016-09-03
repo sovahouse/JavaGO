@@ -1,4 +1,4 @@
-package goit.hw7.controllers;
+package goit.hw7.service;
 
 import goit.hw7.model.DaoInterfaces.StoreDao;
 import goit.hw7.model.Store;
@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-public class StoreController {
+public class StoreService {
 
     private StoreDao storeDao;
 

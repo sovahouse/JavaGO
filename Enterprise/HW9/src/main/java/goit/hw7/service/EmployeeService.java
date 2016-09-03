@@ -1,13 +1,12 @@
-package goit.hw7.controllers;
+package goit.hw7.service;
 
-import goit.hw7.model.Cook;
 import goit.hw7.model.Employee;
 import goit.hw7.model.DaoInterfaces.EmployeeDao;
 import org.springframework.transaction.annotation.*;
 
 import java.util.List;
 
-public class EmployeeController {
+public class EmployeeService {
 
     private EmployeeDao employeeDao;
 

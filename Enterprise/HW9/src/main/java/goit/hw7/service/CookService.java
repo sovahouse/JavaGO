@@ -1,12 +1,11 @@
-package goit.hw7.controllers;
+package goit.hw7.service;
 
 import goit.hw7.model.Cook;
 import goit.hw7.model.DaoInterfaces.CookDao;
-import goit.hw7.model.Hibernate.HCookDao;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-public class CookController extends EmployeeController {
+public class CookService extends EmployeeService {
 
     private CookDao cookDao;
 

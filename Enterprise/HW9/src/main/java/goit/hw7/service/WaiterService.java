@@ -1,11 +1,11 @@
-package goit.hw7.controllers;
+package goit.hw7.service;
 
 import goit.hw7.model.DaoInterfaces.WaiterDao;
 import goit.hw7.model.Waiter;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-public class WaiterController extends EmployeeController {
+public class WaiterService extends EmployeeService {
 
     private WaiterDao waiterDao;
 

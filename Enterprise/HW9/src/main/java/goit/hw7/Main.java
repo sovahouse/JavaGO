@@ -1,6 +1,6 @@
 package goit.hw7;
 
-import goit.hw7.controllers.*;
+import goit.hw7.service.*;
 import goit.hw7.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,89 +8,90 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.time.LocalDate;
-import java.util.List;
 
 
 public class Main {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
 
-    private EmployeeController employeeController;
-    private DishController dishController;
-    private MenuController menuController;
-    private StoreController storeController;
-    private OrderController orderController;
-    private CookController cookController;
-    private WaiterController waiterController;
+    private EmployeeService employeeService;
+    private DishService dishService;
+    private MenuService menuService;
+    private StoreService storeService;
+    private OrderService orderService;
+    private CookService cookController;
+    private WaiterService waiterController;
 
 
     public static void main(String[] args) {
-        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("application-context.xml", "hibernate-context.xml");
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("WEB-INF/application-context.xml", "WEB-INF/hibernate-context.xml");
         Main main = applicationContext.getBean(Main.class);
         main.start();
     }
 
     private void start() {
-        /*Dish salad = dishController.getById(1);
-        dishController.deleteDish(salad);
-        System.out.println("After delete"); dishController.getAllDishes().forEach(System.out::println);
-        dishController.createDish(salad);
-        System.out.println("After save"); dishController.getAllDishes().forEach(System.out::println);
-        List <Dish> dishes = dishController.getDishByName("Feta Pizza");
+        /*Dish salad = dishService.getById(1);
+        dishService.deleteDish(salad);
+        System.out.println("After delete"); dishService.getAllDishes().forEach(System.out::println);
+        dishService.createDish(salad);
+        System.out.println("After save"); dishService.getAllDishes().forEach(System.out::println);
+        List <Dish> dishes = dishService.getDishByName("Feta Pizza");
         dishes.forEach(System.out::println);*/
 
-       /* Dish salad = dishController.getById(1);
-        Menu menu = menuController.getByName("Salad");
-        menuController.deleteDish(salad, menu);
-        menuController.addDish(salad, menu);*/
+       /* Dish salad = dishService.getById(1);
+        Menu menu = menuService.getByName("Salad");
+        menuService.deleteDish(salad, menu);
+        menuService.addDish(salad, menu);*/
 
-        Order order = new Order();
+        /*Order order = new Order();
         Waiter waiter = waiterController.getById(1);
-        order.setDishes(dishController.getDishByName("Feta Pizza"));
+        order.setDishes(dishService.getDishByName("Feta Pizza"));
         order.setDate(LocalDate.now());
         order.setTableNumber(1);
         order.setCook(cookController.getById(3));
         order.setWaiter(waiter);
 
-        orderController.create(order);
-        orderController.addDish(dishController.getDishByName("Classic Chicken Salad").get(0), order);
-        orderController.deleteDish(dishController.getDishByName("Classic Chicken Salad").get(0), order);
+        orderService.create(order);
+        orderService.addDish(dishService.getDishByName("Classic Chicken Salad").get(0), order);
+        orderService.deleteDish(dishService.getDishByName("Classic Chicken Salad").get(0), order);
 
-        orderController.prepareDish(dishController.getDishByName("Feta Pizza").get(0), order);
-        orderController.closeOrder(order);
+        orderService.prepareDish(dishService.getDishByName("Feta Pizza").get(0), order);
+        orderService.closeOrder(order);
         System.out.println();
 
         cookController.getById(3).getPreparedDishes().forEach(System.out::println);
-        System.out.println();
+        System.out.println();*/
+
+        employeeService.getAllEmployees().forEach(System.out::println);
 
 
     }
 
-    public void setWaiterController(WaiterController waiterController) {
+    public void setWaiterController(WaiterService waiterController) {
         this.waiterController = waiterController;
     }
 
-    public void setOrderController(OrderController orderController) {
-        this.orderController = orderController;
+    public void setOrderService(OrderService orderService) {
+        this.orderService = orderService;
     }
 
-    public void setStoreController(StoreController storeController) {
-        this.storeController = storeController;
+    public void setStoreService(StoreService storeService) {
+        this.storeService = storeService;
     }
 
-    public void setMenuController(MenuController menuController) {
-        this.menuController = menuController;
+    public void setMenuService(MenuService menuService) {
+        this.menuService = menuService;
     }
 
-    public void setEmployeeController(EmployeeController employeeController) {
-        this.employeeController = employeeController;
+    public void setEmployeeService(EmployeeService employeeService) {
+        this.employeeService = employeeService;
     }
 
-    public void setDishController(DishController dishController) {
-        this.dishController = dishController;
+    public void setDishService(DishService dishService) {
+        this.dishService = dishService;
     }
 
-    public void setCookController(CookController cookController) {
+    public void setCookController(CookService cookController) {
         this.cookController = cookController;
     }
 }

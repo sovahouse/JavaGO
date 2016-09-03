@@ -6,38 +6,43 @@
 
     <!--MAIN-->
     <bean class="goit.hw7.Main" id="main">
-        <property name="employeeController" ref="employeeController"/>
-        <property name="dishController" ref="dishController"/>
-        <property name="menuController" ref="menuController"/>
-        <property name="storeController" ref="storeController"/>
-        <property name="orderController" ref="orderController"/>
-        <property name="cookController" ref="cookController"/>
-        <property name="waiterController" ref="waiterController"/>
+        <property name="employeeService" ref="employeeService"/>
+        <property name="dishService" ref="dishService"/>
+        <property name="menuService" ref="menuService"/>
+        <property name="storeService" ref="storeService"/>
+        <property name="orderService" ref="orderService"/>
+        <property name="cookController" ref="cookService"/>
+        <property name="waiterController" ref="waiterService"/>
     </bean>
 
     <!--CONTROLLERS-->
-    <bean class="goit.hw7.controllers.WaiterController" id="waiterController">
+    <!--<bean class="goit.hw7.web.EmployeeController" id="employeeController">
+        <property name="employeeService" ref="employeeService"/>
+    </bean>-->
+
+    <!--SERVICES-->
+    <bean class="goit.hw7.service.WaiterService" id="waiterService">
         <property name="waiterDao" ref="waiterDao"/>
     </bean>
-    <bean class="goit.hw7.controllers.CookController" id="cookController">
+    <bean class="goit.hw7.service.CookService" id="cookService">
         <property name="cookDao" ref="cookDao"/>
     </bean>
-    <bean class="goit.hw7.controllers.OrderController" id="orderController">
+    <bean class="goit.hw7.service.OrderService" id="orderService">
         <property name="orderDao" ref="orderDao"/>
     </bean>
-    <bean class="goit.hw7.controllers.KitchenHistoryController" id="kitchenHistoryController">
+    <bean class="goit.hw7.service.KitchenHistoryService" id="kitchenHistoryService">
         <property name="preparedDishDao" ref="preparedDishDao"/>
     </bean>
-    <bean class="goit.hw7.controllers.StoreController" id="storeController">
+    <bean class="goit.hw7.service.StoreService" id="storeService">
         <property name="storeDao" ref="storeDao"/>
     </bean>
-    <bean class="goit.hw7.controllers.MenuController" id="menuController">
+    <bean class="goit.hw7.service.MenuService" id="menuService">
         <property name="menuDao" ref="menuDao"/>
     </bean>
-    <bean class="goit.hw7.controllers.DishController" id="dishController">
+    <bean class="goit.hw7.service.DishService" id="dishService">
         <property name="dishDao" ref="dishDao"/>
     </bean>
-    <bean class="goit.hw7.controllers.EmployeeController" id="employeeController">
+    <bean class="goit.hw7.service.EmployeeService" id="employeeService">
         <property name="employeeDao" ref="employeeDao"/>
     </bean>
 

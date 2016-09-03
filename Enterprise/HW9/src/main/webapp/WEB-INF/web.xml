@@ -5,12 +5,28 @@
     <servlet>
         <servlet-name>Dispathcer</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>WEB-INF/web-context.xml</param-value>
+        </init-param>
     </servlet>
     
     <servlet-mapping>
         <servlet-name>Dispathcer</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+    
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            WEB-INF/application-context.xml
+            WEB-INF/hibernate-context.xml
+        </param-value>
+    </context-param>
 
 
 </web-app>
