@@ -1,15 +1,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <title>Title</title>
+    <meta charset="UTF-8">
+    <link href="<c:url value="/resources/css/style.css"/>" type="text/css" rel="stylesheet"/>
 </head>
 <body>
-    <c:forEach var="employee" items="${employees}">
-        <figure>
-            <img src="https://i512.mycdn.me/image?t=32&bid=772126541531&id=772126541531&plc=WEB&tkn=*bCcqXc516ibKKuf7Ddl_o2BSddo">
-            <figcaption><h1>${employee.name}</h1></figcaption>
-        </figure>
-    </c:forEach>
+    <div class="wrapper">
+        <c:forEach var="employee" items="${employees}">
+            <div class="container">
+                <figure>
+                    <img src="/resources/img/1.jpg" width="200" height="200">
+                    <figcaption>${employee.name}</figcaption>
+                </figure>
+            </div>
+        </c:forEach>
+    </div>
 </body>
 </html>

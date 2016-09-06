@@ -22,9 +22,8 @@
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
                 <configuration>
-                    <webXml>src/main/resources/WEB_INF/web.xml</webXml>
-                    <warName>restaurantapp</warName>
-                    <webResources>src/webapp/index.jsp</webResources>
+                    <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
+                    <warName>restaurant</warName>
                 </configuration>
             </plugin>
         </plugins>

@@ -6,7 +6,7 @@
 	PHONE text,
 	POSITION text,
 	SALARY real,
-  DTYPE VARCHAR
+	DTYPE VARCHAR
 );
 
 commit;
