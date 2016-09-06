@@ -9,7 +9,7 @@ public interface DishDao {
 
     List<Dish> findAll();
 
-    List<Dish> findByName(String name);
+    Dish findByName(String name);
 
     void remove(Dish dish);
 

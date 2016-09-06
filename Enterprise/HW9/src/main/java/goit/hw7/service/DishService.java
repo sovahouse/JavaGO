@@ -28,7 +28,7 @@ public class DishService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public List<Dish> getDishByName(String name) {
+    public Dish getDishByName(String name) {
         return dishDao.findByName(name);
     }
 

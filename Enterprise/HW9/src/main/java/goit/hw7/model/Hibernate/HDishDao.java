@@ -21,10 +21,10 @@ public class HDishDao implements DishDao {
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
-    public List<Dish> findByName(String name) {
+    public Dish findByName(String name) {
         Query query = sessionFactory.getCurrentSession().createQuery("select d from Dish d where d.name = :name");
         query.setParameter("name", name);
-        return query.list();
+        return (Dish) query.uniqueResult();
     }
 
     @Override

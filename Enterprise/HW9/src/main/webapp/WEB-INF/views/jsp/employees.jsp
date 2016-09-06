@@ -5,21 +5,11 @@
     <title>Title</title>
 </head>
 <body>
-<table style="align-items: center">
-    <tr>
-        <th>Name</th>
-        <th>Surname</th>
-        <th>Position</th>
-        <th>Salary</th>
-    </tr>
     <c:forEach var="employee" items="${employees}">
-        <tr>
-            <th>${employee.name}</th>
-            <th>${employee.surname}</th>
-            <th>${employee.position}</th>
-            <th>${employee.salary}</th>
-        </tr>
+        <figure>
+            <img src="https://i512.mycdn.me/image?t=32&bid=772126541531&id=772126541531&plc=WEB&tkn=*bCcqXc516ibKKuf7Ddl_o2BSddo">
+            <figcaption><h1>${employee.name}</h1></figcaption>
+        </figure>
     </c:forEach>
-</table>
 </body>
 </html>
