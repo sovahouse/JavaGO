@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--MAIN-->
+    <bean class="restaurant.Main" id="main">
+        <property name="employeeService" ref="employeeService"/>
+        <property name="dishService" ref="dishService"/>
+        <property name="menuService" ref="menuService"/>
+        <property name="storeService" ref="storeService"/>
+        <property name="orderService" ref="orderService"/>
+    </bean>
+
+    <!--CONTROLLERS-->
+    <!--<bean class="EmployeeController" id="employeeController">
+        <property name="employeeService" ref="employeeService"/>
+    </bean>-->
+
+    <!--SERVICES-->
+    <bean class="restaurant.service.OrderService" id="orderService">
+        <property name="orderDao" ref="orderDao"/>
+    </bean>
+    <bean class="restaurant.service.StoreService" id="storeService">
+        <property name="storeDao" ref="storeDao"/>
+    </bean>
+    <bean class="restaurant.service.MenuService" id="menuService">
+        <property name="menuDao" ref="menuDao"/>
+    </bean>
+    <bean class="restaurant.service.DishService" id="dishService">
+        <property name="dishDao" ref="dishDao"/>
+    </bean>
+    <bean class="restaurant.service.EmployeeService" id="employeeService">
+        <property name="employeeDao" ref="employeeDao"/>
+    </bean>
+
+    <!--DAO-->
+    <bean class="restaurant.model.Hibernate.HOrderDao" id="orderDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="storeDao" ref="storeDao"/>
+    </bean>
+    <bean class="restaurant.model.Hibernate.HStoreDao" id="storeDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean class="restaurant.model.Hibernate.HMenuDao" id="menuDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean class="restaurant.model.Hibernate.HDishDao" id="dishDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean class="restaurant.model.Hibernate.HEmployeeDao" id="employeeDao">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    
+</beans>
