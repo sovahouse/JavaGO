@@ -44,7 +44,7 @@ public class Main {
         menuController.deleteDish(salad, menu);
         menuController.addDish(salad, menu);*/
 
-        Order order = new Order();
+        /*Order order = new Order();
         Waiter waiter = waiterController.getById(1);
         order.setDishes(dishController.getDishByName("Feta Pizza"));
         order.setDate(LocalDate.now());
@@ -61,7 +61,9 @@ public class Main {
         System.out.println();
 
         cookController.getById(3).getPreparedDishes().forEach(System.out::println);
-        System.out.println();
+        System.out.println();*/
+
+        orderController.findAllClosedOrders().forEach(System.out::println);
 
 
     }
