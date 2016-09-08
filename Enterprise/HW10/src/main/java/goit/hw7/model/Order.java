@@ -33,12 +33,8 @@ public class Order {
     private boolean status;
 
     @ManyToOne
-    @JoinColumn(name = "waiter_id")
-    private Waiter waiter;
-
-    @ManyToOne
-    @JoinColumn(name = "cook_id")
-    private Cook cook;
+    @JoinColumn(name = "employee_id")
+    private Employee waiter;
 
     @OneToMany
     @Fetch(FetchMode.JOIN)
@@ -48,14 +44,6 @@ public class Order {
             inverseJoinColumns = @JoinColumn(name = "dish_id")
     )
     private List<Dish> dishes;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "prepared_dish_to_order",
-            joinColumns = @JoinColumn(name = "order_id"),
-            inverseJoinColumns = @JoinColumn(name = "prepared_dish_id")
-    )
-    private List<PreparedDish> preparedDishes;
 
     public int getId() {
         return id;
@@ -89,14 +77,6 @@ public class Order {
         this.dishes = dishes;
     }
 
-    public List<PreparedDish> getPreparedDishes() {
-        return preparedDishes;
-    }
-
-    public void setPreparedDishes(List<PreparedDish> preparedDishes) {
-        this.preparedDishes = preparedDishes;
-    }
-
     public boolean isOpen() {
         return status;
     }
@@ -105,19 +85,12 @@ public class Order {
         this.status = isOpen;
     }
 
-    public Waiter getWaiter() {
+    public Employee getWaiter() {
         return waiter;
     }
 
-    public void setWaiter(Waiter waiter) {
+    public void setWaiter(Employee waiter) {
         this.waiter = waiter;
     }
 
-    public Cook getCook() {
-        return cook;
-    }
-
-    public void setCook(Cook cook) {
-        this.cook = cook;
-    }
 }

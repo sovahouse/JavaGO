@@ -43,11 +43,6 @@ public class OrderService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public void prepareDish(Dish dish, Order targetOrder) {
-        orderDao.prepareDish(dish, targetOrder);
-    }
-
-    @Transactional(propagation = Propagation.REQUIRED)
     public List<Order> findAllClosedOrders() {
         return orderDao.findAllClosedOrders();
     }

@@ -1,6 +1,5 @@
 package goit.hw7.model.Hibernate;
 
-import goit.hw7.model.Cook;
 import goit.hw7.model.DaoInterfaces.EmployeeDao;
 import goit.hw7.model.Employee;
 import org.hibernate.SessionFactory;
@@ -46,6 +45,22 @@ public class HEmployeeDao implements EmployeeDao {
         Query query = sessionFactory.getCurrentSession().createQuery("select e from Employee e where e.id = :id");
         query.setParameter("id", id);
         return (Employee) query.uniqueResult();
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
+    public List<Employee> findBySurname(String surname) {
+        Query query = sessionFactory.getCurrentSession().createQuery("select e from Employee e where e.surname like :surname");
+        query.setParameter("surname", surname);
+        return query.list();
+    }
+
+    @Override
+    public List<Employee> findByNameSurname(String name, String surname) {
+        Query query = sessionFactory.getCurrentSession().createQuery("select e from Employee e where e.name like :name and e.surname like :surname");
+        query.setParameter("name", name);
+        query.setParameter("surname", surname);
+        return query.list();
     }
 
     public void setSessionFactory(SessionFactory sessionFactory) {

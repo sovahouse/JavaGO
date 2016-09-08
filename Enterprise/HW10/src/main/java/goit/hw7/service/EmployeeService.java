@@ -35,6 +35,16 @@ public class EmployeeService {
         employeeDao.remove(employee);
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
+    public List<Employee> getEmployeeBySurname(String surname) {
+        return employeeDao.findBySurname(surname);
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public List<Employee> getEmployeeByNameSurname(String name, String surname) {
+        return employeeDao.findByNameSurname(name, surname);
+    }
+
     public void setEmployeeDao(EmployeeDao employeeDao) {
         this.employeeDao = employeeDao;
     }
