@@ -12,4 +12,9 @@ public class MainController {
     public String index() {
         return "index";
     }
+
+    @RequestMapping(value = "/stuff", method = RequestMethod.GET)
+    public String stuff() {
+        return "redirect:/static/stuff.html";
+    }
 }
