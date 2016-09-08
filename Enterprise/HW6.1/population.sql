@@ -32,8 +32,8 @@ INSERT INTO public.store (id, quantity, ingredient_name) VALUES (6, 100, 'Olive 
 INSERT INTO public.store (id, quantity, ingredient_name) VALUES (7, 100, 'Olives');
 
 
-INSERT INTO public.menu (name) VALUES ('Pizza');
-INSERT INTO public.menu (name) VALUES ('Salad');
+INSERT INTO public.menu (name, id) VALUES ('Pizza', 1);
+INSERT INTO public.menu (name, id) VALUES ('Salad', 2);
 
 INSERT INTO public.menu_list (dish_id, menu) VALUES (1, 'Salad');
 INSERT INTO public.menu_list (dish_id, menu) VALUES (2, 'Pizza');

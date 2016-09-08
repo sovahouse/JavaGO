@@ -58,7 +58,8 @@ create table MENU_LIST(
 );
 
 create table MENU(
-	NAME text primary key not null
+	NAME text primary key not null,
+	ID int
 );
 
 
