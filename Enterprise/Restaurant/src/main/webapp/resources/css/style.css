@@ -14,10 +14,17 @@
 }
 .container{
     margin: 5%;
-    text-align: center;
+    text-align: left;
     border-radius: 15px;
     background-color: tomato;
     font-family: sans-serif;
     font-weight: bold;
     color: #fef6ff;
+}
+.link{
+    text-align: center;
+}
+
+.link a{
+    text-decoration: none;
 }
