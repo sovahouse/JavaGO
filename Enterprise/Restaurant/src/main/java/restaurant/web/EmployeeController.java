@@ -1,13 +1,10 @@
 package restaurant.web;
 
 
-import org.springframework.web.servlet.ModelAndView;
 import restaurant.model.Employee;
 import restaurant.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -15,14 +12,6 @@ import java.util.List;
 public class EmployeeController {
 
     private EmployeeService employeeService;
-
-    @RequestMapping(value = "/editemployee/{id}", method = RequestMethod.GET)
-    public ModelAndView editId(@PathVariable int id) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("employee", employeeService.getById(id));
-        modelAndView.setViewName("editemployee");
-        return modelAndView;
-    }
 
     @RequestMapping(value = "/employees", method = RequestMethod.GET)
     public List<Employee> employees() {

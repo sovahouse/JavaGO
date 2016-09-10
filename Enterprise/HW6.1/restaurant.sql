@@ -16,7 +16,8 @@ create table DISH(
 	NAME text,
 	CATEGORY text,
 	PRICE real,
-	WEIGHT double precision
+	WEIGHT double precision,
+	PHOTO text
 	
 );
 

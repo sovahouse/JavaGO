@@ -5,11 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class StaticEmployeeController {
+public class StaticDishController {
 
-    @RequestMapping(value = "/stuff", method = RequestMethod.GET)
-    public String stuff() {
-        return "redirect:/static/stuff.html";
+    @RequestMapping(value = "dishes/dishdetail", method = RequestMethod.GET)
+    public String dishdetail() {
+        return "redirect:/static/dishdetail.html";
     }
-
 }

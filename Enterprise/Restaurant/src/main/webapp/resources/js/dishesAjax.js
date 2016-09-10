@@ -3,20 +3,28 @@ $(function () {
      url: '/dishes',
      dataType: 'json',
      success: function (data) {
+         localStorage.clear();
          console.log('data', data);
-         var carousel = document.querySelector('#carousel');
-         var list = document.createElement('ul');
+         var menu = document.querySelector('.menu');
          $.each(data, function (i, val) {
-             var inner = '<li>' + val.name + '</li>';
+         var list = document.createElement('figure');
+             var inner =  '<a href="/dishes/dishdetail" class="sendId" name="' + val.id + '">' + val.name + '<figcaption>' + '<img src="' + val.photo + '">' + '</figcaption>' + '</a>';
              list.innerHTML += inner;
-             carousel.appendChild(list);
-
+             menu.appendChild(list);
 
          });
-         console.log('carousel', carousel);
-
-
-
+         var sendId = $('.sendId');
+         /*sendId.on('click', function (e) {
+          e.preventDefault();
+          var id = sendId.attr('name');
+          console.log("id", id);
+          localStorage.setItem('dishIdForDishDetail', id);
+          console.log('local', localStorage);
+          });*/
+         $(document).click(function(event) {
+             var text = $(event.target);
+             console.log('text', text);
+         });
      }
  });
 });

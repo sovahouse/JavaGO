@@ -39,6 +39,9 @@ public class Dish {
     @Column(name = "weight")
     private double weight;
 
+    @Column(name = "photo")
+    private String photo;
+
     public int getId() {
         return id;
     }
@@ -85,6 +88,14 @@ public class Dish {
 
     public void setWeight(double weight) {
         this.weight = weight;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     @Override
