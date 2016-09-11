@@ -7,10 +7,11 @@ $(function () {
          console.log('data', data);
          var menu = document.querySelector('.menu');
          $.each(data, function (i, val) {
-         var list = document.createElement('figure');
-             list.innerHTML +=  '<a href="/dishes/dishdetail" class="sendId" name="' + val.id + '"> <figcaption>' + '<img src="' + val.photo + '">' +
+         var figure = document.createElement('figure');
+             $(figure).addClass("figure");
+             figure.innerHTML +=  '<a href="/dishes/dishdetail" class="sendId" name="' + val.id + '"> <figcaption>' + '<img src="' + val.photo + '">' +
                  '</figcaption>' + val.name + ' ' + val.weight + 'g<br>' + val.price + ' UAH' + '</a>';
-             menu.appendChild(list);
+             menu.appendChild(figure);
 
          });
 

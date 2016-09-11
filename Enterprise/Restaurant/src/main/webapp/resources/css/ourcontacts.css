@@ -1,0 +1,36 @@
+.address{
+
+
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+.address h1{
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    font-family: sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+}
+.address img{
+    width: 776px;
+    height: 630px;
+}
+.infoList li{
+    line-height: 40px;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+}
+.infoList{
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row wrap;
+}
+.infoList img{
+    margin-left: 18%;
+}
+

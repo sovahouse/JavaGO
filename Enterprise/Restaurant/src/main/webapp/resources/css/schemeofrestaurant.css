@@ -1,0 +1,20 @@
+.scheme{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+.scheme h1{
+    margin: 0 auto;
+    width: 330px;
+    margin-bottom: 30px;
+    font-family: sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    color: black;
+}
+.scheme img{
+    display: block;
+    margin: 0 auto;
+    width: 700px;
+    height: 600px;
+}

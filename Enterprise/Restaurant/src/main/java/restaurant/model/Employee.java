@@ -35,6 +35,9 @@ public class Employee {
     @Column(name = "salary")
     private double salary;
 
+    @Column(name = "photo")
+    private String photo;
+
     public int getId() {
         return id;
     }
@@ -89,6 +92,14 @@ public class Employee {
 
     public void setSalary(double salary) {
         this.salary = salary;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     @Override

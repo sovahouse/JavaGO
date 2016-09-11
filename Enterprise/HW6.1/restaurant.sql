@@ -5,7 +5,8 @@
 	BIRTH_DATE date,
 	PHONE text,
 	POSITION text,
-	SALARY real
+	SALARY real,
+	PHOTO text
 );
 
 commit;
