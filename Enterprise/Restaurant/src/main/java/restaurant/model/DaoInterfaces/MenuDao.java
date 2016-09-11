@@ -10,8 +10,8 @@ public interface MenuDao {
 
     void add(Menu menu);
     void remove(Menu menu);
-    void deleteDish(Dish dish, Menu targetMenu/*TODO:List<Dish>*/);
-    void addDish(Dish dish, Menu targetMenu/*List<Dish>*/);
+    void deleteDish(Dish dish, Menu targetMenu);
+    void addDish(Dish dish, Menu targetMenu);
     Menu getByName(String name);
     Menu getById(int id);
     List<Menu> findAll();

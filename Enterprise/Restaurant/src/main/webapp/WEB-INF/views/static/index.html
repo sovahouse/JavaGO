@@ -6,6 +6,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
 
     <!--<script type="text/javascript" src="/resources/js/jquery.js"></script>-->
+    <script type="text/javascript" src="/resources/js/searchButton.js"></script>
     <script type="text/javascript" src="/resources/js/dishesAjax.js"></script>
     <!--<script type="text/javascript" src="/resources/js/jquery.jcarousel.min.js"></script>-->
     <!--<script type="text/javascript" src="/resources/js/jcarousel.basic.js"></script>-->
@@ -28,9 +29,9 @@
         </ul>
         <div class="search">
 
-        <form action="">
-            <input type="text" name="search..." placeholder="search...">
-            <button>search</button>
+        <form action="/dishes/dishdetail">
+            <input id="search" type="text" name="search..." placeholder="search...">
+            <button id="searchButton">search</button>
         </form>
         </div>
     </header>

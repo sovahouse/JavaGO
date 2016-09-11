@@ -6,11 +6,17 @@ $(function () {
             console.log('data', data);
             var menu = document.querySelector('.menu');
             var figure = document.createElement('figure');
-            var inner =  data.name + '<figcaption>' + '<img src="' + data.photo + '">' + '</figcaption>';
-            figure.innerHTML += inner;
+            figure.innerHTML += '<figcaption>' + '<img src="' + data.photo + '">' + '</figcaption>' +
+                data.name + ' ' + data.weight + 'g' + '<p>';
+            $.each(data.ingredients, function (i, val) {
+                if(i + 1 !== data.ingredients.length) {
+                    figure.innerHTML += val.name + ', ';
+                } else {
+                    figure.innerHTML += val.name;
+                }
+            });
+            figure.innerHTML += '</p>' + data.price + ' UAH' + '</a>';
             menu.appendChild(figure);
-            // localStorage.removeItem("dishIdForDishDetail");
-
         }
     });
 });

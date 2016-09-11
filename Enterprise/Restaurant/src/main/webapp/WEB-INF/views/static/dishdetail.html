@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Dish Detail</title>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"></script>
+    <script type="text/javascript" src="/resources/js/searchButton.js"></script>
     <script type="text/javascript" src="/resources/js/dishDetailAjax.js"></script>
     <link rel="stylesheet" href="/resources/css/reset.css" type="text/css">
     <link rel="stylesheet" href="/resources/css/maincss.css" type="text/css">
@@ -19,9 +20,9 @@
         </ul>
         <div class="search">
 
-            <form action="">
-                <input type="text" name="search..." placeholder="search...">
-                <button>search</button>
+            <form action="/dishes/dishdetail">
+                <input id="search" type="text" name="search..." placeholder="search...">
+                <button id="searchButton">search</button>
             </form>
         </div>
     </header>

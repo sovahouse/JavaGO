@@ -84,6 +84,12 @@ header:after {
     clear: both;
 }
 .footer-bottom {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    text-align: center;
     display: flex;
     align-items: flex-end;
     background-color: #35383c; }
