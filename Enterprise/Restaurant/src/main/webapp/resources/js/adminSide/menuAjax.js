@@ -1,6 +1,6 @@
 $(function () {
     $.ajax({
-        url: '/menus',
+        url: '/menu',
         dataType: 'json',
         success: function (data) {
             localStorage.clear();
@@ -25,7 +25,7 @@ $(function () {
                     }
                 }
                 $.ajax({
-                    url: "/menus/delete",
+                    url: "/menu/delete",
                     type: "POST",
                     data: JSON.stringify(result),
                     contentType:"application/json",

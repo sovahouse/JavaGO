@@ -26,7 +26,7 @@ public class AdminController {
 
     @RequestMapping(value = "/admin/employee/edit", method = RequestMethod.GET)
     public String editEmployee() {
-        return "redirect:/static/adminSide/edit.html";
+        return "redirect:/static/adminSide/editEmployee.html";
     }
 
     @RequestMapping(value = "/admin/dishes", method = RequestMethod.GET)
@@ -34,9 +34,9 @@ public class AdminController {
         return "redirect:/static/adminSide/dishes.html";
     }
 
-    @RequestMapping(value = "/admin/menus", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/menu", method = RequestMethod.GET)
     public String menus() {
-        return "redirect:/static/adminSide/menus.html";
+        return "redirect:/static/adminSide/menu.html";
     }
 
     @RequestMapping(value = "/admin/store", method = RequestMethod.GET)

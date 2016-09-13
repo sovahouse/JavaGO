@@ -5,6 +5,7 @@ $(function () {
         success: function (data) {
             $('#editform').submit(function (e) {
                 e.preventDefault();
+                var photo = $('#photo').val();
                 var name = $('#name').val();
                 var surname = $('#surmane').val();
                 var birthDate = $('#birthdate').val();

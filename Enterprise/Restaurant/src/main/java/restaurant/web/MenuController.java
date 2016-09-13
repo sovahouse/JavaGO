@@ -15,22 +15,22 @@ public class MenuController {
 
     private MenuService menuService;
 
-    @RequestMapping(value = "/menus", method = RequestMethod.GET)
+    @RequestMapping(value = "/menu", method = RequestMethod.GET)
     public List<Menu> menus(){
         return menuService.findAll();
     }
 
-    @RequestMapping(value = "/menus/id={id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/menu/id={id}", method = RequestMethod.GET)
     public Menu getById(@PathVariable int id) {
         return menuService.getById(id);
     }
 
-    @RequestMapping(value = "/menus/name={name}", method = RequestMethod.GET)
+    @RequestMapping(value = "/menu/name={name}", method = RequestMethod.GET)
     public Menu getByName(@PathVariable String name) {
         return menuService.getByName(name);
     }
 
-    @RequestMapping(value = "/menus/delete", method = RequestMethod.POST)
+    @RequestMapping(value = "/menu/delete", method = RequestMethod.POST)
     public void delete(@RequestBody Menu menu) {
         menuService.deleteMenu(menu);
     }
