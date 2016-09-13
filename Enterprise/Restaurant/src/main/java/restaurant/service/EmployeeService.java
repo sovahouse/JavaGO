@@ -16,8 +16,8 @@ public class EmployeeService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public void createEmployee(Employee employee) {
-        employeeDao.save(employee);
+    public void createOrUpdateEmployee(Employee employee) {
+        employeeDao.saveOrUpdate(employee);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)

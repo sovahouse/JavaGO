@@ -33,6 +33,11 @@ public class MenuService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
+    public void deleteDishFromAllMenus(Dish dish) {
+        menuDao.deleteDishFromAllMenus(dish);
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
     public Menu getByName(String name) {
         return menuDao.getByName(name);
     }

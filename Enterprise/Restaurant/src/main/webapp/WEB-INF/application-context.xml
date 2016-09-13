@@ -13,11 +13,6 @@
         <property name="orderService" ref="orderService"/>
     </bean>
 
-    <!--CONTROLLERS-->
-    <!--<bean class="EmployeeController" id="employeeController">
-        <property name="employeeService" ref="employeeService"/>
-    </bean>-->
-
     <!--SERVICES-->
     <bean class="restaurant.service.OrderService" id="orderService">
         <property name="orderDao" ref="orderDao"/>

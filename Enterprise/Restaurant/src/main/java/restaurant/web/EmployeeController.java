@@ -34,6 +34,17 @@ public class EmployeeController {
         }
     }
 
+    @RequestMapping(value = "/employees/delete", method = RequestMethod.POST)
+    public void delete(@RequestBody Employee employee) {
+        employeeService.deleteEmployee(employee);
+    }
+
+    @RequestMapping(value = "/employees/createOrUpdate", method = RequestMethod.POST)
+    public void createOrUpdate(@RequestBody Employee employee) {
+        System.out.println(employee);
+        employeeService.createOrUpdateEmployee(employee);
+    }
+
     @Autowired
     public void setEmployeeService(EmployeeService employeeService) {
         this.employeeService = employeeService;

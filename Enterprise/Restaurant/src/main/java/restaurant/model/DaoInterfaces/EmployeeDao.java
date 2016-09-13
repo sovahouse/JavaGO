@@ -13,7 +13,7 @@ public interface EmployeeDao {
 
     void remove(Employee employee);
 
-    void save(Employee employee);
+    void saveOrUpdate(Employee employee);
 
     Employee getById(int id);
 

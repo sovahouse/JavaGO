@@ -31,7 +31,7 @@ public class BootController {
         orderService.addDish(dishService.getDishByName("Classic Chicken Salad"), order);
         orderService.addDish(dishService.getDishByName("Feta Pizza"), order);
 
-        //orderService.closeOrder(order);
+        orderService.closeOrder(order);
     }
 
     @Autowired

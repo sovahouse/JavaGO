@@ -8,6 +8,7 @@ import org.hibernate.query.Query;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HMenuDao implements MenuDao {
@@ -40,6 +41,23 @@ public class HMenuDao implements MenuDao {
         if (!targetMenu.getDishes().contains(dish)) {
             targetMenu.getDishes().add(dish);
             sessionFactory.getCurrentSession().saveOrUpdate(targetMenu);
+        }
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
+    public void deleteDishFromAllMenus(Dish dish) {
+        List<Menu> result = new ArrayList<>();
+        for (Menu menu : findAll()) {
+            for (Dish d : menu.getDishes()) {
+                if (dish.equals(d)) {
+                    result.add(menu);
+                }
+            }
+        }
+
+        for (Menu menu : result) {
+            deleteDish(dish, menu);
         }
     }
 

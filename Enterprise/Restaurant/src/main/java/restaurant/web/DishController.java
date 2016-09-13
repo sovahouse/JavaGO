@@ -1,16 +1,21 @@
 package restaurant.web;
 
 import restaurant.model.Dish;
+import restaurant.model.Employee;
+import restaurant.model.Menu;
 import restaurant.service.DishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import restaurant.service.MenuService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class DishController {
 
     private DishService dishService;
+    private MenuService menuService;
 
     @RequestMapping(value = "/dishes", method = RequestMethod.GET)
     public List<Dish> getAllDishes() {
@@ -26,8 +31,20 @@ public class DishController {
     public Dish getDishById(@PathVariable("id") int id) {
         return dishService.getById(id);
     }
+
+    @RequestMapping(value = "/dishes/delete", method = RequestMethod.POST)
+    public void delete(@RequestBody  Dish dish) {
+        menuService.deleteDishFromAllMenus(dish);
+        dishService.deleteDish(dish);
+    }
+
     @Autowired
     public void setDishService(DishService dishService) {
         this.dishService = dishService;
+    }
+
+    @Autowired
+    public void setMenuService(MenuService menuService) {
+        this.menuService = menuService;
     }
 }

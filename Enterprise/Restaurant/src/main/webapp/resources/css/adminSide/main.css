@@ -1,0 +1,25 @@
+.wrapper{
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    width: 900px;
+    margin: 0 auto;
+}
+.button a{
+    margin: 20px;
+    line-height: 170px;
+    text-align: center;
+    display: block;
+    width: 250px;
+    border: 1px solid grey;
+    background: #2A2D32;
+    color: #9b9b9b;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+}
+.button a:hover{
+    background: #16191e;
+    color: #ffffff;
+}
