@@ -43,4 +43,9 @@ public class AdminController {
     public String store() {
         return "redirect:/static/adminSide/store.html";
     }
+
+    @RequestMapping(value = "/admin/orders", method = RequestMethod.GET)
+    public String orders() {
+        return "redirect:/static/adminSide/orders.html";
+    }
 }

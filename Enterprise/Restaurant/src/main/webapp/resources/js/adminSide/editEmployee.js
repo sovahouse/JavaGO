@@ -34,6 +34,10 @@ $(function () {
                     contentType:"application/json",
                     dataType:"json"
                 });
+                $('#back').on('click', function () {
+                    window.location.replace("/admin/stuff");
+                });
+
             });
         }
 

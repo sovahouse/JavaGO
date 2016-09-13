@@ -12,7 +12,7 @@ public class OrderController {
 
     private OrderService orderService;
 
-    @RequestMapping(value = "/order", method = RequestMethod.GET)
+    @RequestMapping(value = "/orders", method = RequestMethod.GET)
     public List<Order> getAllOrders() {
         return orderService.findAllOrders();
     }

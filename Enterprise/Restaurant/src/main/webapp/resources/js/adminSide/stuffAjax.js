@@ -6,6 +6,8 @@ $(function () {
             localStorage.clear();
             var employees = document.createElement('div');
             $(employees).addClass("employees");
+            data.sort(sortById);
+
             $.each(data, function (i, val) {
                 var container = document.createElement('div');
                 $(container).addClass("container");
@@ -59,6 +61,10 @@ $(function () {
             });
         }
     });
+
+    function sortById(a, b){
+        return ((a.id < b.id) ? -1 : ((a.id > b.id) ? 1 : 0));
+    }
 
     function extractBirthDate(birthday) {
         var day = birthday.birthDate.dayOfMonth;
