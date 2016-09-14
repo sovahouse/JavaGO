@@ -1,12 +1,14 @@
+//TODO: добавить во все функции edit валидаторы
 $(function () {
     $.ajax({
         url: '/employees',
         dataType: 'json',
         success: function (data) {
             localStorage.clear();
+            data.sort(sortById);
+
             var employees = document.createElement('div');
             $(employees).addClass("employees");
-            data.sort(sortById);
 
             $.each(data, function (i, val) {
                 var container = document.createElement('div');
@@ -24,7 +26,7 @@ $(function () {
                 var inner = '<img src="' + photo + '">' + '<figcaption>' + 'Name:' + name +
                     '<p>' + 'Surname: ' + surname + '</p>' +
                     '<p>' + 'Phone: ' + phone + '</p>' +
-                    '<p>' + 'Birthday: ' +/* + extractBirthDate(val) + */'</p>' +
+                    '<p>' + 'Birthday: ' + extractDate(val) + '</p>' +
                     '<p>' + 'Position: ' + position + '</p>' +
                     '<p>' + 'Salary: ' + salary + ' UAH' + '</p>' + "</figcaption>" +
                     '<p>' +'<a href="/admin/employee/edit">' + '<button class="edit" name="'+ id + '">' + 'Edit' + '</button>' +'</a>' +
@@ -66,10 +68,10 @@ $(function () {
         return ((a.id < b.id) ? -1 : ((a.id > b.id) ? 1 : 0));
     }
 
-    function extractBirthDate(birthday) {
-        var day = birthday.birthDate.dayOfMonth;
-        var month = birthday.birthDate.monthValue;
-        var year = birthday.birthDate.year;
+    function extractDate(val) {
+        var day = val.birthDate[2];
+        var month = val.birthDate[1];
+        var year = val.birthDate[0];
         var result;
 
         if ((day + "").length === 1) {

@@ -17,9 +17,13 @@ $(function () {
                 } else if(!isAlpha(name) && name !== "") {
                     console.error("invalid input"); //TODO: вывод ошибки на екран
                 }
-                if(surname !== null && surname !== "") {
+
+                if(isAlpha(surname) && surname !== "") {
                     data.surname = surname;
+                } else if(!isAlpha(surname) && surname !== "") {
+                    console.error("invalid input"); //TODO: вывод ошибки на екран
                 }
+
                 if(birthDate !== null && birthDate !== "") {
                     data.birthDate = birthDate;
                 }
@@ -36,9 +40,6 @@ $(function () {
                     data: JSON.stringify(data),
                     contentType:"application/json",
                     dataType:"json"
-                });
-                $('#back').on('click', function () {
-                    window.location.replace("/admin/stuff");
                 });
 
             });
