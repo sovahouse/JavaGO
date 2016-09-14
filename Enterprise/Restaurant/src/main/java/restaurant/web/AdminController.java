@@ -26,7 +26,7 @@ public class AdminController {
 
     @RequestMapping(value = "/admin/employee/edit", method = RequestMethod.GET)
     public String editEmployee() {
-        return "redirect:/static/adminSide/editEmployee.html";
+        return "redirect:/static/adminSide/editPages/editEmployee.html";
     }
 
     @RequestMapping(value = "/admin/dishes", method = RequestMethod.GET)

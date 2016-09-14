@@ -12,8 +12,10 @@ $(function () {
                 var position = $('#position').val();
                 var salary = $('#salary').val();
 
-                if(name !== null && name !== "") {
+                if(isAlpha(name) && name !== "") {
                     data.name = name;
+                } else if(!isAlpha(name) && name !== "") {
+                    console.error("invalid input"); //TODO: вывод ошибки на екран
                 }
                 if(surname !== null && surname !== "") {
                     data.surname = surname;
@@ -45,3 +47,8 @@ $(function () {
     });
 
 });
+
+function isAlpha(s)
+{
+    return s.match("^[a-zA-Z]");
+}
