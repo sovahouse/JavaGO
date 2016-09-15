@@ -31,12 +31,11 @@ $(function () {
                     '<p>' + 'Salary: ' + salary + ' UAH' + '</p>' + "</figcaption>" +
                     '<p>' +'<a href="/admin/employee/edit">' + '<button class="edit" name="'+ id + '">' + 'Edit' + '</button>' +'</a>' +
                     '<button class="delete"  name="' + id + '">' + 'Delete' + '</button>' + '</p>';
-                console.log("inner", inner);
                 figure.innerHTML = inner;
                 container.appendChild(figure);
                 employees.appendChild(container);
             });
-            $('body').html(employees);
+            $('.wrapper').html(employees);
 
             $('.edit').click(function (){
                 var id = $(this).attr("name");
@@ -69,23 +68,23 @@ $(function () {
     }
 
     function extractDate(val) {
-        var day = val.birthDate[2];
-        var month = val.birthDate[1];
-        var year = val.birthDate[0];
-        var result;
+        if (val.birthDate !== null) {
+            var day = val.birthDate[2];
+            var month = val.birthDate[1];
+            var year = val.birthDate[0];
+            var result;
 
-        if ((day + "").length === 1) {
-            day = "0" + day;
-            console.log("day", day);
+            if ((day + "").length === 1) {
+                day = "0" + day;
+            }
+            if ((month + "").length === 1) {
+                month = "0" + month;
+            }
+
+            result = day + '.' + month + '.' + year;
+
+            return result;
         }
-        if ((month + "").length === 1) {
-            month = "0" + month;
-        }
-
-        result = day + '.' + month + '.' + year;
-
-        console.log('result:', result);
-        return result;
     }
 
 

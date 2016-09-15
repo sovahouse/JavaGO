@@ -5,22 +5,48 @@
     <title>Edit</title>
     <script type="text/javascript" src="/resources/js/jquery.js"></script>
     <script type="text/javascript" src="/resources/js/adminSide/createOrUpdateScripts/createOrUpdateEmployee.js"></script>
+    <link rel="stylesheet" href="/resources/css/reset.css" type="text/css">
+    <link rel="stylesheet" href="/resources/css/adminSide/createOrUpdateEmployee.css" type="text/css">
 </head>
 <body>
 
 <div class="wrapper">
     <form action="#" id="editform">
         <ul>
-            <li><input type="file" id="photo"><label for="photo">Photo init</label></li>
-            <li><input type="text" id="name"><label for="name">Name init</label></li>
-            <li><input type="text" id="surmane"><label for="surmane">Surname init</label></li>
-            <li><input type="text" id="birthdate"><label for="birthdate">Birth date init</label></li>
-            <li><input type="text" id="position"><label for="position">position init</label></li>
-            <li><input type="text" id="salary"><label for="salary">salary init</label></li>
-            <li><input type="submit" id="submit"></li>
+            <li>
+                <label for="photo">Photo:</label>
+                <input type="file" id="photo">
+            </li>
+            <li>
+                <label for="name">Name:</label>
+                <input type="text" id="name">
+                <label class="error" for="name">invalid input</label>
+            </li>
+            <li>
+                <label for="surmane">Surname:</label>
+                <input type="text" id="surmane">
+            </li>
+            <li>
+                <label for="birthdate">Birth date:</label>
+                <input type="date" id="birthdate">
+            </li>
+            <li>
+                <label for="position">position:</label>
+                <input type="text" id="position">
+            </li>
+            <li>
+                <label for="salary">salary:</label>
+                <input type="text" id="salary">
+            </li>
+            <li>
+                <input class="submit" type="submit" id="submit" value="SUBMIT">
+                <a href="/admin/stuff">
+                    <button class="buttonBack">BACK</button>
+                </a>
+            </li>
         </ul>
     </form>
-    <a href="/admin/stuff"><button>back</button></a>
+
 </div>
 </body>
 </html>

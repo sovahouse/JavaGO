@@ -12,8 +12,8 @@ public class StoreService {
     private StoreDao storeDao;
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public void create(Store store) {
-        storeDao.save(store);
+    public void createOrUpdate(Store store) {
+        storeDao.createOrUpdate(store);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
@@ -29,6 +29,11 @@ public class StoreService {
     @Transactional(propagation = Propagation.REQUIRED)
     public Store findByIngredientsName(String name) {
         return storeDao.findByIngredientsName(name);
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public Store getById(int id) {
+        return storeDao.getById(id);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)

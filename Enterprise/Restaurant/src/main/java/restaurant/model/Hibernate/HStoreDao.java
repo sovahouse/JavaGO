@@ -15,8 +15,8 @@ public class HStoreDao implements StoreDao {
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
-    public void save(Store store) {
-        sessionFactory.getCurrentSession().save(store);
+    public void createOrUpdate(Store store) {
+        sessionFactory.getCurrentSession().saveOrUpdate(store);
 
     }
 
@@ -54,6 +54,14 @@ public class HStoreDao implements StoreDao {
     @Transactional(propagation = Propagation.MANDATORY)
     public List<Store> findEndsIngredients() {
         return sessionFactory.getCurrentSession().createQuery("select s from Store s where s.quantity < 10").list();
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
+    public Store getById(int id) {
+        Query query = sessionFactory.getCurrentSession().createQuery("select s from Store s where s.id = :id");
+        query.setParameter("id", id);
+        return (Store) query.uniqueResult();
     }
 
     public void setSessionFactory(SessionFactory sessionFactory) {

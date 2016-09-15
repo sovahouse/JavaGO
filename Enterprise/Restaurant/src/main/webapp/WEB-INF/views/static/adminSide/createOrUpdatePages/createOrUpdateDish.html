@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Edit</title>
     <script type="text/javascript" src="/resources/js/jquery.js"></script>
-    <!--<script type="text/javascript" src="/resources/js/adminSide/createOrUpdateEmployee.js"></script>-->
+    <script type="text/javascript" src="/resources/js/adminSide/createOrUpdateScripts/createOrUpdateDish.js"></script>
 </head>
 <body>
 
@@ -14,6 +14,12 @@
             <li><input type="file" id="photo"><label for="photo">Photo</label></li>
             <li><input type="text" id="name"><label for="name">Name</label></li>
             <li><input type="text" id="price"><label for="price">Price</label></li>
+            <li><select name="ingredients">
+                <option value="ingredients"></option>
+                <option value="ingredients">сахар</option>
+                <option value="ingredients">соль</option>
+                <option value="ingredients">вода</option>
+            </select></li>
             <li><input type="text" id="category"><label for="category">category</label></li>
             <li><input type="text" id="weight"><label for="weight">weight</label></li>
             <!--TODO: add/delete ingredients-->

@@ -34,6 +34,11 @@ public class AdminController {
         return "redirect:/static/adminSide/createOrUpdatePages/createOrUpdateDish.html";
     }
 
+    @RequestMapping(value = "/admin/store/edit", method = RequestMethod.GET)
+    public String createOrUpdateStore() {
+        return "redirect:/static/adminSide/createOrUpdatePages/createOrUpdateStore.html";
+    }
+
     @RequestMapping(value = "/admin/dishes", method = RequestMethod.GET)
     public String dishes() {
         return "redirect:/static/adminSide/dishes.html";

@@ -1,0 +1,45 @@
+body {
+    background: #d6d6d6;
+}
+.wrapper{
+    width: 500px;
+    margin: 150px auto;
+    border: 1px solid black;
+    background: white;
+}
+.wrapper li{
+    margin-left: 15px;
+    line-height: 40px;
+}
+.wrapper label{
+    margin-right: 25px;
+
+}
+.submit, .buttonBack{
+    margin-bottom: 10px;
+    cursor: pointer;
+    line-height: 25px;
+    padding: 0 20px;
+    background: white;
+    border: 2px solid black;
+    border-radius: 15px;
+}
+.buttonBack:hover,
+.submit:hover{
+    background: black;
+    color: white;
+}
+.buttonBack{
+    margin-left: 20px;
+}
+.submit{
+    margin-left: 150px;
+}
+.error{
+    font-family: sans-serif;
+    font-size: 14px;
+    color: #9e0000;
+    padding: 0 10px;
+    display: none;
+}
+

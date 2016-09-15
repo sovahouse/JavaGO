@@ -12,7 +12,7 @@ $(function () {
                 $(container).addClass("container");
                 container.innerHTML += '<p> name: ' + store.ingredient.name  + '</p>'+
                     '<p> quantity: ' + store.quantity  + '</p>'+
-                    '<p>' + '<a href="#">' + '<button class="edit" name="' + store.id + '">' + 'Edit' + '</button>' + '</a>' +
+                    '<p>' + '<a href="/admin/store/edit">' + '<button class="edit" name="' + store.id + '">' + 'Edit' + '</button>' + '</a>' +
                     '<button class="delete"  name="' + store.id + '">' + 'Delete' + '</button>' + '</p>';
                 wrapper.appendChild(container);
             });
@@ -34,6 +34,10 @@ $(function () {
                 });
                 location.reload();
 
+            });
+            $('.edit').click(function (){
+                var id = $(this).attr("name");
+                localStorage.setItem("StoreToEdit", id);
             });
         }
     });
