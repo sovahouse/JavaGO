@@ -1,7 +1,7 @@
-//TODO: добавить во все функции edit валидаторыd
+//TODO: добавить во все функции edit валидаторы
 $(function () {
     $.ajax({
-        url: '/employees',
+        url: '/admin/employees',
         dataType: 'json',
         success: function (data) {
             localStorage.clear();
@@ -51,7 +51,7 @@ $(function () {
                     }
                 }
                 $.ajax({
-                    url: "/employees/delete",
+                    url: "/admin/employees/delete",
                     type: "POST",
                     data: JSON.stringify(result),
                     contentType:"application/json",

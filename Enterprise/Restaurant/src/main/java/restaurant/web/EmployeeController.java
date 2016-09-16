@@ -13,7 +13,7 @@ public class EmployeeController {
 
     private EmployeeService employeeService;
 
-    @RequestMapping(value = "/employees", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/employees", method = RequestMethod.GET)
     public List<Employee> employees() {
         return employeeService.getAllEmployees();
     }
@@ -34,7 +34,7 @@ public class EmployeeController {
         }
     }
 
-    @RequestMapping(value = "/employees/delete", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/employees/delete", method = RequestMethod.POST)
     public void delete(@RequestBody Employee employee) {
         employeeService.deleteEmployee(employee);
     }
