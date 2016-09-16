@@ -1,4 +1,4 @@
-//TODO: добавить во все функции edit валидаторы
+//TODO: добавить во все функции edit валидаторыd
 $(function () {
     $.ajax({
         url: '/employees',
