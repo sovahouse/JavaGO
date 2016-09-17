@@ -61,6 +61,11 @@ public class AdminController {
         return "redirect:/static/adminSide/orders.html";
     }
 
+    @RequestMapping(value = "/admin/menu/edit", method = RequestMethod.GET)
+    public String createOrUpdateMenu() {
+        return "redirect:/static/adminSide/createOrUpdatePages/createOrUpdateMenu.html";
+    }
+
     @RequestMapping(value = "/Access_Denied", method = RequestMethod.GET)
     public String accessDeniedPage(ModelMap model) {
         model.addAttribute("user", getPrincipal());

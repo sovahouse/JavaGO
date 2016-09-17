@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit</title>
+    <link rel="stylesheet" href="/resources/css/reset.css" type="text/css">
+    <link rel="stylesheet" href="/resources/css/adminSide/editPage.css" type="text/css">
     <script type="text/javascript" src="/resources/js/jquery.js"></script>
     <script type="text/javascript" src="/resources/js/adminSide/createOrUpdateScripts/createOrUpdateStore.js"></script>
 </head>
@@ -12,10 +14,14 @@
     <form action="#" id="editform">
         <ul>
             <li><input type="text" id="quantity"><label for="quantity">Quantity</label></li>
-            <li><input type="submit" id="submit"></li>
+            <li>
+                <input class="submit" type="submit" id="submit" value="SUBMIT">
+                <a href="/admin/store">
+                    <button class="buttonBack">BACK</button>
+                </a>
+            </li>
         </ul>
     </form>
-    <a href="/admin/store"><button>back</button></a>
 </div>
 </body>
 </html>

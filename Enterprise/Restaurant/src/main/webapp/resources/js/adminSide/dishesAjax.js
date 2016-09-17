@@ -2,12 +2,15 @@ $(function () {
     localStorage.clear();
     var data = getData();
 
-    var wrapper = document.querySelector('.wrapper');
+    var dishes = document.createElement('div');
+    $(dishes).addClass("dishes");
 
     $.each(data, function (i, dish) {
 
+        var container = document.createElement('div');
+        $(container).addClass("container");
         var figure = document.createElement('figure');
-        $(figure).addClass("figure");
+
         figure.innerHTML += '<figcaption>' + '<img src="' + dish.photo + '">' + '</figcaption>' +
             dish.name + ' ' + dish.weight + 'g' + '<p>';
 
@@ -22,7 +25,9 @@ $(function () {
         figure.innerHTML += '</p>' + dish.price + ' UAH' + '</a>' +
             '<p>' + '<a href="/admin/dish/edit">' + '<button class="edit" name="' + dish.id + '">' + 'Edit' + '</button>' + '</a>' +
             '<button class="delete"  name="' + dish.id + '">' + 'Delete' + '</button>' + '</p>';
-        wrapper.appendChild(figure);
+        container.appendChild(figure);
+        dishes.appendChild(container);
+        $('.wrapper').html(dishes);
     });
 
     $('.delete').click(function () {
@@ -34,7 +39,7 @@ $(function () {
                 break;
             }
         }
-        upload(result);
+        deleteDish(result);
         location.reload();
 
     });
@@ -42,11 +47,11 @@ $(function () {
 
 
 
-function upload(data) {
+function deleteDish(dish) {
     $.ajax({
         url: "/dishes/delete",
         type: "POST",
-        data: JSON.stringify(data),
+        data: JSON.stringify(dish),
         contentType: "application/json",
         dataType: "json"
     });
