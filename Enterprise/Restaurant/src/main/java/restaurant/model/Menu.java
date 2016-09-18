@@ -2,6 +2,7 @@ package restaurant.model;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
@@ -10,18 +11,20 @@ import java.util.List;
 @Table(name = "menu")
 public class Menu {
 
-    @Id
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "id")
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "id", nullable = false)
     private int id;
 
     @OneToMany
     @Fetch(FetchMode.JOIN)
     @JoinTable(
             name = "menu_list",
-            joinColumns = @JoinColumn(name = "menu"),
+            joinColumns = @JoinColumn(name = "menu_id"),
             inverseJoinColumns = @JoinColumn(name = "dish_id")
     )
     private List<Dish> dishes;

@@ -17,8 +17,8 @@ public class HMenuDao implements MenuDao {
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
-    public void add(Menu menu) {
-        sessionFactory.getCurrentSession().save(menu);
+    public void createOrUpdate(Menu menu) {
+        sessionFactory.getCurrentSession().saveOrUpdate(menu);
     }
 
 

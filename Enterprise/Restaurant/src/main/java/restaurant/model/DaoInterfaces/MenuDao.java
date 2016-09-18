@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface MenuDao {
 
-    void add(Menu menu);
+    void createOrUpdate(Menu menu);
     void remove(Menu menu);
     void deleteDish(Dish dish, Menu targetMenu);
     void addDish(Dish dish, Menu targetMenu);

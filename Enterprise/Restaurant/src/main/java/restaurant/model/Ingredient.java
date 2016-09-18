@@ -1,6 +1,8 @@
 package restaurant.model;
 
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,8 +10,21 @@ import javax.persistence.*;
 public class Ingredient {
 
     @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "id", nullable = false)
+    private int id;
+
     @Column(name = "name", nullable = false)
     private String name;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -33,12 +48,15 @@ public class Ingredient {
 
         Ingredient that = (Ingredient) o;
 
-        return name != null ? name.equals(that.name) : that.name == null;
+        if (id != that.id) return false;
+        return name.equals(that.name);
 
     }
 
     @Override
     public int hashCode() {
-        return name != null ? name.hashCode() : 0;
+        int result = id;
+        result = 31 * result + name.hashCode();
+        return result;
     }
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Edit</title>
     <script type="text/javascript" src="/resources/js/jquery.js"></script>
-    <script type="text/javascript" src="/resources/js/adminSide/createOrUpdateScripts/createOrUpdateDish.js"></script>
+    <script type="text/javascript" src="/resources/js/adminSide/createOrUpdateScripts/createOrUpdateMenu.js"></script>
     <link rel="stylesheet" href="/resources/css/reset.css" type="text/css">
     <link rel="stylesheet" href="/resources/css/adminSide/editPage.css" type="text/css">
 </head>
@@ -18,18 +18,17 @@
                 <input type="text" id="name">
             </li>
             <li>
-                <label for="dish">Dish 1:</label>
-                <select id="dish" name="dish">
-                    <option value="ingredients"></option>
-                    <option value="ingredients">сахар</option>
-                    <option value="ingredients">соль</option>
-                    <option value="ingredients">вода</option>
-                </select>
+                <ul class="dishesList">
+                    <!-- <label for="addDishesDOM">Dish 1:</label>
+                     <select id="addDishesDOM" name="addDishesDOM">
+                         <option value="z">z</option>
+                     </select>-->
+                </ul>
             </li>
             <li>
                 <input class="submit" type="submit" id="submit" value="SUBMIT">
-                <a href="/admin/dishes">
-                    <button class="buttonBack">BACK</button>
+                <a href="/admin/menu">
+                    <button class="buttonBack" type="button">BACK</button>
                 </a>
             </li>
         </ul>

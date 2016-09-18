@@ -35,6 +35,12 @@ public class MenuController {
         menuService.deleteMenu(menu);
     }
 
+    @RequestMapping(value = "/menu/createOrUpdate", method = RequestMethod.POST)
+    public void createOrUpdate(@RequestBody Menu menu) {
+        System.out.println(menu.toString());
+        menuService.createOrUpdate(menu);
+    }
+
     @Autowired
     public void setMenuService(MenuService menuService) {
         this.menuService = menuService;

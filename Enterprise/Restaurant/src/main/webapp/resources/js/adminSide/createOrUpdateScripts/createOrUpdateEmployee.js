@@ -1,4 +1,3 @@
-//TODO: отрефакторить
 $(function () {
     if(localStorage.getItem("EmployeeToEdit") !== null) {
         update();
@@ -12,49 +11,28 @@ function update() {
         url: '/employees/id=' + localStorage.getItem("EmployeeToEdit"),
         dataType: 'json',
         success: function (data) {
-            $('#editform').submit(function (e) {
-                e.preventDefault();
-                var photo = $('#photo').val();
-                var name = $('#name').val();
-                var surname = $('#surmane').val();
-                var birthDate = $('#birthdate').val();
-                var position = $('#position').val();
-                var salary = $('#salary').val();
-
-                if(isAlpha(name) && name !== "") {
-                    data.name = name;
-                } else if(!isAlpha(name) && name !== "") {
-                  $('.error').toggle();
-                }
-
-                if(isAlpha(surname) && surname !== "") {
-                    data.surname = surname;
-                } else if(!isAlpha(surname) && surname !== "") {
-
-                    console.error("invalid input"); //TODO: вывод ошибки на екран
-                }
-
-                if(birthDate !== null && birthDate !== "") {
-                    data.birthDate = birthDate;
-                }
-                if(position !== null && position !== "") {
-                    data.position = position.toUpperCase();
-                }
-                if(salary !== null && salary !== "") {
-                    data.salary = salary;
-                }
-
-                upload(data);
-            });
+            $('#name').val(data.name);
+            $('#surmane').val(data.surname);
+            $('#birthdate').val(extractDate(data));
+            $('#position').val(data.position);
+            $('#salary').val(data.salary);
+            submit(data);
         }
 
     });
 }
 
 function create() {
+    submit();
+}
+
+function submit(data) {
+    if (data === undefined) {
+        data = {};
+    }
+
     $('#editform').submit(function (e) {
         e.preventDefault();
-        var result = {};
         var photo = $('#photo').val();
         var name = $('#name').val();
         var surname = $('#surmane').val();
@@ -63,29 +41,18 @@ function create() {
         var salary = $('#salary').val();
 
         if(isAlpha(name) && name !== "") {
-            result.name = name;
+            data.name = name;
         } else if(!isAlpha(name) && name !== "") {
-            console.error("invalid input"); //TODO: вывод ошибки на екран
+            $('.error').toggle();
+            throw new Error("invalid name input");
         }
 
-        if(isAlpha(surname) && surname !== "") {
-            result.surname = surname;
-        } else if(!isAlpha(surname) && surname !== "") {
-            console.error("invalid input"); //TODO: вывод ошибки на екран
-        }
+        data.surname = surname;
+        data.birthDate = birthDate;
+        data.position = position.toUpperCase();
+        data.salary = salary;
 
-        if(birthDate !== null && birthDate !== "") {
-            result.birthDate = birthDate;
-        }
-        if(position !== null && position !== "") {
-            result.position = position.toUpperCase();
-        }
-        if(salary !== null && salary !== "") {
-            result.salary = salary;
-        }
-
-        upload(result);
-
+        upload(data);
     });
 }
 
@@ -99,7 +66,26 @@ function upload(data) {
     });
 }
 
-function isAlpha(s)
-{
+function extractDate(val) {
+    if (val.birthDate !== null) {
+        var day = val.birthDate[2];
+        var month = val.birthDate[1];
+        var year = val.birthDate[0];
+        var result;
+
+        if ((day + "").length === 1) {
+            day = "0" + day;
+        }
+        if ((month + "").length === 1) {
+            month = "0" + month;
+        }
+
+        result = year + '-' + month + '-' + day;
+
+        return result;
+    }
+}
+
+function isAlpha(s) {
     return s.match("^[a-zA-Z]");
 }

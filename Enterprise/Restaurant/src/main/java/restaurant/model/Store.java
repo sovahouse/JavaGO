@@ -15,7 +15,7 @@ public class Store {
     private int id;
 
     @OneToOne
-    @JoinColumn(name = "ingredient_name")
+    @JoinColumn(name = "ingredient_id")
     private Ingredient ingredient;
 
     @Column(name = "quantity")

@@ -25,7 +25,7 @@ public class Dish {
     @JoinTable(
             name = "ingredients_for_dish",
             joinColumns = @JoinColumn(name = "dish_id"),
-            inverseJoinColumns = @JoinColumn(name = "ingredient_name")
+            inverseJoinColumns = @JoinColumn(name = "ingredient_id")
     )
     private List<Ingredient> ingredients;
 
@@ -110,7 +110,7 @@ public class Dish {
         return "Dish{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", ingredients= " + "\"" + ingredientsList + "\"" +
+                ", addDishesDOM= " + "\"" + ingredientsList + "\"" +
                 ", category='" + category + '\'' +
                 ", price=" + price +
                 ", weight=" + weight +

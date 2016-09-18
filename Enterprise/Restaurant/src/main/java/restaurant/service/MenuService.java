@@ -13,8 +13,8 @@ public class MenuService {
     private MenuDao menuDao;
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public void createMenu(Menu menu) {
-        menuDao.add(menu);
+    public void createOrUpdate(Menu menu) {
+        menuDao.createOrUpdate(menu);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
