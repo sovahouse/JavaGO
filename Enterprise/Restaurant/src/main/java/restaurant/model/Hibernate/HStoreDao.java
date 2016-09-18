@@ -28,10 +28,10 @@ public class HStoreDao implements StoreDao {
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
-    public void changeQuantityOfIngredients(String ingredientName, int quantity) {
-        Query query = sessionFactory.getCurrentSession().createQuery("update Store set quantity = :quantity where ingredient.name = :ingredientName");
+    public void changeQuantityOfIngredients(int ingredientId, int quantity) {
+        Query query = sessionFactory.getCurrentSession().createQuery("update Store set quantity = :quantity where ingredient.id = :ingredientId");
         query.setParameter("quantity", quantity);
-        query.setParameter("ingredientName", ingredientName);
+        query.setParameter("ingredientId", ingredientId);
         query.executeUpdate();
     }
 

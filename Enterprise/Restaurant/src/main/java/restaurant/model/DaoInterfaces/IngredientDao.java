@@ -8,5 +8,6 @@ public interface IngredientDao {
 
     List<Ingredient> findAll();
 
+    void createOrUpdate(Ingredient ingredient);
 }
 

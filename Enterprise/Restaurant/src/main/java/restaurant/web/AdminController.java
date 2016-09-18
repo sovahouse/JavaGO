@@ -36,11 +36,6 @@ public class AdminController {
         return "redirect:/static/adminSide/createOrUpdatePages/createOrUpdateDish.html";
     }
 
-    @RequestMapping(value = "/admin/store/edit", method = RequestMethod.GET)
-    public String createOrUpdateStore() {
-        return "redirect:/static/adminSide/createOrUpdatePages/createOrUpdateStore.html";
-    }
-
     @RequestMapping(value = "/admin/dishes", method = RequestMethod.GET)
     public String dishes() {
         return "redirect:/static/adminSide/dishes.html";
@@ -64,6 +59,16 @@ public class AdminController {
     @RequestMapping(value = "/admin/menu/edit", method = RequestMethod.GET)
     public String createOrUpdateMenu() {
         return "redirect:/static/adminSide/createOrUpdatePages/createOrUpdateMenu.html";
+    }
+
+    @RequestMapping(value = "/admin/store/edit", method = RequestMethod.GET)
+    public String updateStore() {
+        return "redirect:/static/adminSide/createOrUpdatePages/updateStore.html";
+    }
+
+    @RequestMapping(value = "/admin/store/create", method = RequestMethod.GET)
+    public String createStore() {
+        return "redirect:/static/adminSide/createOrUpdatePages/createDish.html";
     }
 
     @RequestMapping(value = "/Access_Denied", method = RequestMethod.GET)

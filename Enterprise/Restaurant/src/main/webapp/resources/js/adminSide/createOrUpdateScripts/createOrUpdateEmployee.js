@@ -8,7 +8,7 @@ $(function () {
 
 function update() {
     $.ajax({
-        url: '/employees/id=' + localStorage.getItem("EmployeeToEdit"),
+        url: '/admin/employees/id=' + localStorage.getItem("EmployeeToEdit"),
         dataType: 'json',
         success: function (data) {
             $('#name').val(data.name);
@@ -58,11 +58,14 @@ function submit(data) {
 
 function upload(data) {
     $.ajax({
-        url: "/employees/createOrUpdate",
+        url: "/admin/employees/createOrUpdate",
         type: "POST",
         data: JSON.stringify(data),
         contentType: "application/json",
-        dataType: "json"
+        dataType: "json",
+        complete: function () {
+            $('.success').toggle();
+        }
     });
 }
 

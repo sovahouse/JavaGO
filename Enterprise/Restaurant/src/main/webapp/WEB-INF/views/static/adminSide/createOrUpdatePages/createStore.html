@@ -6,19 +6,29 @@
     <link rel="stylesheet" href="/resources/css/reset.css" type="text/css">
     <link rel="stylesheet" href="/resources/css/adminSide/editPage.css" type="text/css">
     <script type="text/javascript" src="/resources/js/jquery.js"></script>
-    <script type="text/javascript" src="/resources/js/adminSide/createOrUpdateScripts/createOrUpdateStore.js"></script>
+    <script type="text/javascript" src="/resources/js/adminSide/createOrUpdateScripts/createStore.js"></script>
 </head>
 <body>
 
 <div class="wrapper">
     <form action="#" id="editform">
         <ul>
-            <li><input type="text" id="quantity"><label for="quantity">Quantity</label></li>
+            <li>
+                <input type="text" id="name">
+                <label for="name">Name</label>
+            </li>
+            <li>
+                <input type="text" id="quantity">
+                <label for="quantity">Quantity</label>
+            </li>
             <li>
                 <input class="submit" type="submit" id="submit" value="SUBMIT">
                 <a href="/admin/store">
-                    <button class="buttonBack">BACK</button>
+                    <button class="buttonBack" type="button">BACK</button>
                 </a>
+            </li>
+            <li>
+                <label class="success" for="submit">Successfully submitted</label>
             </li>
         </ul>
     </form>

@@ -11,7 +11,6 @@ public class Store {
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
-    @Column(name = "id", nullable = false)
     private int id;
 
     @OneToOne

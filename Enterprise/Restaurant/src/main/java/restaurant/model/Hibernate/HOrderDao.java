@@ -99,7 +99,7 @@ public class HOrderDao implements OrderDao {
     private void releaseIngredients(Dish dish) {
         for (Ingredient ingredient : dish.getIngredients()) {
             int quantity = storeDao.findByIngredientsName(ingredient.getName()).getQuantity();
-            storeDao.changeQuantityOfIngredients(ingredient.getName(), quantity + 1);
+            storeDao.changeQuantityOfIngredients(ingredient.getId(), quantity + 1);
         }
     }
 
@@ -117,7 +117,7 @@ public class HOrderDao implements OrderDao {
             if (quantity < 1) {
                 //TODO: add exception
             }
-            storeDao.changeQuantityOfIngredients(ingredient.getName(), quantity - 1);
+            storeDao.changeQuantityOfIngredients(ingredient.getId(), quantity - 1);
         }
     }
 

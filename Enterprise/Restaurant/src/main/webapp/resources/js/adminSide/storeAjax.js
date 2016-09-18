@@ -7,8 +7,8 @@ $(function () {
 
         var container = document.createElement('div');
         $(container).addClass("container");
-        container.innerHTML += '<p> name: ' + store.ingredient.name + '</p>' +
-            '<p> quantity: ' + store.quantity + '</p>' +
+        container.innerHTML += '<p> Name: ' + store.ingredient.name + '</p>' +
+            '<p> Quantity: ' + store.quantity + '</p>' +
             '<p>' + '<a href="/admin/store/edit">' + '<button class="edit" name="' + store.id + '">' + 'Edit' + '</button>' + '</a>' +
             '<button class="delete"  name="' + store.id + '">' + 'Delete' + '</button>' + '</p>';
         wrapper.appendChild(container);
@@ -34,7 +34,7 @@ $(function () {
 
 function deleteStore(store) {
     $.ajax({
-        url: "/store/delete",
+        url: "/admin/store/delete",
         type: "POST",
         data: JSON.stringify(store),
         contentType: "application/json",
@@ -45,7 +45,7 @@ function deleteStore(store) {
 function getData() {
     return $.ajax({
         async: false,
-        url: '/store',
+        url: '/admin/getAllStore',
         type: 'get',
         dataType: 'JSON'
     }).responseJSON;

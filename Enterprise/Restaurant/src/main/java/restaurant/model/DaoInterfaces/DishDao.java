@@ -13,7 +13,7 @@ public interface DishDao {
 
     void remove(Dish dish);
 
-    void save(Dish dish);
+    void createOrUpdate(Dish dish);
 
     Dish getById(int id);
 

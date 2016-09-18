@@ -12,22 +12,22 @@ public class OrderController {
 
     private OrderService orderService;
 
-    @RequestMapping(value = "/orders", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/getAllOrders", method = RequestMethod.GET)
     public List<Order> getAllOrders() {
         return orderService.findAllOrders();
     }
 
-    @RequestMapping(value = "/order/opened", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/order/opened", method = RequestMethod.GET)
     public List<Order> getAllOpenedOrders() {
         return orderService.findAllOpenedOrders();
     }
 
-    @RequestMapping(value = "/order/closed", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/order/closed", method = RequestMethod.GET)
     public List<Order> getAllClosedOrders() {
         return orderService.findAllClosedOrders();
     }
 
-    @RequestMapping(value = "/order/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/order/{id}", method = RequestMethod.GET)
     public Order getOrderById(@PathVariable int id) {
         return orderService.getById(id);
     }

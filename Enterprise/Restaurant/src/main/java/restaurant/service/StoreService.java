@@ -22,8 +22,8 @@ public class StoreService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public void changeQuantityOfIngredients(String ingredientName, int quantity) {
-        storeDao.changeQuantityOfIngredients(ingredientName, quantity);
+    public void changeQuantityOfIngredients(int ingredientId, int quantity) {
+        storeDao.changeQuantityOfIngredients(ingredientId, quantity);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)

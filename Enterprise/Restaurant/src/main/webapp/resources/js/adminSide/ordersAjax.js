@@ -31,7 +31,7 @@ $(function () {
 function getData() {
     return $.ajax({
         async: false,
-        url: '/orders',
+        url: '/admin/getAllOrders',
         type: 'get',
         dataType: 'JSON'
     }).responseJSON;

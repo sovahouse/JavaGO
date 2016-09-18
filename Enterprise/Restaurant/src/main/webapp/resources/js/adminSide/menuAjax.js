@@ -32,7 +32,7 @@ $(function () {
 
 function deleteMenu(menu) {
     $.ajax({
-        url: "/menu/delete",
+        url: "/admin/menu/delete",
         type: "POST",
         data: JSON.stringify(menu),
         contentType: "application/json",
@@ -43,7 +43,7 @@ function deleteMenu(menu) {
 function getData() {
     return $.ajax({
         async: false,
-        url: '/menu',
+        url: '/admin/getAllMenu',
         type: 'get',
         dataType: 'JSON'
     }).responseJSON;

@@ -1,14 +1,11 @@
 package restaurant.web;
 
 import restaurant.model.Dish;
-import restaurant.model.Employee;
-import restaurant.model.Menu;
 import restaurant.service.DishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import restaurant.service.MenuService;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -32,10 +29,15 @@ public class DishController {
         return dishService.getById(id);
     }
 
-    @RequestMapping(value = "/dishes/delete", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/dishes/delete", method = RequestMethod.POST)
     public void delete(@RequestBody  Dish dish) {
-        menuService.deleteDishFromAllMenus(dish);
+        menuService.deleteDishFromAllMenus(dish);//TODO: предупреждение об этом!
         dishService.deleteDish(dish);
+    }
+    @RequestMapping(value = "/admin/dishes/createOrUpdate", method = RequestMethod.POST)
+    public void createOrUpdate(@RequestBody Dish dish) {
+        System.out.println(dish.toString());
+        dishService.createOrUpdateDish(dish);
     }
 
     @Autowired

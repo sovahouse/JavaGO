@@ -14,8 +14,8 @@ public class IngredientController {
 
     private IngredientService ingredientService;
 
-    @RequestMapping(value = "/admin/ingredients", method = RequestMethod.GET)
-    public List<Ingredient> employees() {
+    @RequestMapping(value = "/admin/getAllIngredients", method = RequestMethod.GET)
+    public List<Ingredient> ingredients() {
         return ingredientService.fingAll();
     }
 

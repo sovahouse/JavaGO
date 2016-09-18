@@ -1,5 +1,6 @@
 package restaurant.web;
 
+import restaurant.model.Dish;
 import restaurant.model.Employee;
 import restaurant.model.Order;
 import restaurant.service.DishService;
@@ -28,9 +29,9 @@ public class BootController {
         order.setWaiter(waiter);
 
         orderService.create(order);
-        orderService.addDish(dishService.getDishByName("Classic Chicken Salad"), order);
-        orderService.addDish(dishService.getDishByName("Feta Pizza"), order);
 
+        orderService.addDish(dishService.getById(1), order);
+        orderService.addDish(dishService.getById(2), order);
         orderService.closeOrder(order);
     }
 

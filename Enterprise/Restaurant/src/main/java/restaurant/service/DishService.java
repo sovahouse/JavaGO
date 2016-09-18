@@ -18,8 +18,8 @@ public class DishService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public void createDish(Dish dish) {
-        dishDao.save(dish);
+    public void createOrUpdateDish(Dish dish) {
+        dishDao.createOrUpdate(dish);
     }
 
     @Transactional(propagation = Propagation.REQUIRED)

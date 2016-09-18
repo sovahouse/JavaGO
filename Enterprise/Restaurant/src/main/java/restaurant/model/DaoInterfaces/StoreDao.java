@@ -8,7 +8,7 @@ public interface StoreDao {
 
     void createOrUpdate(Store store);
     void remove(Store store);
-    void changeQuantityOfIngredients(String ingredientName, int quantity);
+    void changeQuantityOfIngredients(int ingredientId, int quantity);
     Store findByIngredientsName(String name);
     List<Store> findAll();
     List<Store> findEndsIngredients();

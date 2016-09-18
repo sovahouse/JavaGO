@@ -3,31 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit</title>
-    <script type="text/javascript" src="/resources/js/jquery.js"></script>
-    <script type="text/javascript" src="/resources/js/adminSide/createOrUpdateScripts/createOrUpdateMenu.js"></script>
     <link rel="stylesheet" href="/resources/css/reset.css" type="text/css">
     <link rel="stylesheet" href="/resources/css/adminSide/editPage.css" type="text/css">
+    <script type="text/javascript" src="/resources/js/jquery.js"></script>
+    <script type="text/javascript" src="/resources/js/adminSide/createOrUpdateScripts/updateStore.js"></script>
 </head>
 <body>
 
 <div class="wrapper">
     <form action="#" id="editform">
-        <ul>
-            <li>
-                <label for="name">Name:</label>
-                <input type="text" id="name">
-            </li>
-            <li>
-                <ul class="dishesList">
-                    <!-- <label for="addIngredientsDOM">Dish 1:</label>
-                     <select id="addIngredientsDOM" name="addIngredientsDOM">
-                         <option value="z">z</option>
-                     </select>-->
-                </ul>
+        <ul class="list">
+            <li class="first">
+                <input type="text" id="quantity">
+                <label for="quantity">Quantity</label>
             </li>
             <li>
                 <input class="submit" type="submit" id="submit" value="SUBMIT">
-                <a href="/admin/menu">
+                <a href="/admin/store">
                     <button class="buttonBack" type="button">BACK</button>
                 </a>
             </li>

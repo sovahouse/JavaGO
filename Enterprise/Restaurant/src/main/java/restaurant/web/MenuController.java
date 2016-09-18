@@ -15,27 +15,27 @@ public class MenuController {
 
     private MenuService menuService;
 
-    @RequestMapping(value = "/menu", method = RequestMethod.GET)
-    public List<Menu> menus(){
+    @RequestMapping(value = "/admin/getAllMenu", method = RequestMethod.GET)
+    public List<Menu> menu(){
         return menuService.findAll();
     }
 
-    @RequestMapping(value = "/menu/id={id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/menu/id={id}", method = RequestMethod.GET)
     public Menu getById(@PathVariable int id) {
         return menuService.getById(id);
     }
 
-    @RequestMapping(value = "/menu/name={name}", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/menu/name={name}", method = RequestMethod.GET)
     public Menu getByName(@PathVariable String name) {
         return menuService.getByName(name);
     }
 
-    @RequestMapping(value = "/menu/delete", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/menu/delete", method = RequestMethod.POST)
     public void delete(@RequestBody Menu menu) {
         menuService.deleteMenu(menu);
     }
 
-    @RequestMapping(value = "/menu/createOrUpdate", method = RequestMethod.POST)
+    @RequestMapping(value = "/admin/menu/createOrUpdate", method = RequestMethod.POST)
     public void createOrUpdate(@RequestBody Menu menu) {
         System.out.println(menu.toString());
         menuService.createOrUpdate(menu);

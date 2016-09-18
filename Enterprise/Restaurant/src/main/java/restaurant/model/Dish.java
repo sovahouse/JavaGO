@@ -110,7 +110,7 @@ public class Dish {
         return "Dish{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", addDishesDOM= " + "\"" + ingredientsList + "\"" +
+                ", addIngredientsDOM= " + "\"" + ingredientsList + "\"" +
                 ", category='" + category + '\'' +
                 ", price=" + price +
                 ", weight=" + weight +

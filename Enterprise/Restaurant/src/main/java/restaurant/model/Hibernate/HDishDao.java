@@ -35,8 +35,8 @@ public class HDishDao implements DishDao {
 
     @Override
     @Transactional(propagation = Propagation.MANDATORY)
-    public void save(Dish dish) {
-        sessionFactory.getCurrentSession().save(dish);
+    public void createOrUpdate(Dish dish) {
+        sessionFactory.getCurrentSession().saveOrUpdate(dish);
     }
 
     @Override

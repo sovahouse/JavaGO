@@ -18,6 +18,12 @@ public class HIngredientDao implements IngredientDao {
         return sessionFactory.getCurrentSession().createQuery("select i from Ingredient i").list();
     }
 
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
+    public void createOrUpdate(Ingredient ingredient) {
+        sessionFactory.getCurrentSession().saveOrUpdate(ingredient);
+    }
+
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }

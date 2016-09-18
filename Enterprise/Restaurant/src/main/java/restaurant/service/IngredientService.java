@@ -16,6 +16,11 @@ public class IngredientService {
         return ingredientDao.findAll();
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void createOrUpdate(Ingredient ingredient) {
+        ingredientDao.createOrUpdate(ingredient);
+    }
+
     public void setIngredientDao(IngredientDao ingredientDao) {
         this.ingredientDao = ingredientDao;
     }

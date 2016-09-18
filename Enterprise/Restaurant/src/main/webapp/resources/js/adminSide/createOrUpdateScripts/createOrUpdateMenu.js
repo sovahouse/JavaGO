@@ -66,14 +66,13 @@ function removeDishesDOM() {
 
 function update() {
     $.ajax({
-        url: '/menu/id=' + localStorage.getItem("MenuToEdit"),
+        url: '/admin/menu/id=' + localStorage.getItem("MenuToEdit"),
         dataType: 'json',
         success: function (data) {
             $('#name').val(data.name);
             var dishes = data.dishes;
             for(var i = 0; i < dishes.length; i++) {
                 addDishesDOM();
-                console.log(data);
                 $('#' + (i + 1)).val(dishes[i].name);
             }
             submit(data);
@@ -119,11 +118,14 @@ function submit(data) {
 
 function upload(data) {
     $.ajax({
-        url: "/menu/createOrUpdate",
+        url: "/admin/menu/createOrUpdate",
         type: "POST",
         data: JSON.stringify(data),
         contentType: "application/json",
-        dataType: "json"
+        dataType: "json",
+        complete: function () {
+            $('.success').toggle();
+        }
     });
 }
 

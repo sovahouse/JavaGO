@@ -29,6 +29,10 @@ $(function () {
         dishes.appendChild(container);
         $('.wrapper').html(dishes);
     });
+    $('.edit').click(function () {
+        var id = $(this).attr("name");
+        localStorage.setItem("DishToEdit", id);
+    });
 
     $('.delete').click(function () {
         var id = $(this).attr("name");
@@ -49,7 +53,7 @@ $(function () {
 
 function deleteDish(dish) {
     $.ajax({
-        url: "/dishes/delete",
+        url: "/admin/dishes/delete",
         type: "POST",
         data: JSON.stringify(dish),
         contentType: "application/json",

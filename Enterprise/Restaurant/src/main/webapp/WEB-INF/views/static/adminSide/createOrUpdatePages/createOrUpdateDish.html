@@ -26,15 +26,6 @@
                 <input type="text" id="price">
             </li>
             <li>
-                <label for="ingredient">Ingredient 1:</label>
-                <select id="ingredient" name="ingredient">
-                    <option value="ingredients"></option>
-                    <option value="ingredients">сахар</option>
-                    <option value="ingredients">соль</option>
-                    <option value="ingredients">вода</option>
-                </select>
-            </li>
-            <li>
                 <label for="category">category</label>
                 <input type="text" id="category">
             </li>
@@ -43,10 +34,21 @@
                 <input type="text" id="weight">
             </li>
             <li>
+                <ul class="ingredientsList">
+                    <!-- <label for="addIngredientsDOM">Dish 1:</label>
+                     <select id="addIngredientsDOM" name="addIngredientsDOM">
+                         <option value="z">z</option>
+                     </select>-->
+                </ul>
+            </li>
+            <li>
                 <input class="submit" type="submit" id="submit" value="SUBMIT">
                 <a href="/admin/dishes">
-                    <button class="buttonBack">BACK</button>
+                    <button class="buttonBack" type="button">BACK</button>
                 </a>
+            </li>
+            <li>
+                <label class="success" for="submit">Successfully submitted</label>
             </li>
         </ul>
     </form>

@@ -1,15 +1,14 @@
 $(function () {
     if (localStorage.getItem("StoreToEdit") !== null) {
         update();
-    } else {
-        create();
     }
 });
 
 function update() {
     var store = getData();
-    var wrapper = document.querySelector('.wrapper');
-    wrapper.innerHTML = '<p>name: ' + store.ingredient.name + '</p>' + wrapper.innerHTML;
+    var li = document.createElement('li');
+    li.innerHTML = 'Name: ' + store.ingredient.name;
+    $('.first').before(li);
 
     $('#quantity').val(store.quantity);
 
@@ -30,18 +29,21 @@ function update() {
 
 function upload(data) {
     $.ajax({
-        url: "/store/createOrUpdate",
+        url: "/admin/store/update",
         type: "POST",
         data: JSON.stringify(data),
         contentType: "application/json",
-        dataType: "json"
+        dataType: "json",
+        complete: function () {
+            $('.success').toggle();
+        }
     });
 }
 
 function getData() {
     return $.ajax({
         async:false,
-        url: '/store/id=' + localStorage.getItem("StoreToEdit"),
+        url: '/admin/store/id=' + localStorage.getItem("StoreToEdit"),
         type:'get',
         dataType: 'JSON'
     }).responseJSON;
