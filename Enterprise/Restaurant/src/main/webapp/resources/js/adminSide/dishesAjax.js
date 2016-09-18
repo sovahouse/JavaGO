@@ -2,8 +2,7 @@ $(function () {
     localStorage.clear();
     var data = getData();
 
-    var dishes = document.createElement('div');
-    $(dishes).addClass("dishes");
+    var wrapper = document.querySelector('.wrapper');
 
     $.each(data, function (i, dish) {
 
@@ -26,29 +25,32 @@ $(function () {
             '<p>' + '<a href="/admin/dish/edit">' + '<button class="edit" name="' + dish.id + '">' + 'Edit' + '</button>' + '</a>' +
             '<button class="delete"  name="' + dish.id + '">' + 'Delete' + '</button>' + '</p>';
         container.appendChild(figure);
-        dishes.appendChild(container);
-        $('.wrapper').html(dishes);
+        wrapper.appendChild(container);
     });
     $('.edit').click(function () {
         var id = $(this).attr("name");
         localStorage.setItem("DishToEdit", id);
     });
 
-    $('.delete').click(function () {
-        var id = $(this).attr("name");
-        var result = {};
-        for (var i = 0; i < data.length; i++) {
-            if (data[i].id == id) {
-                result = data[i];
-                break;
+    $('.delete').click(function (e) {
+        e.preventDefault();
+
+        $('#myModal').modal();
+        $('.btn-agree').on('click', function () {
+            var id = $('.delete').attr("name");
+            var result = {};
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].id == id) {
+                    result = data[i];
+                    break;
+                }
             }
-        }
-        deleteDish(result);
-        location.reload();
+            deleteDish(result);
+            location.reload();
+        });
 
     });
 });
-
 
 
 function deleteDish(dish) {

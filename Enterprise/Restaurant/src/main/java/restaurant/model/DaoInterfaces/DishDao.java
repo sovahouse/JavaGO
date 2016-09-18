@@ -2,6 +2,7 @@ package restaurant.model.DaoInterfaces;
 
 
 import restaurant.model.Dish;
+import restaurant.model.Ingredient;
 
 import java.util.List;
 
@@ -17,4 +18,5 @@ public interface DishDao {
 
     Dish getById(int id);
 
+    void deleteIngredientFromAllDishes(Ingredient ingredient);
 }

@@ -9,5 +9,7 @@ public interface IngredientDao {
     List<Ingredient> findAll();
 
     void createOrUpdate(Ingredient ingredient);
+
+    void remove(Ingredient ingredient);
 }
 

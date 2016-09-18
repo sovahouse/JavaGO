@@ -74,9 +74,13 @@ function update() {
             $('#category').val(data.category);
             $('#weight').val(data.weight);
             var ingredients = data.ingredients;
-            for (var i = 0; i < ingredients.length; i++) {
+            if (ingredients.length === 0) {
                 addIngredientsDOM();
-                $('#' + (i + 1)).val(ingredients[i].name);
+            } else {
+                for (var i = 0; i < ingredients.length; i++) {
+                    addIngredientsDOM();
+                    $('#' + (i + 1)).val(ingredients[i].name);
+                }
             }
             submit(data);
         }

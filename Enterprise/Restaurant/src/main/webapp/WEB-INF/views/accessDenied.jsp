@@ -3,10 +3,12 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<link href="/resources/css/accessDenied.css" type="text/css" rel="stylesheet"/>
 	<title>AccessDenied page</title>
 </head>
 <body>
-	Dear <strong>${user}</strong>, You are not authorized to access this page
-	<a href="<c:url value="/logout" />">Logout</a>
+<p class="access">ACCESS DENIED</p>
+	<%--Dear <strong>${user}</strong>, You are not authorized to access this page--%>
+	<a class="logOut" href="<c:url value="/logout" />">Logout</a>
 </body>
 </html>

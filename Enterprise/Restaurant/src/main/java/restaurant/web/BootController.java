@@ -22,17 +22,30 @@ public class BootController {
 
     @RequestMapping(value = "/boot", method = RequestMethod.GET)
     public void boot() {
-        Order order = new Order();
+        Order order1 = new Order();
         Employee waiter = employeeService.getById(1);
-        order.setDate(LocalDate.now());
-        order.setTableNumber(1);
-        order.setWaiter(waiter);
+        order1.setDate(LocalDate.now());
+        order1.setTableNumber(1);
+        order1.setWaiter(waiter);
 
-        orderService.create(order);
+        orderService.create(order1);
 
-        orderService.addDish(dishService.getById(1), order);
-        orderService.addDish(dishService.getById(2), order);
-        orderService.closeOrder(order);
+        orderService.addDish(dishService.getById(1), order1);
+        orderService.addDish(dishService.getById(2), order1);
+        orderService.closeOrder(order1);
+
+        Order order2 = new Order();
+        Employee waiter2 = employeeService.getById(2);
+        order2.setDate(LocalDate.now());
+        order2.setTableNumber(5);
+        order2.setWaiter(waiter2);
+
+        orderService.create(order2);
+
+        orderService.addDish(dishService.getById(1), order2);
+        orderService.addDish(dishService.getById(2), order2);
+        orderService.closeOrder(order2);
+
     }
 
     @Autowired

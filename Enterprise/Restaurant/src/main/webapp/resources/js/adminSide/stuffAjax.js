@@ -3,8 +3,7 @@ $(function () {
     var data = getData();
     data.sort(sortById);
 
-    var employees = document.createElement('div');
-    $(employees).addClass("employees");
+    var wrapper = document.querySelector('.wrapper');
 
     $.each(data, function (i, val) {
         var container = document.createElement('div');
@@ -29,8 +28,7 @@ $(function () {
             '<button class="delete"  name="' + id + '">' + 'Delete' + '</button>' + '</p>';
         figure.innerHTML = inner;
         container.appendChild(figure);
-        employees.appendChild(container);
-        $('.wrapper').html(employees);
+        wrapper.appendChild(container);
     });
 
     $('.edit').click(function () {

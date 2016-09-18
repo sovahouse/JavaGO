@@ -5,11 +5,13 @@
     <title>Store</title>
     <script type="text/javascript" src="/resources/js/jquery.js"></script>
     <script type="text/javascript" src="/resources/js/adminSide/storeAjax.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/resources/css/reset.css">
     <link rel="stylesheet" href="/resources/css/adminSide/store.css">
     <link rel="stylesheet" href="/resources/css/adminSide/header.css">
 </head>
 <body>
+
 <header class="header">
     <ul class="navigation">
         <li><a href="/admin/menu">Menu</a></li>
@@ -20,8 +22,44 @@
         <li><a href="/logout">Log out</a></li>
     </ul>
 </header>
-<div class="wrapper">
+
+<div class="filter clearfix">
+    <form action="#">
+        <div class="input">
+            <h2>Filter by Name</h2>
+            <input id="name" class="name" type="text">
+        </div>
+        <input class="submit" type="submit" value="FILTER IT">
+    </form>
 
 </div>
+<div class="wrapper">
+    <div class="container_for-add">
+        <a href="/admin/store/create"><button type="button"  class="plus">+</button></a>
+    </div>
+</div>
+<div class="window">
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        This ingredient will be deleted from all dishes where it used.
+                        <p>Are you want to delete?</p>
+                    </h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-agree" data-dismiss="modal">YES</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">NO</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
 </body>
 </html>

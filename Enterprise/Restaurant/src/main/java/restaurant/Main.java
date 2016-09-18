@@ -31,7 +31,7 @@ public class Main {
     private void start() {
         /*Dish salad = dishService.getById(1);
         dishService.deleteDish(salad);
-        System.out.println("After delete"); dishService.getAllDishes().forEach(System.out::println);
+        System.out.println("After remove"); dishService.getAllDishes().forEach(System.out::println);
         dishService.createOrUpdate(salad);
         System.out.println("After saveOrUpdate"); dishService.getAllDishes().forEach(System.out::println);
         List <Dish> dishes = dishService.getDishByName("Feta Pizza");

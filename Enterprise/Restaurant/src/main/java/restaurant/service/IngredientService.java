@@ -21,6 +21,11 @@ public class IngredientService {
         ingredientDao.createOrUpdate(ingredient);
     }
 
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void delete(Ingredient ingredient) {
+        ingredientDao.remove(ingredient);
+    }
+
     public void setIngredientDao(IngredientDao ingredientDao) {
         this.ingredientDao = ingredientDao;
     }

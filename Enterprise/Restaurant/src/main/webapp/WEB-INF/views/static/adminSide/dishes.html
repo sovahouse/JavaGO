@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Dishes</title>
     <script type="text/javascript" src="/resources/js/jquery.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/resources/js/adminSide/dishesAjax.js"></script>
     <link href="/resources/css/reset.css" type="text/css" rel="stylesheet"/>
     <link href="/resources/css/adminSide/header.css" type="text/css" rel="stylesheet"/>
@@ -21,6 +22,30 @@
     </ul>
 </header>
 <div class="wrapper clearfix">
+    <div class="container_for-add">
+        <a href="/admin/dish/edit"><button type="button"  class="plus">+</button></a>
+    </div>
+</div>
+<div class="window">
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">
+                        This dish will be deleted from all menu where it used.
+                        <p>Are you want to delete?</p>
+                    </h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-agree" data-dismiss="modal">YES</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">NO</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
 </div>
 </body>

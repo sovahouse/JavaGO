@@ -4,6 +4,7 @@ import restaurant.model.DaoInterfaces.DishDao;
 import restaurant.model.Dish;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import restaurant.model.Ingredient;
 
 import java.util.List;
 
@@ -35,6 +36,11 @@ public class DishService {
     @Transactional(propagation = Propagation.REQUIRED)
     public void deleteDish(Dish dish) {
         dishDao.remove(dish);
+    }
+
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void deleteIngredientFromAllDishes(Ingredient ingredient) {
+        dishDao.deleteIngredientFromAllDishes(ingredient);
     }
 
     public void setDishDao(DishDao dishDao) {

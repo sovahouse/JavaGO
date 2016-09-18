@@ -71,9 +71,13 @@ function update() {
         success: function (data) {
             $('#name').val(data.name);
             var dishes = data.dishes;
-            for(var i = 0; i < dishes.length; i++) {
+            if (dishes.length === 0) {
                 addDishesDOM();
-                $('#' + (i + 1)).val(dishes[i].name);
+            } else {
+                for (var i = 0; i < dishes.length; i++) {
+                    addDishesDOM();
+                    $('#' + (i + 1)).val(dishes[i].name);
+                }
             }
             submit(data);
         }

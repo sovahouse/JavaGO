@@ -24,6 +24,12 @@ public class HIngredientDao implements IngredientDao {
         sessionFactory.getCurrentSession().saveOrUpdate(ingredient);
     }
 
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
+    public void remove(Ingredient ingredient) {
+        sessionFactory.getCurrentSession().remove(ingredient);
+    }
+
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }

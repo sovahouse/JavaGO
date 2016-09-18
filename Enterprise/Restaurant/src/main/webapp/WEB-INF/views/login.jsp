@@ -5,6 +5,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 		<title>Login page</title>
 		<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.css" />
+		<link rel="stylesheet" type="text/css" href="/resources/css/login.css" />
 	</head>
 
 	<body>
@@ -36,7 +37,7 @@
 								
 							<div class="form-actions">
 								<input type="submit"
-									class="btn btn-block btn-primary btn-default" value="Log in">
+									class="btn btn-block btn-primary btn-default" value="LOG IN">
 							</div>
 						</form>
 					</div>

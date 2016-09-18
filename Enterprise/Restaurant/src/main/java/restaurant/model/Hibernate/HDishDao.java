@@ -6,7 +6,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import restaurant.model.Ingredient;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HDishDao implements DishDao {
@@ -45,6 +47,28 @@ public class HDishDao implements DishDao {
         Query query = sessionFactory.getCurrentSession().createQuery("select d from Dish d where d.id = :id");
         query.setParameter("id", id);
         return (Dish) query.uniqueResult();
+    }
+
+    @Override
+    @Transactional(propagation = Propagation.MANDATORY)
+    public void deleteIngredientFromAllDishes(Ingredient ingredient) {
+        List<Dish> result = new ArrayList<>();
+        for (Dish dish : findAll()) {
+            for (Ingredient i : dish.getIngredients()) {
+                if (ingredient.equals(i)) {
+                    result.add(dish);
+                }
+            }
+        }
+
+        for (Dish dish : result) {
+            deleteIngredient(ingredient, dish);
+        }
+    }
+
+    private void deleteIngredient(Ingredient ingredient, Dish dish) {
+        dish.getIngredients().remove(ingredient);
+        sessionFactory.getCurrentSession().saveOrUpdate(dish);
     }
 
     public void setSessionFactory(SessionFactory sessionFactory) {

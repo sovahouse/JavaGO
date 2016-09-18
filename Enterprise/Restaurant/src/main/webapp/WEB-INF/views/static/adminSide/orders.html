@@ -12,16 +12,63 @@
 <body>
 <header class="header">
     <ul class="navigation">
-        <li><a href="/admin/menu">Menu</a></li>
-        <li><a href="/admin/dishes">Dishes</a></li>
-        <li><a href="/admin/stuff">Stuff</a></li>
-        <li><a href="/admin/store">Store</a></li>
-        <li><a href="/admin/orders">Orders History</a></li>
-        <li><a href="/logout">Log out</a></li>
+        <li>
+            <a href="/admin/menu">Menu</a>
+        </li>
+        <li>
+            <a href="/admin/dishes">Dishes</a>
+        </li>
+        <li>
+            <a href="/admin/stuff">Stuff</a>
+        </li>
+        <li>
+            <a href="/admin/store">Store</a>
+        </li>
+        <li>
+            <a href="/admin/orders">Orders History</a>
+        </li>
+        <li>
+            <a href="/logout">Log out</a>
+        </li>
     </ul>
 </header>
+<div class="filter clearfix">
+
+    <form action="#">
+        <div class="input">
+            <h2>Filter by Date</h2>
+            <input id="date" class="date" type="date">
+        </div>
+        <div class="input">
+            <h2>Filter by Waiter</h2>
+            <select id="waiter" class="waiter">
+                <option></option>
+            </select>
+
+        </div>
+        <div class="input">
+            <h2>Filter by Table</h2>
+            <select id="table" class="table" name="table">
+                <option></option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+            </select>
+        </div>
+        <input class="submit" type="submit" value="FILTER IT">
+    </form>
+
+</div>
 <div class="wrapper">
 
 </div>
+
 </body>
 </html>

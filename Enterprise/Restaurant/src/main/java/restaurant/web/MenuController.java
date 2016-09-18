@@ -1,13 +1,10 @@
 package restaurant.web;
 
 import org.springframework.web.bind.annotation.*;
-import restaurant.model.Dish;
 import restaurant.model.Menu;
 import restaurant.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController

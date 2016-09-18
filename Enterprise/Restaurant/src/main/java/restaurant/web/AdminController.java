@@ -68,7 +68,7 @@ public class AdminController {
 
     @RequestMapping(value = "/admin/store/create", method = RequestMethod.GET)
     public String createStore() {
-        return "redirect:/static/adminSide/createOrUpdatePages/createDish.html";
+        return "redirect:/static/adminSide/createOrUpdatePages/createStore.html";
     }
 
     @RequestMapping(value = "/Access_Denied", method = RequestMethod.GET)
