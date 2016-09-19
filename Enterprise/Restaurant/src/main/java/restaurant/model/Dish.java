@@ -29,9 +29,8 @@ public class Dish {
     )
     private List<Ingredient> ingredients;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "category")
-    private Category category;
+    private String category;
 
     @Column(name = "price")
     private double price;
@@ -66,11 +65,11 @@ public class Dish {
         this.ingredients = ingredients;
     }
 
-    public Category getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 

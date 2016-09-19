@@ -34,10 +34,9 @@ $(function () {
 
     $('.delete').click(function (e) {
         e.preventDefault();
-
+        var id = $(this).attr("name");
         $('#myModal').modal();
         $('.btn-agree').on('click', function () {
-            var id = $('.delete').attr("name");
             var result = {};
             for (var i = 0; i < data.length; i++) {
                 if (data[i].id == id) {

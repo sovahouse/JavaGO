@@ -20,11 +20,12 @@
             <li>
                 <label for="name">Name:</label>
                 <input type="text" id="name">
-                <label class="error" for="name">invalid input</label>
+                <label class="error errorName" for="name">invalid input</label>
             </li>
             <li>
                 <label for="surmane">Surname:</label>
                 <input type="text" id="surmane">
+                <label class="error errorSurname" for="surmane">invalid input</label>
             </li>
             <li>
                 <label for="birthdate">Birth date:</label>
@@ -32,11 +33,15 @@
             </li>
             <li>
                 <label for="position">Position:</label>
-                <input type="text" id="position">
+                <select id="position" name="position">
+                    <option>WAITER</option>
+                    <option>COOK</option>
+                </select>
             </li>
             <li>
                 <label for="salary">Salary:</label>
                 <input type="text" id="salary">
+                <label class="error errorSalary" for="salary">invalid input</label>
             </li>
             <li>
                 <input class="submit" type="submit" id="submit" value="SUBMIT">

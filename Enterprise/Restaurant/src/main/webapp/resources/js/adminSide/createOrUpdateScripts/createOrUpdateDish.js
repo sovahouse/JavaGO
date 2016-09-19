@@ -101,6 +101,9 @@ function submit(data) {
     $('#editform').submit(function (e) {
         e.preventDefault();
         var name = $('#name').val();
+        var price = $('#price').val();
+        var category = $('#category').val();
+        var weight = $('#weight').val();
         var ingredientsNumber = $('.ingredientsList').children().length;
         var ingredients = [];
         var ingredientsFromDB = getIngredients();
@@ -116,12 +119,33 @@ function submit(data) {
                 }
             }
         }
-        data.name = name;
-        data.price = $('#price').val();
-        data.category = $('#category').val();
-        data.weight = $('#weight').val();
-        data.ingredients = ingredients;
 
+        if(isNameValid(name)) {
+            data.name = name;
+        } else {
+            $('.errorName').toggle();
+            throw new Error("invalid name input");
+        }
+        if(isDigitValid(price)) {
+            data.price = price;
+        } else {
+            $('.errorPrice').toggle();
+            throw new Error("invalid price input");
+        }
+        if(isNameValid(category)) {
+            data.category = category;
+        } else {
+            $('.errorCategory').toggle();
+            throw new Error("invalid category input");
+        }
+        if(isDigitValid(weight)) {
+            data.weight = weight;
+        } else {
+            $('.errorWeight').toggle();
+            throw new Error("invalid weight input");
+        }
+
+        data.ingredients = ingredients;
         upload(data);
     });
 }
@@ -158,4 +182,24 @@ function isRepeated(arr, name) {
         }
     }
     return result;
+}
+
+function isDigitValid(quantity) {
+    var result = true;
+    if(!$.isNumeric(quantity)) {
+        result = false;
+    }
+    return result;
+}
+
+function isNameValid(name) {
+    var result = true;
+    if(!isAlpha(name)) {
+        result = false;
+    }
+    return result;
+}
+
+function isAlpha(s) {
+    return s.match("^[a-zA-Z]");
 }

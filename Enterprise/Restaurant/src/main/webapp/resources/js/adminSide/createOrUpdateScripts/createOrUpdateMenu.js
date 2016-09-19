@@ -113,7 +113,12 @@ function submit(data) {
                 }
             }
         }
-        data.name = name;
+        if(isNameValid(name)) {
+            data.name = name;
+        } else {
+            $('.errorName').toggle();
+            throw new Error("invalid name input");
+        }
         data.dishes = dishes;
         console.log(data);
         upload(data);
@@ -152,4 +157,17 @@ function isRepeated(arr, name) {
         }
     }
     return result;
+}
+
+
+function isNameValid(name) {
+    var result = true;
+    if(!isAlpha(name)) {
+        result = false;
+    }
+    return result;
+}
+
+function isAlpha(s) {
+    return s.match("^[a-zA-Z]");
 }

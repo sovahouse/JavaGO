@@ -24,8 +24,8 @@ $(function () {
             '<p>' + 'Birthday: ' + extractDate(val) + '</p>' +
             '<p>' + 'Position: ' + position + '</p>' +
             '<p>' + 'Salary: ' + salary + ' UAH' + '</p>' + "</figcaption>" +
-            '<p>' + '<a href="/admin/employee/edit">' + '<button class="edit" name="' + id + '">' + 'Edit' + '</button>' + '</a>' +
-            '<button class="delete"  name="' + id + '">' + 'Delete' + '</button>' + '</p>';
+            '<p>' + '<a href="/admin/employee/edit">' + '<button class="edit" name="' + id + '">' + 'Edit' + '</button>' + '</a>';
+            //+'<button class="delete"  name="' + id + '">' + 'Delete' + '</button>' + '</p>';
         figure.innerHTML = inner;
         container.appendChild(figure);
         wrapper.appendChild(container);

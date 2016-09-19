@@ -16,10 +16,11 @@ function update() {
         e.preventDefault();
         var quantity = $('#quantity').val();
 
-        if ($.isNumeric(quantity)) {
+        if(isQuantityValid(quantity)) {
             store.quantity = quantity;
         } else {
-            console.error("invalid input"); //TODO: вывод ошибки на екран
+            $('.errorQuantity').toggle();
+            throw new Error("invalid quantity input");
         }
 
 
@@ -48,3 +49,13 @@ function getData() {
         dataType: 'JSON'
     }).responseJSON;
 }
+
+
+function isQuantityValid(quantity) {
+    var result = true;
+    if(!(Math.floor(quantity) == quantity && $.isNumeric(quantity))) {
+        result = false;
+    }
+    return result;
+}
+

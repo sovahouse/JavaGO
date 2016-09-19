@@ -40,17 +40,29 @@ function submit(data) {
         var position = $('#position').val();
         var salary = $('#salary').val();
 
-        if(isAlpha(name) && name !== "") {
+        if(isNameValid(name)) {
             data.name = name;
-        } else if(!isAlpha(name) && name !== "") {
-            $('.error').toggle();
+        } else {
+            $('.errorName').toggle();
             throw new Error("invalid name input");
         }
+        if(isNameValid(surname)) {
+            data.surname = surname;
+        } else {
+            $('.errorSurname').toggle();
+            throw new Error("invalid surname input");
+        }
 
-        data.surname = surname;
         data.birthDate = birthDate;
-        data.position = position.toUpperCase();
-        data.salary = salary;
+        data.position = position;
+
+        if(isSalaryValid(salary)) {
+            data.salary = salary;
+        } else {
+            $('.errorSalary').toggle();
+            throw new Error("invalid salary input");
+        }
+
 
         upload(data);
     });
@@ -87,6 +99,22 @@ function extractDate(val) {
 
         return result;
     }
+}
+
+function isSalaryValid(quantity) {
+    var result = true;
+    if(!$.isNumeric(quantity)) {
+        result = false;
+    }
+    return result;
+}
+
+function isNameValid(name) {
+    var result = true;
+    if(!isAlpha(name)) {
+        result = false;
+    }
+    return result;
 }
 
 function isAlpha(s) {
