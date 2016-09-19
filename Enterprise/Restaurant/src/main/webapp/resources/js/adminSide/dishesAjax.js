@@ -9,8 +9,11 @@ $(function () {
         var container = document.createElement('div');
         $(container).addClass("container");
         var figure = document.createElement('figure');
-
-        figure.innerHTML += '<figcaption>' + '<img src="' + dish.photo + '">' + '</figcaption>' +
+        var photo = dish.photo;
+        if(photo === null) {
+            photo = "/resources/img/dishes/default.png";
+        }
+        figure.innerHTML += '<figcaption>' + '<img src="' +  photo + '">' + '</figcaption>' +
             dish.name + ' ' + dish.weight + 'g' + '<p>';
 
         $.each(dish.ingredients, function (i, ingredient) {

@@ -17,7 +17,9 @@ $(function () {
         var position = val.position;
         var salary = val.salary;
         var photo = val.photo;
-
+        if(photo === null) {
+            photo = "/resources/img/employees/default.png";
+        }
         var inner = '<img src="' + photo + '">' + '<figcaption>' + 'Name:' + name +
             '<p>' + 'Surname: ' + surname + '</p>' +
             '<p>' + 'Phone: ' + phone + '</p>' +
