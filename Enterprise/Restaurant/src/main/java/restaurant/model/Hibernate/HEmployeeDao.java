@@ -56,11 +56,11 @@ public class HEmployeeDao implements EmployeeDao {
     }
 
     @Override
-    public List<Employee> findByNameSurname(String name, String surname) {
+    public Employee findByNameSurname(String name, String surname) {
         Query query = sessionFactory.getCurrentSession().createQuery("select e from Employee e where e.name like :name and e.surname like :surname");
         query.setParameter("name", name);
         query.setParameter("surname", surname);
-        return query.list();
+        return (Employee) query.uniqueResult();
     }
 
     public void setSessionFactory(SessionFactory sessionFactory) {

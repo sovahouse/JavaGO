@@ -33,7 +33,9 @@ function submit(data) {
 
     $('#editform').submit(function (e) {
         e.preventDefault();
-        var photo = $('#photo').val();
+        var file = new FormData();
+        file.append("photo", photo.files[0]);
+
         var name = $('#name').val();
         var surname = $('#surmane').val();
         var birthDate = $('#birthdate').val();
@@ -63,8 +65,10 @@ function submit(data) {
             throw new Error("invalid salary input");
         }
 
-
         upload(data);
+        if($('#photo').val() !== '') {
+            photoUpload(file, name, surname);
+        }
     });
 }
 
@@ -78,6 +82,17 @@ function upload(data) {
         complete: function () {
             $('.success').toggle();
         }
+    });
+}
+
+function photoUpload(file, name, surname) {
+    $.ajax({
+        url: '/admin/employees/photoUpload/name='+ name +', surname='+ surname,
+        data: file,
+        dataType: 'text',
+        processData: false,
+        contentType: false,
+        type: 'POST'
     });
 }
 

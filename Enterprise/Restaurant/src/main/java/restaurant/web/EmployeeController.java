@@ -25,7 +25,7 @@ public class EmployeeController {
     public List<EmployeeForClient> employeesForClient() {
         List<EmployeeForClient> result = new ArrayList<>();
         for (Employee employee: employeeService.getAllEmployees()) {
-            result.add(new EmployeeForClient(employee.getName(), employee.getPhoto(), employee.getPosition()));
+            //result.add(new EmployeeForClient(employee.getName(), employee.getPhoto(), employee.getPosition()));
         }
         return result;
     }
@@ -33,17 +33,6 @@ public class EmployeeController {
     @RequestMapping(value = "/admin/employees/id={id}", method = RequestMethod.GET)
     public Employee getById(@PathVariable int id) {
         return employeeService.getById(id);
-    }
-
-    @RequestMapping(value = "/admin/employees/{name},{surname}", method = RequestMethod.GET)
-    public List<Employee> getByNameSurname(@PathVariable String name, @PathVariable String surname) {
-        if(name.isEmpty()) {
-            return employeeService.getEmployeeBySurname(surname);
-        } else if(surname.isEmpty()) {
-            return employeeService.getEmployeeByName(name);
-        } else {
-            return employeeService.getEmployeeByNameSurname(name, surname);
-        }
     }
 
     @RequestMapping(value = "/admin/employees/delete", method = RequestMethod.POST)

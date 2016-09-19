@@ -10,6 +10,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Arrays;
 
 @Entity
 @Table(name = "employee")
@@ -43,8 +44,9 @@ public class Employee {
     @Column(name = "salary")
     private double salary;
 
+    @Lob
     @Column(name = "photo")
-    private String photo;
+    private byte[] photo;
 
     public int getId() {
         return id;
@@ -102,11 +104,11 @@ public class Employee {
         this.salary = salary;
     }
 
-    public String getPhoto() {
+    public byte[] getPhoto() {
         return photo;
     }
 
-    public void setPhoto(String photo) {
+    public void setPhoto(byte[] photo) {
         this.photo = photo;
     }
 
@@ -118,8 +120,9 @@ public class Employee {
                 ", name='" + name + '\'' +
                 ", birthDate=" + birthDate +
                 ", phone='" + phone + '\'' +
-                ", position='" + position + '\'' +
+                ", position=" + position +
                 ", salary=" + salary +
+                ", photo=" + Arrays.toString(photo) +
                 '}';
     }
 }

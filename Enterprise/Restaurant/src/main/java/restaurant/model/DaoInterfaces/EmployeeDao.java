@@ -19,5 +19,5 @@ public interface EmployeeDao {
 
     List<Employee> findBySurname(String surname);
 
-    List<Employee> findByNameSurname(String name, String surname);
+    Employee findByNameSurname(String name, String surname);
 }

@@ -6,7 +6,7 @@
 	PHONE text,
 	POSITION text,
 	SALARY real,
-	PHOTO text
+	PHOTO oid
 );
 
 commit;

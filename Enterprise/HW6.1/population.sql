@@ -1,7 +1,7 @@
-INSERT INTO public.employee (id, surname, name, birth_date, phone, position, salary, photo) VALUES (1, 'Anderson', 'Alex', '1993-07-02', '', 'WAITER', 5000, '/resources/img/employees/1.jpg');
-INSERT INTO public.employee (id, surname, name, birth_date, phone, position, salary, photo) VALUES (2, 'Polson', 'Robert', '1992-02-16', '', 'WAITER', 6500, '/resources/img/employees/2.jpg');
-INSERT INTO public.employee (id, surname, name, birth_date, phone, position, salary, photo) VALUES (3, 'Debian', 'James', '1986-10-23', '', 'COOK', 10000, '/resources/img/employees/3.jpg');
-INSERT INTO public.employee (id, surname, name, birth_date, phone, position, salary, photo) VALUES (4, 'Anderson', 'Jill', '1993-06-02', '', 'WAITER', 5000, '/resources/img/employees/4.jpg');
+INSERT INTO public.employee (id, surname, name, birth_date, phone, position, salary) VALUES (1, 'Anderson', 'Alex', '1993-07-02', '', 'WAITER', 5000);
+INSERT INTO public.employee (id, surname, name, birth_date, phone, position, salary) VALUES (2, 'Polson', 'Robert', '1992-02-16', '', 'WAITER', 6500);
+INSERT INTO public.employee (id, surname, name, birth_date, phone, position, salary) VALUES (3, 'Debian', 'James', '1986-10-23', '', 'COOK', 10000);
+INSERT INTO public.employee (id, surname, name, birth_date, phone, position, salary) VALUES (4, 'Anderson', 'Jill', '1993-06-02', '', 'WAITER', 5000);
 
 INSERT INTO public.dish (id, name, category, price, weight, photo) VALUES (1, 'Classic Chicken Salad', 'SALAD', 60, 200, '/resources/img/dishes/Classic_Chicken_Salad.png');
 INSERT INTO public.dish (id, name, category, price, weight, photo) VALUES (2, 'Feta Pizza', 'PIZZA', 70, 300, '/resources/img/dishes/Feta_Pizza.jpg');

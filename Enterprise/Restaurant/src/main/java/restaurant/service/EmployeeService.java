@@ -41,7 +41,7 @@ public class EmployeeService {
     }
 
     @Transactional(propagation = Propagation.REQUIRED)
-    public List<Employee> getEmployeeByNameSurname(String name, String surname) {
+    public Employee getEmployeeByNameSurname(String name, String surname) {
         return employeeDao.findByNameSurname(name, surname);
     }
 
